@@ -1,0 +1,15 @@
+description = "Static Page Layout"
+
+[staticPage]
+==
+hagha 
+{{ 'translate me'|_ }}
+
+{variable name="subtitle" label="Podtytuł" tab="Nagłowek" type="text"}{/variable}
+{variable name="backgroundImage" label="Tło nagłówka" tab="Nagłowek" type="mediafinder" mode="image"}{/variable}
+
+{% page %}
+
+<h3>Ordering information</h3>
+
+            {% placeholder ordering title="Ordering" %}

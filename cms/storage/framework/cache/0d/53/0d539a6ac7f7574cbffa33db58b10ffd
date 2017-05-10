@@ -1,0 +1,39 @@
+1494452918a:1:{s:9:"index.htm";a:7:{s:8:"fileName";s:9:"index.htm";s:7:"content";s:1007:"[viewBag]
+title = "home"
+url = "/"
+layout = "kuba"
+is_hidden = 0
+navigation_hidden = 0
+localeUrl[es] = "/home"
+==
+<p>yes</p>
+
+<ul>
+	<li class="item" data-component-class="" data-description="" data-id="snippet-footer" data-snippet="footer" data-snippet-name="Footer" data-type="snippet">
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://localhost:8888/2017/amilibia/www/cms/admin/rainlab/pages#">
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="title">Footer</span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="description">
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="borders"></span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li>
+</ul>";s:5:"mtime";i:1494437216;s:6:"markup";s:893:"<p>yes</p>
+
+<ul>
+	<li class="item" data-component-class="" data-description="" data-id="snippet-footer" data-snippet="footer" data-snippet-name="Footer" data-type="snippet">
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://localhost:8888/2017/amilibia/www/cms/admin/rainlab/pages#">
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="title">Footer</span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="description">
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="borders"></span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li>
+</ul>";s:4:"code";N;s:7:"viewBag";a:6:{s:5:"title";s:4:"home";s:3:"url";s:1:"/";s:6:"layout";s:4:"kuba";s:9:"is_hidden";s:1:"0";s:17:"navigation_hidden";s:1:"0";s:9:"localeUrl";a:1:{s:2:"es";s:5:"/home";}}s:12:"parsedMarkup";s:893:"<p>yes</p>
+
+<ul>
+	<li class="item" data-component-class="" data-description="" data-id="snippet-footer" data-snippet="footer" data-snippet-name="Footer" data-type="snippet">
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://localhost:8888/2017/amilibia/www/cms/admin/rainlab/pages#">
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="title">Footer</span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="description">
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="borders"></span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li>
+</ul>";}}
