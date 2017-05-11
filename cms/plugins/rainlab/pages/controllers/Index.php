@@ -386,6 +386,20 @@ class Index extends Controller
                 $this->addPagePlaceholders($widget, $object);
                 $this->addPageSyntaxFields($widget, $object);
             });
+
+            // remove content field
+            $widget->secondaryTabs['fields']['markup']['hidden'] = true;
+
+            if (!$this->user->isSuperUser()) {
+                // hide settings tab
+                $widget->tabs['fields']['viewBag[layout]']['hidden'] = true;
+                $widget->tabs['fields']['viewBag[is_hidden]']['hidden'] = true;
+                $widget->tabs['fields']['viewBag[navigation_hidden]']['hidden'] = true;
+
+                // hide meta tab
+                $widget->tabs['fields']['viewBag[meta_title]']['hidden'] = true;
+                $widget->tabs['fields']['viewBag[meta_description]']['hidden'] = true;
+            }
         }
 
         return $widget;
