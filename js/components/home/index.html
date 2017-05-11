@@ -95,30 +95,30 @@
 		<section id="contact">
 
 			<div class="container">
-				<h3>Contáctenos</h3>
+				<h3>{{ pagesData.home['contact_us'] }}</h3>
 				<form id="contact-form" action="#">
 					<div class="row">
 						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" name="name" placeholder="Nombre">
+							<input class="form-control" type="text" name="name" placeholder="{{ pagesData.home['name'] }}">
 						</div>
 						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" name="name" placeholder="Empresa">
+							<input class="form-control" type="text" name="name" placeholder="{{ pagesData.home['company'] }}">
 						</div>
 						<div class="form-group col-sm-6">
-							<input class="form-control" type="email" name="email" placeholder="Email">
+							<input class="form-control" type="email" name="email" placeholder="{{ pagesData.home['email'] }}">
 						</div>
 						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" name="tel" placeholder="Teléfono">
+							<input class="form-control" type="text" name="tel" placeholder="{{ pagesData.home['phone'] }}">
 						</div>
 					</div>
 					<div class="form-group">
-						<textarea name="message" class="form-control" placeholder="Mensaje"></textarea>
+						<textarea name="message" class="form-control" placeholder="{{ pagesData.home['message'] }}"></textarea>
 		    		</div>	
 					<div class="row">
 						<div class="col-xs-6">
 						</div>
 						<div class="col-xs-6 text-right">
-							<button type="submit" class="btn">Enviar</button>
+							<button type="submit" class="btn">{{ pagesData.home['send'] }}</button>
 						</div>
 					</div>
 				</form>
