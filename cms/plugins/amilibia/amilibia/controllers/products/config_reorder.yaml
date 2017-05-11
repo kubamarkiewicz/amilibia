@@ -1,0 +1,5 @@
+title: Products
+modelClass: Amilibia\Amilibia\Models\Product
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar

@@ -204,13 +204,16 @@ body > nav.open {
 	opacity: 1;
     transition-delay:0s;
 }
-body > nav a { 
+body > nav * { 
 	font-family: 'Playfair Display', serif; 
 	font-weight: normal; 
 	font-size: 24px; 
 	padding: 15px 0; 
 	color: #424141; 
 }
+body > nav .languages a.selected {
+	text-decoration: underline;
+} 
 
 
 h2.section-title {
@@ -349,14 +352,14 @@ section#products .products article .icon {
 }
 section#products .products article h4 { 
 	text-transform: uppercase; 
-	display: inline; 
 	background-image: url(../images/icon-plus.png); 
 	background-repeat: no-repeat; 
 	background-position: right center; 
 	background-size: 18px; 
 	padding-right: 28px; 
 	margin-top: 24px; 
-	font-size: 16px;
+	font-size: 16px; 
+	display: inline-block;
 }
 
 /* desktop */

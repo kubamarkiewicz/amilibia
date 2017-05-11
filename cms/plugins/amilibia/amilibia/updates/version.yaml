@@ -1,0 +1,8 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table amilibia_amilibia_products'
+    - builder_table_create_amilibia_amilibia_products.php
+1.0.3:
+    - 'Created table amilibia_amilibia_works'
+    - builder_table_create_amilibia_amilibia_works.php

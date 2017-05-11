@@ -1,0 +1,12 @@
+title: Works
+modelClass: Amilibia\Amilibia\Models\Work
+list: $/amilibia/amilibia/models/work/columns.yaml
+recordUrl: 'amilibia/amilibia/works/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showSorting: false
+defaultSort:
+    column: sort_order
+    direction: asc
+toolbar:
+    buttons: list_toolbar

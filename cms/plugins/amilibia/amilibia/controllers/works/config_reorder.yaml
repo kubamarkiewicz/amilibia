@@ -1,0 +1,5 @@
+title: Works
+modelClass: Amilibia\Amilibia\Models\Work
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar

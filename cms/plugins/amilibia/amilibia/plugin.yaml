@@ -1,0 +1,31 @@
+plugin:
+    name: 'amilibia.amilibia::lang.plugin.name'
+    description: 'amilibia.amilibia::lang.plugin.description'
+    author: Amilibia
+    icon: oc-icon-anchor
+    homepage: ''
+permissions:
+    products:
+        tab: products
+        label: products
+navigation:
+    main-menu-item:
+        label: Amilibia
+        url: amilibia/amilibia/products
+        icon: icon-circle-o
+        permissions:
+            - products
+        order: '0'
+        sideMenu:
+            side-menu-item:
+                label: Productos
+                url: amilibia/amilibia/products
+                icon: icon-anchor
+                permissions:
+                    - products
+            side-menu-item2:
+                label: Obras
+                url: amilibia/amilibia/works
+                icon: icon-map-marker
+                permissions:
+                    - products

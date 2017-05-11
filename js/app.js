@@ -101,6 +101,32 @@ app.run(function($rootScope, $sce, $http, $location, $routeParams, $anchorScroll
 
     });
 
+
+    // languages
+    $rootScope.locale = localStorage.locale ? localStorage.locale : 'es';
+    $rootScope.setLocale = function(locale)
+    {
+        localStorage.locale = locale;
+        location.reload();
+    }
+
+
+
+    // load pages content
+    $rootScope.pagesData = [];
+    
+    $rootScope.loadPagesData = function()
+    {
+        $http({
+            method  : 'GET',
+            url     : config.api.urls.getPages + '/' + $rootScope.locale + '/pages'
+        })
+        .then(function(response) {
+            $rootScope.pagesData = response.data;
+        });
+    }
+    $rootScope.loadPagesData();
+
 });
 
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <base href="/2017/amilibia/www/">
+    <base href="/test/amilibia/">
     <title>amilibia</title>
 
     <!-- Le styles -->
@@ -28,11 +28,15 @@
     </header>
 
     <nav>
-        <a href="index.html#top">Home</a>
-        <a href="products">Productos</a>
-        <a href="index.html#works">Obras</a>
-        <a href="index.html#location">Ubicacion</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="index.html#top">{{ pagesData.menu['link-1-title'] }}</a>
+        <a href="products">{{ pagesData.menu['link-2-title'] }}</a>
+        <a href="index.html#works">{{ pagesData.menu['link-3-title'] }}</a>
+        <a href="index.html#location">{{ pagesData.menu['link-4-title'] }}</a>
+        <a href="index.html#contact">{{ pagesData.menu['link-1-title'] }}</a>
+        <span class="languages">
+            <a ng-click="setLocale('es')" ng-class="locale == 'es' ? 'selected' : ''">ES</a>
+            <a ng-click="setLocale('en')" ng-class="locale == 'en' ? 'selected' : ''">EN</a>
+        </span>
     </nav>
 
 
@@ -43,39 +47,11 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
-                    <p>
-                        <strong>SEDE CENTRAL:</strong><br>
-                        <strong>Gipuzkoa</strong><br>
-                        Arratola Aldea, 14 / Apdo. 68<br>
-                        20810 Orio (Gipuzkoa)<br>
-                        Tel.: +34 943 830 829<br>
-                        Email: <a href="mailto:amilibia@amilibia.com">amilibia@amilibia.com</a>
-                    </p>
-                </div>
 
-                <div class="col-sm-4">
-                    <p>
-                        <strong>DELEGACIÓNES:</strong><br>
-                        <strong>Pontevedra</strong><br>
-                        Calvario, 7 entlo<br>
-                        36690 Arcade (Pontevedra)<br>
-                        Tel.: +34 986 701 225<br>
-                        Email: tecnico@amilibia.com
-                    </p>
-                </div>
+                <div class="col-sm-4" ng-bind-html="trustAsHtml(pagesData.footer['col-1-text'])"></div>
+                <div class="col-sm-4" ng-bind-html="trustAsHtml(pagesData.footer['col-2-text'])"></div>
+                <div class="col-sm-4" ng-bind-html="trustAsHtml(pagesData.footer['col-3-text'])"></div>
 
-                <div class="col-sm-4">
-                    <p>
-                        <br>
-                        <strong>Barcelona</strong><br>
-C/ Balmes 177, 3ª<br>
-08006 Barcelona<br>
-Tel.: +34 671 480 380<br>
-Email: a.coll@amilibia.com
-
-                    </p>
-                </div>
             </div>
         </div>
         

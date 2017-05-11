@@ -1,0 +1,12 @@
+title: Products
+modelClass: Amilibia\Amilibia\Models\Product
+list: $/amilibia/amilibia/models/product/columns.yaml
+recordUrl: 'amilibia/amilibia/products/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showSorting: false
+defaultSort:
+    column: sort_order
+    direction: asc
+toolbar:
+    buttons: list_toolbar

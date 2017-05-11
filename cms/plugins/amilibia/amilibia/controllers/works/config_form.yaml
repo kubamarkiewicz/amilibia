@@ -1,0 +1,11 @@
+name: Works
+modelClass: Amilibia\Amilibia\Models\Work
+form: $/amilibia/amilibia/models/work/fields.yaml
+defaultRedirect: amilibia/amilibia/works
+create:
+    redirect: 'amilibia/amilibia/works/update/:id'
+    redirectClose: amilibia/amilibia/works
+update:
+    redirect: amilibia/amilibia/works
+    redirectClose: amilibia/amilibia/works
+preview: {  }

@@ -1,0 +1,16 @@
+fields:
+    name:
+        label: Nombre
+        oc.commentPosition: ''
+        span: left
+        type: text
+    images:
+        label: Imágenes
+        oc.commentPosition: ''
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: left
+        type: fileupload

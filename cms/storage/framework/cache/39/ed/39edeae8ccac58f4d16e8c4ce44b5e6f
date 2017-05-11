@@ -1,9 +1,0 @@
-1494452919a:1:{s:10:"footer.htm";a:6:{s:8:"fileName";s:10:"footer.htm";s:7:"content";s:218:"[viewBag]
-snippetCode = "footer"
-snippetName = "Footer"
-snippetProperties[yo][title] = "yo"
-snippetProperties[yo][type] = "checkbox"
-snippetProperties[yo][default] = 0
-snippetProperties[yo][options][] = ""
-==
-my footer";s:5:"mtime";i:1494437267;s:6:"markup";s:9:"my footer";s:4:"code";N;s:7:"viewBag";a:3:{s:11:"snippetCode";s:6:"footer";s:11:"snippetName";s:6:"Footer";s:17:"snippetProperties";a:1:{s:2:"yo";a:4:{s:5:"title";s:2:"yo";s:4:"type";s:8:"checkbox";s:7:"default";s:1:"0";s:7:"options";a:1:{i:0;s:0:"";}}}}}}

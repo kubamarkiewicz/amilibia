@@ -1,0 +1,28 @@
+fields:
+    name:
+        label: Nombre
+        span: left
+        type: text
+    icon:
+        label: Icono
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        type: fileupload
+    description:
+        label: Descripción
+        size: huge
+        span: left
+        type: richeditor
+    image:
+        label: Imagen
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        type: fileupload

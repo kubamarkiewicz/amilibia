@@ -1,0 +1,11 @@
+name: Products
+modelClass: Amilibia\Amilibia\Models\Product
+form: $/amilibia/amilibia/models/product/fields.yaml
+defaultRedirect: amilibia/amilibia/products
+create:
+    redirect: 'amilibia/amilibia/products/update/:id'
+    redirectClose: amilibia/amilibia/products
+update:
+    redirect: amilibia/amilibia/products
+    redirectClose: amilibia/amilibia/products
+preview: {  }
