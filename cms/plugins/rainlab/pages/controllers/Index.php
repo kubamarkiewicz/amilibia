@@ -392,7 +392,7 @@ class Index extends Controller
 
             if (!$this->user->isSuperUser()) {
                 // hide settings tab
-                $widget->tabs['fields']['viewBag[layout]']['hidden'] = true;
+                // $widget->tabs['fields']['viewBag[layout]']['hidden'] = true;
                 $widget->tabs['fields']['viewBag[is_hidden]']['hidden'] = true;
                 $widget->tabs['fields']['viewBag[navigation_hidden]']['hidden'] = true;
 

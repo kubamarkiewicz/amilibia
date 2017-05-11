@@ -123,12 +123,7 @@
 					</div>
 				</form>
 
-				<small>
-					<p>
-						Privacy Policy <br>
-	In accordance with what is established by the Organic Law 15/1999 on personal data protection, and Law 34/2002, of 11 July on information-society services, we inform you that all personal data you give us are confidential and will form part of The Yes Brand's files with the purpose of processing your booking or request. You can exercise your rights to access, contest, modify or delete this data, by writing to Calle Platón, 20 2º 1ª (esquina Muntaner), 08006 Barcelona, SPAIN, including a photocopy of your passport or identity card. You can withdraw your permission at any time by email at ...
-					</p>
-				</small>
+				<small ng-bind-html="trustAsHtml(pagesData.home['privacy_policy'])"></small>
 				
 			</div>
 
