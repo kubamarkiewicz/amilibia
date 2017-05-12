@@ -2,19 +2,31 @@
 
 use Illuminate\Routing\Controller;
 use Input;
+use Mail;
+use Amilibia\Amilibia\Models\Settings;
 
 class Contact extends Controller
 {
 
-/*    public function save($video_id, $audio_id)
+    public function send()
     {
-        $model = new Comment();
-        $model->video_id = $video_id;
-        $model->audio_id = $audio_id;
-        $model->comment = $_POST['comment'];
-        $model->save();
+		// send email ---------------------------------------------------------------------
 
-        return response()->json(true, 200, [], JSON_PRETTY_PRINT);
-    }*/
+        $vars = [];
+        $vars['name'] = Input::get('name');
+        $vars['company'] = Input::get('company');
+        $vars['email_'] = Input::get('email');
+        $vars['phone'] = Input::get('phone');
+        $vars['message_'] = nl2br(Input::get('message'));
+
+        $result = Mail::send('amilibia.amilibia::mail.contact', $vars, function($message) {
+
+            $to = Settings::get('contact_email');
+            $message->to($to);
+
+        });
+
+        return response()->json($result, 200, array(), JSON_PRETTY_PRINT);
+    }
 
 }

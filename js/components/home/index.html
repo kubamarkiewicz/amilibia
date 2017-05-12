@@ -96,32 +96,35 @@
 
 			<div class="container">
 				<h3>{{ pagesData.home['contact_us'] }}</h3>
-				<form id="contact-form" action="#">
+				<form id="my-form" ng-submit="submit()">
 					<div class="row">
 						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" name="name" placeholder="{{ pagesData.home['name'] }}">
+							<input class="form-control" type="text" ng-model="name" placeholder="{{ pagesData.home['name'] }}" required>
 						</div>
 						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" name="name" placeholder="{{ pagesData.home['company'] }}">
+							<input class="form-control" type="text" ng-model="company" placeholder="{{ pagesData.home['company'] }}">
 						</div>
 						<div class="form-group col-sm-6">
-							<input class="form-control" type="email" name="email" placeholder="{{ pagesData.home['email'] }}">
+							<input class="form-control" type="email" ng-model="email" placeholder="{{ pagesData.home['email'] }}" required>
 						</div>
 						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" name="tel" placeholder="{{ pagesData.home['phone'] }}">
+							<input class="form-control" type="text" ng-model="phone" placeholder="{{ pagesData.home['phone'] }}">
 						</div>
 					</div>
 					<div class="form-group">
-						<textarea name="message" class="form-control" placeholder="{{ pagesData.home['message'] }}"></textarea>
+						<textarea  ng-model="message" class="form-control" placeholder="{{ pagesData.home['message'] }}"></textarea>
 		    		</div>	
 					<div class="row">
 						<div class="col-xs-6">
 						</div>
 						<div class="col-xs-6 text-right">
-							<button type="submit" class="btn">{{ pagesData.home['send'] }}</button>
+							<button type="submit" class="btn" data-loading-text="<span class='glyphicon glyphicon-repeat gly-spin'></span> Sending ...">{{ pagesData.home['send'] }}</button>
 						</div>
 					</div>
 				</form>
+
+				<p class="alert alert-success" ng-show="contactSent"><span class="glyphicon glyphicon-ok"></span> {{ pagesData.home['contact-sent'] }}</p> 
+
 
 				<small ng-bind-html="trustAsHtml(pagesData.home['privacy_policy'])"></small>
 				

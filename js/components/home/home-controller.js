@@ -53,4 +53,32 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
         });
     }
 
+
+    // SUBMIT FORM
+    $scope.contactSent = false;
+    $scope.submit = function () 
+    {
+        var formData = new FormData($scope.data);
+
+        formData.append('name', $scope.name != undefined ? $scope.name : '');
+        formData.append('company', $scope.company != undefined ? $scope.company : '');
+        formData.append('email', $scope.email != undefined ? $scope.email : '');
+        formData.append('phone', $scope.phone != undefined ? $scope.phone : '');
+        formData.append('message', $scope.message != undefined ? $scope.message : '');
+        
+        $http({
+            method  : 'POST',
+            url     : config.api.urls.sendContact,
+            data    : formData
+        })
+        .then(function(response) {
+            $scope.contactSent = true;
+            $("#my-form button[type=submit]").button('reset').attr('disabled', false);
+        });
+         
+        // block button 
+        $("#my-form button[type=submit]").button('loading').attr('disabled', true);
+
+    }
+
 });

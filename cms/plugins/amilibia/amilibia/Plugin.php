@@ -10,5 +10,17 @@ class Plugin extends PluginBase
 
     public function registerSettings()
     {
+        return [
+            'settings' => [
+                'label'       => 'Settings',
+                'description' => 'Manage custom settings.',
+                'category'    => 'Amilibia Settings',
+                'icon'        => 'icon-cog',
+                'class'       => 'Amilibia\Amilibia\Models\Settings',
+                'order'       => 0,
+                'keywords'    => 'security location',
+                'permissions' => ['products']
+            ]
+        ];
     }
 }

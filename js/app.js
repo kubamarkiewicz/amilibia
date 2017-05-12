@@ -61,6 +61,7 @@ app.run(function($rootScope, $sce, $http, $location, $routeParams, $anchorScroll
         $rootScope.loading = true;
     });
     
+    // scroll to hash element
     $rootScope.$on('$routeChangeSuccess', function() {
         $rootScope.loading = false;
 

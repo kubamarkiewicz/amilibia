@@ -11,11 +11,11 @@ class Pages extends Controller
 
     public function index($locale)
     {
+        $slugs = ['home', 'products', 'menu', 'footer'];
+
         Translator::instance()->setLocale($locale);
 
         $router = new Router(Theme::getActiveTheme());
-
-        $slugs = ['home', 'products', 'menu', 'footer'];
 
         foreach ($slugs as $slug) {
             $page = $router->findByUrl('/'.$slug);
@@ -24,23 +24,6 @@ class Pages extends Controller
             }
         }
         
-        return response()->json($return, 200, array(), JSON_PRETTY_PRINT);
-    }
-
-
-
-    public function find($locale, $slug = "")
-    {
-        Translator::instance()->setLocale('es');
-
-        $router = new Router(Theme::getActiveTheme());
-        $page = $router->findByUrl('/'.$slug);
-        if (!$page) {
-            return response()->json(null, 404);
-        } 
-
-        $return = $page->viewBag;
-
         return response()->json($return, 200, array(), JSON_PRETTY_PRINT);
     }
 
