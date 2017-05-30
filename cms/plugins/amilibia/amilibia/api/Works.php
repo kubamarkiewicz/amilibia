@@ -20,7 +20,8 @@ class Works extends Controller
         	if ($work->images) foreach ($work->images as $image) {
         		$images[] = [
         						'title' => $work->name,
-        						'path' => $image->path
+        						'path' => $image->getThumb(1200,750),
+                                'thumb' => $image->getThumb(580,386)
         					];
         	}
         }

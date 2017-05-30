@@ -1,6 +1,6 @@
 fields:
     name:
-        label: Nombre
+        label: Nombre de producto
         span: left
         type: text
     icon:

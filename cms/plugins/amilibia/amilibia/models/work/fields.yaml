@@ -1,16 +1,15 @@
 fields:
     name:
-        label: Nombre
+        label: Nombre de obra
         oc.commentPosition: ''
         span: left
         type: text
     images:
-        label: Imágenes
+        label: Imágenes (mínimo 750px de altura)
         oc.commentPosition: ''
         mode: image
         useCaption: true
         thumbOptions:
-            mode: crop
-            extension: auto
+            mode: auto
         span: left
         type: fileupload

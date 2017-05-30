@@ -7,7 +7,7 @@
 
 				<article ng-repeat="product in productsData" id="product-{{ product.id }}" ng-init="$last && onProductsRendered()">
 					<hr>
-					<div class="row">
+					<div class="row row-flex">
 						<div class="col-md-4">
 							<div class="icon" style="background-image:url({{ product.icon.path }})"></div>
 							<h3>{{ product.name }}</h3>

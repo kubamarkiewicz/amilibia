@@ -1,8 +1,5 @@
 
-		<section id="top">
-			<div class="background"></div>
-			<div class="logo"></div>
-		</section>
+		<section id="top"></section>
 
 		<section id="intro">
 			<div class="container">
@@ -62,20 +59,48 @@
 			<h2 class="section-title">{{ pagesData.home['works'] }}</h2>
 			
 
-				<div class="works">
-					<div class="wrap">
+			<div class="works">
+				<div class="wrap">
 
-					    <div class="item" ng-repeat="image in worksData" ng-init="$last && onWorksRendered()">
-					    	<img src="{{ image.path }}" alt="">
-					    	<div class="title">{{ image.title }}</div>
-					    </div>
-
+				    <div
+				    	class="item" 
+				    	ng-repeat="image in worksData" 
+				    	ng-init="$last && onWorksRendered()">
+						    <img src="{{ image.thumb }}" 
+						    	data-toggle="modal" 
+						    	data-target="#worksModal" 
+						    	data-title="{{ image.title }}" 
+						    	data-path="{{ image.path }}" 
+						    	alt="{{ image.title }}">
+				    		<div class="title">{{ image.title }}</div>
 				    </div>
-				</div>
-				
+
+			    </div>
+			</div>
 
 
 		</section>
+
+		<!-- Modal -->
+		<div id="worksModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="btn btn-link prev">‹</button>
+						<button class="btn btn-link next">›</button>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<div class="title"></div>
+					</div>
+					<div class="modal-body">
+						<div class="image"></div>
+						<div class="gallery"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 
 
 		<section id="location">

@@ -4,7 +4,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
         // top image parallax effect
         $(window).scroll(function() {
-            $('section#top .background').css('transform', 'translateY('+ ($(window).scrollTop() / 2) + 'px)');
+            $('section#top').css('transform', 'translateY('+ ($(window).scrollTop() / 2) + 'px)');
         }); 
 
 	});
@@ -39,19 +39,57 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     }
     $scope.loadWorksData();
 
+    var myFlipster;
+
     $scope.onWorksRendered = function() 
     {
         $timeout(function(){
+
             // works cover flow slider
-            $('section#works .works').flipster({
+            myFlipster = $('section#works .works').flipster({
                 itemContainer: '.wrap',
                 itemSelector: '.item',
                 buttons: true,
-                start: 0,
-                scrollwheel: false
+                start: 3,
+                scrollwheel: false,
+                loop: true,
+                onItemSwitch: $scope.onFlipsterItemSwitch
             });
+
+            $("section#works .works .item img").click(function(){
+                $scope.updateModalImage($(this));
+            });
+
+            $('#worksModal .prev').click(function(){
+                myFlipster.flipster('prev');
+            });
+
+            $('#worksModal .next').click(function(){
+                myFlipster.flipster('next');
+            });
+
+            $('#worksModal .modal-body .gallery img').click(function(){
+            });
+
         });
     }
+
+    $scope.updateModalImage = function(image) {
+        $('#worksModal .modal-header .title').html(image.data('title'));
+        $('#worksModal .modal-body .image').html('<img src="' + image.data('path') + '">');
+        $('#worksModal .modal-body .gallery').html($('.works img[data-title="' + image.data('title') + '"]').clone().removeAttr('data-toggle').click($scope.onGalleryImageClick));
+    }
+
+    $scope.onFlipsterItemSwitch = function(currentItem, previousItem) {
+        $scope.updateModalImage($(currentItem).find('img'));
+    }
+
+    $scope.onGalleryImageClick = function(){
+        var path = $(this).data('path');
+        var target = $('section#works .works .item img[data-path="' + path + '"').parent().parent();
+        myFlipster.flipster('jump', target);
+    }
+
 
 
     // SUBMIT FORM

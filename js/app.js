@@ -14,11 +14,11 @@ app.config(function ($routeProvider, $locationProvider) {
 
         .when('/', { 
             controller: 'HomeController', 
-            templateUrl: 'js/components/home/index.html' 
+            templateUrl: 'js/pages/home/index.html' 
         })     
         .when('/products', { 
             controller: 'ProductsController', 
-            templateUrl: 'js/components/products/index.html' 
+            templateUrl: 'js/pages/products/index.html' 
         })   
         .otherwise({ 
             redirectTo: '/' 

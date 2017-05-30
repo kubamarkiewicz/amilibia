@@ -19,7 +19,6 @@
 
     <header>
         <a href="index.html#top" class="logo" title="amilibia marinas">amilibia marinas</a>
-        <h1>Home</h1>
         <div class="burger-menu">
             <div class="slice"></div>
             <div class="slice"></div>
@@ -36,6 +35,7 @@
         <span class="languages">
             <a ng-click="setLocale('es')" ng-class="locale == 'es' ? 'selected' : ''">ES</a>
             <a ng-click="setLocale('en')" ng-class="locale == 'en' ? 'selected' : ''">EN</a>
+            <a ng-click="setLocale('fr')" ng-class="locale == 'fr' ? 'selected' : ''">FR</a>
         </span>
     </nav>
 
@@ -73,8 +73,8 @@
     <script src="js/libraries/angular-sanitize/angular-sanitize.min.js"></script>
 
     <!-- Components -->
-    <script src="js/components/home/home-controller.js"></script>
-    <script src="js/components/products/products-controller.js"></script>
+    <script src="js/pages/home/home-controller.js"></script>
+    <script src="js/pages/products/products-controller.js"></script>
 
     <!-- more Libraries -->
     <script src="js/libraries/jquery-flipster/dist/jquery.flipster.min.js"></script>

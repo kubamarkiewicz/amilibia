@@ -73,6 +73,33 @@ small, .small {
 	border-radius: 0;
 }
 
+.modal-backdrop {
+	display: none;
+}
+.modal-header { 
+	border: none; 
+	padding-bottom: 0;
+}
+.modal-content { 
+	border-radius: 0; 
+	border: none;
+}
+.modal.fade:not(.in) .modal-dialog {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+
+	.modal-content {
+		box-shadow: 0 5px 55px rgba(0, 0, 0, .2)
+	}
+}
+
+.row-flex {  
+    display: flex;
+}
+
 /***********************************************/
 /* Forms                                       */
 /***********************************************/
@@ -94,12 +121,13 @@ small, .small {
 
 body > header {
 	position: relative;
-	padding: 20px;
+	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #ffffff;
-	z-index: 2;
+	background-color: #f6f6f8;
+	z-index: 3;
+	height: 62px;
 }
 
 body > main {
@@ -132,21 +160,14 @@ body.loaded > footer {
 @media screen and (min-width: 992px) {
 
 	body > header { 
-		position: fixed;
-		top: 0; 
-		width: 122px; 
-		height: 100%; 
-		flex-direction: column; 
-		padding: 60px 0 0 0;
+		height: 111px; 
+		padding: 0 100px; 
 	}
 
-
 	body > main {
-		margin-left: 122px;
 	}
 
 	body > footer {
-		margin-left: 122px;
 	}
 
 }
@@ -205,12 +226,12 @@ body.loaded > footer {
 body > header .logo { 
 	text-indent: -200%; 
 	display: block; 
-	background-image: url(../images/logo-small.gif); 
+	background-image: url(../images/logo.gif); 
 	background-size: contain; 
 	background-repeat: no-repeat; 
 	background-position: center center; 
-	height: 25px; 
-	width: 52px;
+	height: 42px; 
+	width: 85px;
 }
 body > header h1 { 
 	display: inline;
@@ -228,7 +249,7 @@ body > header h1 {
 }
 .burger-menu .slice { 
 	display: block; 
-	border-bottom: 1px solid #090707; 
+	border-bottom: 2px solid #090707; 
 	margin: 5px auto; 
 	width: 27px;	
 }
@@ -239,14 +260,15 @@ body > nav {
     opacity: 0;
     transition: visibility 0s linear 0.35s, opacity 0.35s ease-out;	
     width: 100%;	
-    height: calc(100% - 65px);	
+    height: calc(100% - 76px);	
     background-color: rgba(255,255,255,0.9);	
     z-index: 100;	
     text-align: center;	
     display: flex;	
     flex-direction: column;	
     border-top: 1px solid #e2e2e2;	
-    justify-content: center;
+    justify-content: center;	
+    padding-bottom: 62px;
 }
 body > nav.open {
     visibility: visible;
@@ -264,47 +286,30 @@ body > nav .languages a.selected {
 	text-decoration: underline;
 } 
 
-
 h2.section-title {
 	text-align: center;
 	margin-top: 49px;
-	font-size: 38px;
+	font-size: 34px;
 	margin-bottom: 50px;
 	text-transform: uppercase; 
 }
 
 
-
 /* desktop */
 @media screen and (min-width: 992px) {
 
-	body > header .logo {
-		width: 103px;
-		height: 50px;
-	}
-
-	body > header h1 {
-		transform: rotateZ(-90deg);
+	body > header .logo { 
+	width: 170px; 
+	height: 83px;
 	}
 
 	.burger-menu {
-		margin-left: 0;
-		width: 100%;
-		text-align: center;
-		padding-top: 35px;
-		border-top: 1px solid #b4b3b3;
-		padding-bottom: 35px;
 	}
 
 	body > nav { 
-		border-top: none; 
-		border-left: 1px solid #e2e2e2; 
-		left: 122px; 
-		width: calc(100% - 122px); 
-		height: 100%; 
-		position: fixed;
+		padding-bottom: 111px; 
+		height: calc(100% - 111px); 
 	}
-
 
 	h2.section-title {
 		font-size: 62px;
@@ -322,34 +327,24 @@ h2.section-title {
 /* Section top *********************************** */
 
 section#top {
-	height: calc(100vh - 65px);
-	overflow: hidden;
+	height: calc(100vh - 31px);;
 	position: relative;
-}
-section#top .background {
-	position: absolute;
-	background-image: url(../images/home/llanes.jpg);
+	background-image: url(../images/home/blanes.jpg);
 	background-size: cover;
-	background-position: center center;
-	height: 100%;
-	width: 100%;
-	z-index: 1;
-}
-section#top .logo {
-	height: 20vh;
-	background-image: url(../images/logo-big.png);
-	background-repeat: no-repeat;
-	background-position: 85% center;
-	background-size: auto 70%;
-	background-color: rgba(187,187,187,0.76);
-	z-index: 2;
+	background-position: center top;
 	position: relative;
+	z-index: 1;
+	margin-top: -31px;
 }
+
 /* desktop */
 @media screen and (min-width: 992px) {
+	
 	section#top {
-		height: calc(100vh - 120px);
+		margin-top: -55px;
+		height: calc(100vh - 55px);
 	}
+
 }
 
 
@@ -361,14 +356,17 @@ section#intro {
 	background-size: contain; 
 	background-position: center bottom;
 	padding-bottom: 32%; 
-	background-repeat: no-repeat;
+	background-repeat: no-repeat; 
+	position: relative; 
+	z-index: 3; 
+	background-color: #ffffff;
 }
 section#intro .icon {
 	text-align: center;
 	margin: 55px 0;
 }
-section#intro .icon img {
-	height: 56px;
+section#intro .icon img { 
+	height: 42px;
 }
 
 
@@ -379,14 +377,18 @@ section#products {
 	background-size: contain; 
 	background-position: center bottom;
 	padding-bottom: 43%; 
-	background-repeat: no-repeat;
+	background-repeat: no-repeat; 
+	position: relative; 
+	z-index: 3; 
+	background-color: #f6f6f8;
 }
 section#products .products {
 }
 section#products .products article { 
 	text-align: center; 
 	margin-top: 25px; 
-	margin-bottom: 25px;
+	margin-bottom: 25px; 
+	height: 120px;
 }
 section#products .products article a { 
 	color: inherit;
@@ -401,12 +403,7 @@ section#products .products article .icon {
 }
 section#products .products article h4 { 
 	text-transform: uppercase; 
-	background-image: url(../images/icon-plus.png); 
-	background-repeat: no-repeat; 
-	background-position: right center; 
-	background-size: 18px; 
-	padding-right: 28px; 
-	margin-top: 24px; 
+	margin-top: 0px; 
 	font-size: 16px; 
 	display: inline-block;
 }
@@ -415,14 +412,12 @@ section#products .products article h4 {
 @media screen and (min-width: 992px) {
 
 	section#products .products article .icon { 
-		height: 60px; 
-		width: 100px;
+		height: 40px; 
+		width: 70px;
 	}
 
 	section#products .products article h4 { 
-		font-size: 20px;
-		background-size: 22px; 
-		padding-right: 32px; 
+		font-size: 20px; 
 	}
 }
 
@@ -443,31 +438,29 @@ section#works .works {
 }
 section#works .works .item { 
 	position: relative;
-	width: 580px;
-	max-width: 80vw; 
-	max-height: 385px; 
+	width: 580px; 
+	height: 385px; 
 }
 section#works .works .item img { 
 	width: auto; 
-	height: 100%;
+	height: 386px; 
+	box-shadow: 0px 4px 27px rgba(0,0,0,0.5); 
+	cursor: pointer;
 }
 section#works .works .item .title { 
-	position: absolute;
-	bottom: 6px; 
+	position: absolute; 
 	left: 50%; 
 	transform: translateX(-50%); 
-	color: #ffffff; 
 	text-transform: uppercase; 
-	background-color: rgba(0,81,126,0.5); 
 	padding: 6px 20px; 
 	border-radius: 6px; 
-	min-width: 150px;
+	min-width: 150px; 
+	border: 6px; 
+	bottom: -38px;
 }
 
 .flipster--coverflow .flipster__item__content {
 	-webkit-box-reflect: unset;
-	box-shadow: 0px 4px 27px rgba(0,0,0,0.5);
-	background-color: #ffffff;
 }
 .flipster__button { 
 	top: auto; 
@@ -498,6 +491,65 @@ section#works .works .item .title {
 	stroke-width: 4px;
 }
 
+#worksModal .modal-body .image { 
+	min-height: calc(100vh - 330px); 
+	min-width: 80vw;
+}
+
+#worksModal .modal-body .image img { 
+	max-height: calc(100vh - 230px);
+}
+
+
+#worksModal .prev, 
+#worksModal .next {
+	position: absolute;
+	top: calc(50% - 45px);
+	z-index: 10;
+	transform: translateY(-50%);
+	border: none;
+	background: transparent;
+	color: #ffffff;
+	font-size: 60px;
+	font-weight: bold;
+	text-decoration: none !important;
+	outline: none;
+	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+} 
+#worksModal .prev { 
+	left: 20px;
+} 
+#worksModal .next { 
+	right: 20px;
+} 
+#worksModal .modal-header .title { 
+	text-align: center; 
+	text-transform: uppercase; 
+} 
+#worksModal .gallery { 
+	text-align: center; 
+	padding-top: 15px; 
+	padding-bottom: 5px; 
+} 
+#worksModal .gallery img { 
+	height: 80px; 
+	padding: 0 10px; 
+	cursor: pointer;
+} 
+
+
+
+@media (min-width: 768px) {
+
+	#worksModal { 
+		text-align: center;
+	}
+	#worksModal .modal-dialog { 
+		width: auto; 
+		display: inline-block;
+	}
+
+}
 
 /* Section location *********************************** */
 
@@ -594,6 +646,16 @@ hr {
 /* Pages styles    		                      */
 /***********************************************/
 
+
+/* home page *********************************/
+
+body.page-home main { 
+}
+
+
+
+/* products page *********************************/
+
 body.page-products .container { 
 	max-width: 1300px;
 }
@@ -647,8 +709,8 @@ body.page-products .products article .image {
 		padding-bottom: 15px; 
 	}
 	body.page-products .products article .icon { 
-		height: 75px; 
-		width: 125px; 
+		height: 40px; 
+		width: 70px; 
 		margin-top: 55px; 
 		margin-bottom: 35px;
 	}
