@@ -491,13 +491,16 @@ section#works .works .item .title {
 	stroke-width: 4px;
 }
 
+#worksModal .modal-body { 
+	padding-top: 0;
+}
+
 #worksModal .modal-body .image { 
-	min-width: 80vw; 
-	min-height: calc(100vh - 230px);
+	height: calc(100vh - 145px);
 }
 
 #worksModal .modal-body .image img { 
-	max-height: calc(100vh - 230px);
+	max-height: calc(100vh - 145px);
 }
 
 
@@ -545,8 +548,9 @@ section#works .works .item .title {
 		text-align: center;
 	}
 	#worksModal .modal-dialog { 
-		width: auto; 
-		display: inline-block;
+		width: 100%; 
+		display: inline-block; 
+		margin-bottom: 0;
 	}
 
 }
