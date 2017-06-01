@@ -5,10 +5,10 @@ fields:
         span: left
         type: text
     images:
-        label: Imágenes (mínimo 750px de altura)
+        label: Imágenes (mínimo 900px de altura)
         oc.commentPosition: ''
         mode: image
-        useCaption: true
+        useCaption: false
         thumbOptions:
             mode: auto
         span: left

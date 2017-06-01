@@ -139,7 +139,6 @@ body > main {
 body > footer {
 	background-color: #272842;
 	color: #cfcfd3;
-	position: sticky;
 	bottom: 0;
 	overflow: hidden;
 	z-index: 1;
@@ -168,6 +167,7 @@ body.loaded > footer {
 	}
 
 	body > footer {
+		position: sticky;
 	}
 
 }
@@ -312,7 +312,7 @@ h2.section-title {
 	}
 
 	h2.section-title {
-		font-size: 62px;
+		font-size: 48px;
 		margin-bottom: 100px;
 		font-weight: normal; 
 	}
@@ -492,8 +492,8 @@ section#works .works .item .title {
 }
 
 #worksModal .modal-body .image { 
-	min-height: calc(100vh - 330px); 
-	min-width: 80vw;
+	min-width: 80vw; 
+	min-height: calc(100vh - 230px);
 }
 
 #worksModal .modal-body .image img { 
@@ -606,12 +606,18 @@ section#contact form {
 /* footer *********************************** */
 
 body > footer .container {
-	background-image: url(../images/logo-footer.png); 
-	background-size: 76px; 
+	background-image: url(../images/logo-footer.gif); 
+	background-size: 96px; 
 	background-repeat: no-repeat; 
 	background-position: center 50px;;
-	padding-top: 125px;
+	padding-top: 150px;
 	padding-bottom: 40px; 
+}
+body > footer .container .header {
+	margin-bottom: 20px;
+}
+body > footer .container .row {
+	margin-bottom: 20px;
 }
 body > footer a,
 body > footer a:hover, 
@@ -632,11 +638,11 @@ hr {
 @media screen and (min-width: 992px) {
 	
 	body > footer .container {
-		background-position: 15px center;
+		background-position: 10px 70px;
 		padding-left: 250px;
 		padding-top: 70px;
-		padding-bottom: 70px; 
-		background-size: 152px; 
+		padding-bottom: 50px;
+		background-size: initial; 
 	}
 }
 

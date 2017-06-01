@@ -1,5 +1,5 @@
 columns:
     name:
-        label: Obras
+        label: Nombre de obra
         type: text
         sortable: false

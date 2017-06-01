@@ -1,5 +1,5 @@
 columns:
     name:
-        label: Productos
+        label: Nombre de producto
         type: text
         sortable: false
