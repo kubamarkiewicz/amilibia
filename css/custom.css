@@ -14,7 +14,7 @@
 /* Fonts                                       */
 /***********************************************/
 
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700&subset=latin-ext');
 
 
 /***********************************************/
@@ -26,7 +26,8 @@ body {
 	-webkit-font-smoothing: antialiased; 
 	line-height: 145%; 
 	font-size: 14px; 
-	color: #7e7e7f;
+	color: #7e7e7f; 
+	overflow-x: hidden;
 }
 a { 
 	color: #143356;
@@ -44,6 +45,7 @@ a:active {
 	text-decoration: none; 
 }
 h1, h2, h3, h4, h5, h6 {
+	font-family: 'Raleway', sans-serif;
 	color: #939393;
 	letter-spacing: 0.02em;
 }
@@ -96,8 +98,12 @@ small, .small {
 	}
 }
 
-.row-flex {  
-    display: flex;
+
+@media (min-width: 996px) {
+
+	.row-flex {  
+	    display: flex;
+	}
 }
 
 /***********************************************/
@@ -119,15 +125,20 @@ small, .small {
 /* Layout Divs                                 */
 /***********************************************/
 
-body > header {
-	position: relative;
-	padding: 10px 20px;
+body > header { 
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-color: #f6f6f8;
-	z-index: 3;
-	height: 62px;
+	z-index: 50;
+	height: 44px;
+	padding: 10px 20px; 
+	top: 0; 
+	position: fixed;
+}
+body.loading > header { 
+	display: none;
 }
 
 body > main {
@@ -142,10 +153,9 @@ body > footer {
 	bottom: 0;
 	overflow: hidden;
 	z-index: 1;
-	visibility: hidden;
 }
-body.loaded > footer {
-	visibility: visible;
+body.loading > footer {
+	visibility: hidden;
 }
 
 .container {
@@ -159,8 +169,12 @@ body.loaded > footer {
 @media screen and (min-width: 992px) {
 
 	body > header { 
-		height: 111px; 
-		padding: 0 100px; 
+		padding-left: 90px; 
+		padding-right: 60px; 	
+	}
+	body.page-home > header.home { 
+		height: 70px; 
+		align-items: flex-start;
 	}
 
 	body > main {
@@ -230,22 +244,18 @@ body > header .logo {
 	background-size: contain; 
 	background-repeat: no-repeat; 
 	background-position: center center; 
-	height: 42px; 
-	width: 85px;
-}
-body > header h1 { 
-	display: inline;
-	font-family: 'Playfair Display', serif; 
-	font-weight: normal; 
-	font-size: 20px; 
-	color: #424141; 
-	margin: 0;
+	height: 44px; 
+	width: 68px; 
+	position: relative; 
+	z-index: 2;
 }
 .burger-menu { 
 	display: inline-block; 
 	width: 27px; 
 	cursor: pointer; 
-	margin-left: 25px;	
+	margin-left: 25px; 
+	position: relative; 
+	z-index: 2;	
 }
 .burger-menu .slice { 
 	display: block; 
@@ -254,37 +264,49 @@ body > header h1 {
 	width: 27px;	
 }
 
-body > nav {	
+body > header nav {	
     position: absolute;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s linear 0.35s, opacity 0.35s ease-out;	
     width: 100%;	
-    height: calc(100% - 76px);	
+    height: calc(100vh);	
     background-color: rgba(255,255,255,0.9);	
-    z-index: 100;	
+    z-index: 3;	
     text-align: center;	
     display: flex;	
     flex-direction: column;	
     border-top: 1px solid #e2e2e2;	
     justify-content: center;	
-    padding-bottom: 62px;
+    padding-bottom: 62px;	
+    left: 0;	
+    top: 0;
 }
-body > nav.open {
+body > header nav.open {
     visibility: visible;
 	opacity: 1;
     transition-delay:0s;
 }
-body > nav * { 
-	font-family: 'Playfair Display', serif; 
+body > header nav * { 
 	font-weight: normal; 
-	font-size: 24px; 
+	font-size: 20px; 
 	padding: 15px 0; 
 	color: #424141; 
+	text-transform: uppercase; 
 }
-body > nav .languages a.selected {
+body > header nav .languages a.selected {
 	text-decoration: underline;
 } 
+
+body.page-home > header.home {
+	background: transparent;
+}	
+body.page-home > header.home .logo { 
+	background-image: url(../images/logo-white.png); 
+}
+body.page-home > header.home .burger-menu .slice { 
+	border-color: #ffffff;
+}
 
 h2.section-title {
 	text-align: center;
@@ -298,17 +320,47 @@ h2.section-title {
 /* desktop */
 @media screen and (min-width: 992px) {
 
-	body > header .logo { 
-	width: 170px; 
-	height: 83px;
+	body > header .logo {
 	}
 
-	.burger-menu {
+	.burger-menu { 
+		display: none;
 	}
 
-	body > nav { 
-		padding-bottom: 111px; 
-		height: calc(100% - 111px); 
+	body > header > nav { 
+		opacity: 1; 
+		visibility: visible; 
+		width: initial; 
+		height: auto; 
+		display: inline; 
+		background: transparent; 
+		border: none; 
+		padding: 0; 
+		top: initial; 
+		left: initial; 
+		position: relative; 
+	}
+
+	body > header nav * {
+		font-size: 12px;
+	}
+
+	body > header nav > * { 
+		margin-left: 30px;
+	}
+
+	body.page-home > header.home .logo { 
+		width: 99px; 
+		height: 55px; 
+	}
+	body.page-home > header.home > nav { 
+		padding-top: 4px;
+	}
+	body.page-home > header.home nav * { 
+		color: #ffffff; 
+	}
+	body.page-home > header.home nav a:hover { 
+		color: #ffffff; 
 	}
 
 	h2.section-title {
@@ -327,22 +379,20 @@ h2.section-title {
 /* Section top *********************************** */
 
 section#top {
-	height: calc(100vh - 31px);;
+	height: calc(100vh);;
 	position: relative;
 	background-image: url(../images/home/blanes.jpg);
 	background-size: cover;
-	background-position: center top;
+	background-position: center center;
 	position: relative;
 	z-index: 1;
-	margin-top: -31px;
 }
 
 /* desktop */
 @media screen and (min-width: 992px) {
 	
 	section#top {
-		margin-top: -55px;
-		height: calc(100vh - 55px);
+		height: calc(100vh);
 	}
 
 }
@@ -437,9 +487,9 @@ section#works .works {
 	padding-bottom: 30px; 
 }
 section#works .works .item { 
-	position: relative;
-	width: 580px; 
+	position: relative; 
 	height: 385px; 
+	width: 580px; 
 }
 section#works .works .item img { 
 	width: auto; 
@@ -492,11 +542,13 @@ section#works .works .item .title {
 }
 
 #worksModal .modal-body { 
-	padding-top: 0;
+	padding: 0 0 15px 0;
 }
 
 #worksModal .modal-body .image { 
-	height: calc(100vh - 145px);
+	height: calc(100vh - 145px); 
+	background-size: cover; 
+	background-position: center center;
 }
 
 #worksModal .modal-body .image img { 
@@ -524,6 +576,18 @@ section#works .works .item .title {
 } 
 #worksModal .next { 
 	right: 20px;
+} 
+#worksModal button.close { 
+	z-index: 55; 
+	position: absolute; 
+	top: 30px; 
+	right: 15px; 
+	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	color: #ffffff;
+	font-size: 35px;
+	font-weight: bold; 
+	opacity: 1; 
+	outline: none;
 } 
 #worksModal .modal-header .title { 
 	text-align: center; 

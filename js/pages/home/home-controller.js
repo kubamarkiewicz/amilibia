@@ -1,5 +1,7 @@
 app.controller('HomeController', function($scope, $rootScope, $http, $routeParams, config, $timeout) {  
 
+    $('body > header').addClass('home');
+
 	$(function(){
 
         // top image parallax effect
@@ -76,7 +78,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
     $scope.updateModalImage = function(image) {
         $('#worksModal .modal-header .title').html(image.data('title'));
-        $('#worksModal .modal-body .image').html('<img src="' + image.data('path') + '">');
+        $('#worksModal .modal-body .image').css('background-image', 'url('+image.data('path')+')');
         $('#worksModal .modal-body .gallery').html($('.works img[data-title="' + image.data('title') + '"]').clone().removeAttr('data-toggle').click($scope.onGalleryImageClick));
     }
 
@@ -118,5 +120,13 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
         $("#my-form button[type=submit]").button('loading').attr('disabled', true);
 
     }
+
+
+    // switch menu class
+    var windowHeight = $(window).height() - 50;
+    $(window).scroll(function (event) {
+        $('body.page-home > header').toggleClass('home', $(window).scrollTop() < windowHeight);
+    });
+
 
 });

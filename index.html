@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <base href="/test/amilibia/">
+    <base href="/2017/amilibia/www/">
     <title>amilibia</title>
 
     <!-- Le styles -->
@@ -15,7 +15,7 @@
 
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body ng-app="myApp" class="page-home" ng-class="loading ? 'loading' : 'loaded'">
+<body ng-app="myApp" class="page-home loading" ng-class="loading ? 'loading' : ''">
 
     <header>
         <a href="index.html#top" class="logo" title="amilibia marinas">amilibia marinas</a>
@@ -24,23 +24,23 @@
             <div class="slice"></div>
             <div class="slice"></div>
         </div>
+        <nav>
+            <a href="index.html#top">{{ pagesData.menu['link-1-title'] }}</a>
+            <a href="products">{{ pagesData.menu['link-2-title'] }}</a>
+            <a href="index.html#works">{{ pagesData.menu['link-3-title'] }}</a>
+            <a href="index.html#location">{{ pagesData.menu['link-4-title'] }}</a>
+            <a href="index.html#contact">{{ pagesData.menu['link-5-title'] }}</a>
+            <span class="languages">
+                <a href="javascript:" ng-click="setLocale('es')" ng-class="locale == 'es' ? 'selected' : ''">ES</a>
+                <a href="javascript:" ng-click="setLocale('en')" ng-class="locale == 'en' ? 'selected' : ''">EN</a>
+                <a href="javascript:" ng-click="setLocale('fr')" ng-class="locale == 'fr' ? 'selected' : ''">FR</a>
+            </span>
+        </nav>
     </header>
 
-    <nav>
-        <a href="index.html#top">{{ pagesData.menu['link-1-title'] }}</a>
-        <a href="products">{{ pagesData.menu['link-2-title'] }}</a>
-        <a href="index.html#works">{{ pagesData.menu['link-3-title'] }}</a>
-        <a href="index.html#location">{{ pagesData.menu['link-4-title'] }}</a>
-        <a href="index.html#contact">{{ pagesData.menu['link-5-title'] }}</a>
-        <span class="languages">
-            <a ng-click="setLocale('es')" ng-class="locale == 'es' ? 'selected' : ''">ES</a>
-            <a ng-click="setLocale('en')" ng-class="locale == 'en' ? 'selected' : ''">EN</a>
-            <a ng-click="setLocale('fr')" ng-class="locale == 'fr' ? 'selected' : ''">FR</a>
-        </span>
-    </nav>
 
 
-    <main ng-view></main>
+    <main ng-view autoscroll="true"></main>
 
 
     <footer ng-class="loading ? 'loading' : ''">

@@ -14,7 +14,7 @@
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
     RewriteEngine On
-    RewriteBase /test/amilibia/
+    RewriteBase /2017/amilibia/www/
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

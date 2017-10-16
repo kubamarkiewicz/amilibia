@@ -74,9 +74,9 @@ app.run(function($rootScope, $sce, $http, $location, $routeParams, $anchorScroll
 
         // open menu
         $('.burger-menu').click(function(){
-            $('body > nav').toggleClass('open');
+            $('body > header nav').toggleClass('open');
         });
-        $('body > nav').click(function(){
+        $('body > header nav').click(function(){
             $(this).removeClass('open');
         });
 
