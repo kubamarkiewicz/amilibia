@@ -1,5 +1,5 @@
 static-pages:
     index: {  }
+    footer: {  }
     products: {  }
     menu: {  }
-    footer: {  }
