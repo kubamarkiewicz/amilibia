@@ -29,8 +29,8 @@ class Plugin extends PluginBase
     {
         Event::listen('backend.menu.extendItems', function($manager) {
             $manager->removeMainMenuItem('October.Cms', 'cms');
-                //$manager->removeMainMenuItem('October.Cms', 'media');
-            $manager->removeMainMenuItem('October.Backend', 'media');
+            $manager->removeMainMenuItem('October.Cms', 'media');
+            // $manager->removeMainMenuItem('October.Backend', 'media');
             $manager->removeMainMenuItem('October.Backend', 'dashboard');
         });
     }
