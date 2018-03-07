@@ -66,7 +66,7 @@
 				    	class="item" 
 				    	ng-repeat="image in worksData" 
 				    	ng-init="$last && onWorksRendered()">
-						    <img src="{{ image.thumb }}" 
+						    <img ng-src="{{ image.thumb }}" 
 						    	data-toggle="modal" 
 						    	data-target="#worksModal" 
 						    	data-title="{{ image.title }}" 
