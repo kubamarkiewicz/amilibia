@@ -488,6 +488,7 @@ section#works h2.section-title {
 section#works .works { 
 	padding-top: 30px; 
 	padding-bottom: 30px; 
+	min-height: 439px;
 }
 section#works .works .item { 
 	position: relative; 
