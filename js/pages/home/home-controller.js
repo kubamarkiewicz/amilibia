@@ -98,21 +98,23 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     $scope.contactSent = false;
     $scope.submit = function () 
     {
-        var formData = new FormData($scope.data);
-
-        formData.append('name', $scope.name != undefined ? $scope.name : '');
-        formData.append('company', $scope.company != undefined ? $scope.company : '');
-        formData.append('email', $scope.email != undefined ? $scope.email : '');
-        formData.append('phone', $scope.phone != undefined ? $scope.phone : '');
-        formData.append('message', $scope.message != undefined ? $scope.message : '');
+        var data = {};
+        data.name        = $scope.name != undefined ? $scope.name : '';
+        data.company     = $scope.company != undefined ? $scope.company : '';
+        data.email       = $scope.email != undefined ? $scope.email : '';
+        data.phone       = $scope.phone != undefined ? $scope.phone : '';
+        data.message     = $scope.message != undefined ? $scope.message : '';
         
         $http({
             method  : 'POST',
             url     : config.api.urls.sendContact,
-            data    : formData
+            data    : $.param(data),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
         .then(function(response) {
             $scope.contactSent = true;
+            // reset form
+            $("#my-form .form-control").val("");
             $("#my-form button[type=submit]").button('reset').attr('disabled', false);
         });
          
