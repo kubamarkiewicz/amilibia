@@ -202,7 +202,12 @@ See room for improvement? Don't be shy! Fork this repo and I'll be happy to merg
 Version History
 ---------------
 
+- 1.1.3 - Nov 10 2017
+    - Improvements to touch swiping on mobile devices, thanks to @fjmusick
 
+- 1.1.2 - Mar 3 2016
+    - Bower & package.json fixes
+    
 - 1.1.1 - Mar 3 2016
     - Fix for maximum callstack errors when not visible. #74 #79
 
@@ -264,7 +269,7 @@ License
 
 The MIT License (MIT)
 
-Copyright (c) 2013-2015 Adrien Delessert
+Copyright (c) 2013-2017 Adrien Delessert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
