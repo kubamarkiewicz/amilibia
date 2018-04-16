@@ -46,7 +46,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     $scope.onWorksRendered = function() 
     {
         $timeout(function(){
-
+/*
             // works cover flow slider
             myFlipster = $('section#works .works').flipster({
                 itemContainer: '.wrap',
@@ -72,7 +72,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
             $('#worksModal .modal-body .gallery img').click(function(){
             });
-
+*/
         });
     }
 
