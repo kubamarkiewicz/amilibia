@@ -5,6 +5,7 @@ recordUrl: 'amilibia/amilibia/products/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
 showSorting: false
+showCheckboxes: true
 defaultSort:
     column: sort_order
     direction: asc

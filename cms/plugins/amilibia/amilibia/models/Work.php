@@ -34,4 +34,10 @@ class Work extends Model
     public $attachMany = [
         'images' => 'System\Models\File'
     ];
+
+
+    public function getCountAttribute()
+    {
+        return count($this->images);
+    }
 }

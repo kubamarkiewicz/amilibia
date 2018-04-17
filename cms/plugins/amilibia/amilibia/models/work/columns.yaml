@@ -3,3 +3,7 @@ columns:
         label: Nombre de obra
         type: text
         sortable: false
+    count:
+        label: Número de imágenes
+        type: text
+        sortable: false

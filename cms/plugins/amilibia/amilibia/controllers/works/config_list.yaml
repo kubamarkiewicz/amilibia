@@ -4,6 +4,7 @@ list: $/amilibia/amilibia/models/work/columns.yaml
 recordUrl: 'amilibia/amilibia/works/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
+showCheckboxes: true
 showSorting: false
 defaultSort:
     column: sort_order
