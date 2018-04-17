@@ -52,7 +52,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
                 itemContainer: '.wrap',
                 itemSelector: '.item',
                 buttons: true,
-                start: 3,
+                start: Math.ceil($scope.worksData.length / 2) - 1,
                 scrollwheel: false,
                 loop: true,
                 onItemSwitch: $scope.onFlipsterItemSwitch
