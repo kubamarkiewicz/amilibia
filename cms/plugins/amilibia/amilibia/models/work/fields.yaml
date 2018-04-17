@@ -5,7 +5,7 @@ fields:
         span: left
         type: text
     images:
-        label: Imágenes (mínimo 900px de altura)
+        label: Imágenes (mínimo 2000px de ancho)
         oc.commentPosition: ''
         mode: image
         useCaption: false
