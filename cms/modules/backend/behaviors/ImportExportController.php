@@ -210,6 +210,8 @@ class ImportExportController extends ControllerBehavior
         catch (Exception $ex) {
             $this->controller->handleError($ex);
         }
+        
+        $this->vars['sourceIndexOffset'] = $this->getImportSourceIndexOffset($importOptions['firstRowTitles']);
 
         return $this->importExportMakePartial('import_result_form');
     }
@@ -318,7 +320,7 @@ class ImportExportController extends ControllerBehavior
         $firstRow = $reader->fetchOne(0);
 
         if (!post('first_row_titles')) {
-            array_walk($firstRow, function(&$value, $key) {
+            array_walk($firstRow, function (&$value, $key) {
                 $value = 'Column #'.($key + 1);
             });
         }
@@ -331,6 +333,17 @@ class ImportExportController extends ControllerBehavior
         }
 
         return $firstRow;
+    }
+    
+    /**
+     * Get the index offset to add to the reported row number in status messages
+     *
+     * @param bool $firstRowTitles Whether or not the first row contains column titles
+     * @return int $offset
+     */
+    protected function getImportSourceIndexOffset($firstRowTitles)
+    {
+        return $firstRowTitles ? 2 : 1;
     }
 
     protected function makeImportUploadFormWidget()
@@ -345,7 +358,7 @@ class ImportExportController extends ControllerBehavior
 
         $widget = $this->makeWidget('Backend\Widgets\Form', $widgetConfig);
 
-        $widget->bindEvent('form.beforeRefresh', function($holder) {
+        $widget->bindEvent('form.beforeRefresh', function ($holder) {
             $holder->data = [];
         });
 
@@ -503,7 +516,7 @@ class ImportExportController extends ControllerBehavior
 
         $widget = $this->makeWidget('Backend\Widgets\Form', $widgetConfig);
 
-        $widget->bindEvent('form.beforeRefresh', function($holder) {
+        $widget->bindEvent('form.beforeRefresh', function ($holder) {
             $holder->data = [];
         });
 

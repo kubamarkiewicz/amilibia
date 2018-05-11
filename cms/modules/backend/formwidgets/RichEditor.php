@@ -85,6 +85,7 @@ class RichEditor extends FormWidgetBase
         $this->vars['value'] = $this->getLoadValue();
         $this->vars['toolbarButtons'] = $this->evalToolbarButtons();
 
+        $this->vars['globalToolbarButtons'] = EditorSetting::getConfigured('html_toolbar_buttons');
         $this->vars['allowEmptyTags'] = EditorSetting::getConfigured('html_allow_empty_tags');
         $this->vars['allowTags'] = EditorSetting::getConfigured('html_allow_tags');
         $this->vars['noWrapTags'] = EditorSetting::getConfigured('html_no_wrap_tags');
@@ -106,7 +107,7 @@ class RichEditor extends FormWidgetBase
         $buttons = $this->toolbarButtons;
 
         if (is_string($buttons)) {
-            $buttons = array_map(function($button) {
+            $buttons = array_map(function ($button) {
                 return strlen($button) ? $button : '|';
             }, explode('|', $buttons));
         }
@@ -210,7 +211,7 @@ class RichEditor extends FormWidgetBase
 
         $links[] = ['name' => Lang::get('backend::lang.pagelist.select_page'), 'url' => false];
 
-        $iterator = function($links, $level = 0) use (&$iterator) {
+        $iterator = function ($links, $level = 0) use (&$iterator) {
             $result = [];
             foreach ($links as $linkUrl => $link) {
 

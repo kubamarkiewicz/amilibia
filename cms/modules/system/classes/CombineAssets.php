@@ -404,7 +404,7 @@ class CombineAssets
         $filesSalt = null;
         foreach ($assets as $asset) {
             $filters = $this->getFilters(File::extension($asset)) ?: [];
-            $path = File::symbolizePath($asset, null) ?: $this->localPath . $asset;
+            $path = file_exists($asset) ? $asset : File::symbolizePath($asset, null) ?: $this->localPath . $asset;
             $files[] = new FileAsset($path, $filters, public_path());
             $filesSalt .= $this->localPath . $asset;
         }
@@ -457,8 +457,8 @@ class CombineAssets
     {
         $key = '';
 
-        $assetFiles = array_map(function($file) {
-            return File::symbolizePath($file, null) ?: $this->localPath . $file;
+        $assetFiles = array_map(function ($file) {
+            return file_exists($file) ? $file : File::symbolizePath($file, null) ?: $this->localPath . $file;
         }, $assets);
 
         foreach ($assetFiles as $file) {
@@ -524,7 +524,7 @@ class CombineAssets
     /**
      * Registers a callback function that defines bundles.
      * The callback function should register bundles by calling the manager's
-     * `registerBundle` method. Thi instance is passed to the callback 
+     * `registerBundle` method. This instance is passed to the callback
      * function as an argument. Usage:
      *
      *     CombineAssets::registerCallback(function($combiner){
@@ -610,9 +610,9 @@ class CombineAssets
     //
 
     /**
-     * Registers an alias to use for a longer file reference.
-     * @param string $alias Alias name. Eg: framework
-     * @param object $filter Collection of files to combine
+     * Registers bundle.
+     * @param string|array $files Files to be registered to bundle
+     * @param string $destination Destination file will be compiled to.
      * @param string $extension Extension name. Eg: css
      * @return self
      */

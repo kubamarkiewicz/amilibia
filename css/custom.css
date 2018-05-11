@@ -299,7 +299,7 @@ body > header nav.open {
 }
 body > header nav a {
 	font-weight: normal;
-	font-size: 20px;
+	font-size: 18px;
 	padding: 15px 0;
 	color: #ffffff;
 	text-transform: uppercase;
@@ -632,10 +632,11 @@ section#works .works .item .title {
 	#worksModal { 
 		text-align: center;
 	}
-	#worksModal .modal-dialog { 
-		width: 100%; 
-		display: inline-block; 
+	#worksModal .modal-dialog {
+		width: 100%;
+		display: inline-block;
 		margin-bottom: 0;
+		margin-top: 30px;
 	}
 
 }

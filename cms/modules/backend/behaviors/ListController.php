@@ -141,6 +141,7 @@ class ListController extends ControllerBehavior
             'recordUrl',
             'recordOnClick',
             'recordsPerPage',
+            'showPageNumbers',
             'noRecordsMessage',
             'defaultSort',
             'showSorting',
@@ -175,7 +176,7 @@ class ListController extends ControllerBehavior
         });
 
         $widget->bindEvent('list.extendRecords', function ($records) use ($definition) {
-            $this->controller->listExtendRecords($records, $definition);
+            return $this->controller->listExtendRecords($records, $definition);
         });
 
         $widget->bindEvent('list.injectRowClass', function ($record) use ($definition) {
@@ -242,9 +243,16 @@ class ListController extends ControllerBehavior
             });
 
             /*
+             * Filter Widget with extensibility
+             */
+            $filterWidget->bindEvent('filter.extendScopes', function () use ($filterWidget) {
+                $this->controller->listFilterExtendScopes($filterWidget);
+            });
+
+            /*
              * Extend the query of the list of options
              */
-            $filterWidget->bindEvent('filter.extendQuery', function($query, $scope) {
+            $filterWidget->bindEvent('filter.extendQuery', function ($query, $scope) {
                 $this->controller->listFilterExtendQuery($query, $scope);
             });
 
@@ -451,6 +459,15 @@ class ListController extends ControllerBehavior
     }
 
     /**
+     * Called after the filter scopes are defined.
+     * @param \Backend\Widgets\Filter $host The hosting filter widget
+     * @return void
+     */
+    public function listFilterExtendScopes($host)
+    {
+    }
+
+    /**
      * Controller override: Extend supplied model
      * @param Model $model
      * @return Model
@@ -541,6 +558,22 @@ class ListController extends ControllerBehavior
                 return;
             }
             call_user_func_array($callback, [$widget, $widget->model]);
+        });
+    }
+
+     /**
+     * Static helper for extending filter scopes.
+     * @param  callable $callback
+     * @return void
+     */
+    public static function extendListFilterScopes($callback)
+    {
+        $calledClass = self::getCalledExtensionClass();
+        Event::listen('backend.filter.extendScopes', function ($widget) use ($calledClass, $callback) {
+            if (!is_a($widget->getController(), $calledClass)) {
+                return;
+            }
+            call_user_func_array($callback, [$widget]);
         });
     }
 }

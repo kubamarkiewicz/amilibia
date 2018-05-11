@@ -2632,7 +2632,113 @@ FlashMessage.DEFAULTS={class:'success',text:'Default text',interval:5}
 if($.oc===undefined)
 $.oc={}
 $.oc.flashMsg=FlashMessage
-$(document).render(function(){$('[data-control=flash-message]').each(function(){$.oc.flashMsg($(this).data(),this)})})}(window.jQuery);(function($){$(document).on('keydown','div.custom-checkbox',function(e){if(e.keyCode==32)
+$(document).render(function(){$('[data-control=flash-message]').each(function(){$.oc.flashMsg($(this).data(),this)})})}(window.jQuery);!function($){"use strict";var Autocomplete=function(element,options){this.$element=$(element)
+this.options=$.extend({},$.fn.autocomplete.defaults,options)
+this.matcher=this.options.matcher||this.matcher
+this.sorter=this.options.sorter||this.sorter
+this.highlighter=this.options.highlighter||this.highlighter
+this.updater=this.options.updater||this.updater
+this.source=this.options.source
+this.$menu=$(this.options.menu)
+this.shown=false
+this.listen()}
+Autocomplete.prototype={constructor:Autocomplete,select:function(){var val=this.$menu.find('.active').attr('data-value')
+this.$element.val(this.updater(val)).change()
+return this.hide()},updater:function(item){return item},show:function(){var offset=this.options.bodyContainer?this.$element.offset():this.$element.position(),pos=$.extend({},offset,{height:this.$element[0].offsetHeight}),cssOptions={top:pos.top+pos.height,left:pos.left}
+if(this.options.matchWidth){cssOptions.width=this.$element[0].offsetWidth}
+this.$menu.css(cssOptions)
+if(this.options.bodyContainer){$(document.body).append(this.$menu)}
+else{this.$menu.insertAfter(this.$element)}
+this.$menu.show()
+this.shown=true
+return this},hide:function(){this.$menu.hide()
+this.shown=false
+return this},lookup:function(event){var items
+this.query=this.$element.val()
+if(!this.query||this.query.length<this.options.minLength){return this.shown?this.hide():this}
+items=$.isFunction(this.source)?this.source(this.query,$.proxy(this.process,this)):this.source
+return items?this.process(items):this},itemValue:function(item){if(typeof item==='object')
+return item.value;return item;},itemLabel:function(item){if(typeof item==='object')
+return item.label;return item;},itemsToArray:function(items){var newArray=[]
+$.each(items,function(value,label){newArray.push({label:label,value:value})})
+return newArray},process:function(items){var that=this
+if(typeof items=='object')
+items=this.itemsToArray(items)
+items=$.grep(items,function(item){return that.matcher(item)})
+items=this.sorter(items)
+if(!items.length){return this.shown?this.hide():this}
+return this.render(items.slice(0,this.options.items)).show()},matcher:function(item){return~this.itemValue(item).toLowerCase().indexOf(this.query.toLowerCase())},sorter:function(items){var beginswith=[],caseSensitive=[],caseInsensitive=[],item,itemValue
+while(item=items.shift()){itemValue=this.itemValue(item)
+if(!itemValue.toLowerCase().indexOf(this.query.toLowerCase()))beginswith.push(item)
+else if(~itemValue.indexOf(this.query))caseSensitive.push(item)
+else caseInsensitive.push(item)}
+return beginswith.concat(caseSensitive,caseInsensitive)},highlighter:function(item){var query=this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g,'\\$&')
+return item.replace(new RegExp('('+query+')','ig'),function($1,match){return'<strong>'+match+'</strong>'})},render:function(items){var that=this
+items=$(items).map(function(i,item){i=$(that.options.item).attr('data-value',that.itemValue(item))
+i.find('a').html(that.highlighter(that.itemLabel(item)))
+return i[0]})
+items.first().addClass('active')
+this.$menu.html(items)
+return this},next:function(event){var active=this.$menu.find('.active').removeClass('active'),next=active.next()
+if(!next.length){next=$(this.$menu.find('li')[0])}
+next.addClass('active')},prev:function(event){var active=this.$menu.find('.active').removeClass('active'),prev=active.prev()
+if(!prev.length){prev=this.$menu.find('li').last()}
+prev.addClass('active')},listen:function(){this.$element.on('focus.autocomplete',$.proxy(this.focus,this)).on('blur.autocomplete',$.proxy(this.blur,this)).on('keypress.autocomplete',$.proxy(this.keypress,this)).on('keyup.autocomplete',$.proxy(this.keyup,this))
+if(this.eventSupported('keydown')){this.$element.on('keydown.autocomplete',$.proxy(this.keydown,this))}
+this.$menu.on('click.autocomplete',$.proxy(this.click,this)).on('mouseenter.autocomplete','li',$.proxy(this.mouseenter,this)).on('mouseleave.autocomplete','li',$.proxy(this.mouseleave,this))},eventSupported:function(eventName){var isSupported=eventName in this.$element
+if(!isSupported){this.$element.setAttribute(eventName,'return;')
+isSupported=typeof this.$element[eventName]==='function'}
+return isSupported},move:function(e){if(!this.shown)return
+switch(e.keyCode){case 9:case 13:case 27:e.preventDefault()
+break
+case 38:e.preventDefault()
+this.prev()
+break
+case 40:e.preventDefault()
+this.next()
+break}
+e.stopPropagation()},keydown:function(e){this.suppressKeyPressRepeat=~$.inArray(e.keyCode,[40,38,9,13,27])
+this.move(e)},keypress:function(e){if(this.suppressKeyPressRepeat)return
+this.move(e)},keyup:function(e){switch(e.keyCode){case 40:case 38:case 16:case 17:case 18:break
+case 9:case 13:if(!this.shown)return
+this.select()
+break
+case 27:if(!this.shown)return
+this.hide()
+break
+default:this.lookup()}
+e.stopPropagation()
+e.preventDefault()},focus:function(e){this.focused=true},blur:function(e){this.focused=false
+if(!this.mousedover&&this.shown)this.hide()},click:function(e){e.stopPropagation()
+e.preventDefault()
+this.select()
+this.$element.focus()},mouseenter:function(e){this.mousedover=true
+this.$menu.find('.active').removeClass('active')
+$(e.currentTarget).addClass('active')},mouseleave:function(e){this.mousedover=false
+if(!this.focused&&this.shown)this.hide()},destroy:function(){this.hide()
+this.$element.removeData('autocomplete')
+this.$menu.remove()
+this.$element.off('.autocomplete')
+this.$menu.off('.autocomplete')
+this.$element=null
+this.$menu=null}}
+var old=$.fn.autocomplete
+$.fn.autocomplete=function(option){return this.each(function(){var $this=$(this),data=$this.data('autocomplete'),options=typeof option=='object'&&option
+if(!data)$this.data('autocomplete',(data=new Autocomplete(this,options)))
+if(typeof option=='string')data[option]()})}
+$.fn.autocomplete.defaults={source:[],items:8,menu:'<ul class="autocomplete dropdown-menu"></ul>',item:'<li><a href="#"></a></li>',minLength:1,bodyContainer:false}
+$.fn.autocomplete.Constructor=Autocomplete
+$.fn.autocomplete.noConflict=function(){$.fn.autocomplete=old
+return this}
+function paramToObj(name,value){if(value===undefined)value=''
+if(typeof value=='object')return value
+try{return JSON.parse(JSON.stringify(eval("({"+value+"})")))}
+catch(e){throw new Error('Error parsing the '+name+' attribute value. '+e)}}
+$(document).on('focus.autocomplete.data-api','[data-control="autocomplete"]',function(e){var $this=$(this)
+if($this.data('autocomplete'))return
+var opts=$this.data()
+if(opts.source){opts.source=paramToObj('data-source',opts.source)}
+$this.autocomplete(opts)})}(window.jQuery);(function($){$(document).on('keydown','div.custom-checkbox',function(e){if(e.keyCode==32)
 e.preventDefault()})
 $(document).on('keyup','div.custom-checkbox',function(e){if(e.keyCode==32){var $cb=$('input',this)
 if($cb.data('oc-space-timestamp')==e.timeStamp)
@@ -2755,6 +2861,7 @@ this.$datePicker=$('[data-datepicker]',this.$el)
 this.$timePicker=$('[data-timepicker]',this.$el)
 this.hasDate=!!this.$datePicker.length
 this.hasTime=!!this.$timePicker.length
+this.ignoreTimezone=this.$el.get(0).hasAttribute('data-ignore-timezone')
 this.initRegion()
 if(this.hasDate){this.initDatePicker()}
 if(this.hasTime){this.initTimePicker()}
@@ -2771,7 +2878,7 @@ this.$el=null
 this.options=null
 BaseProto.dispose.call(this)}
 DatePicker.prototype.initDatePicker=function(){var self=this,dateFormat=this.getDateFormat(),now=moment().tz(this.timezone).format(dateFormat)
-var pikadayOptions={yearRange:this.options.yearRange,format:dateFormat,setDefaultDate:now,onOpen:function(){var $field=$(this._o.trigger)
+var pikadayOptions={yearRange:this.options.yearRange,firstDay:this.options.firstDay,format:dateFormat,setDefaultDate:now,onOpen:function(){var $field=$(this._o.trigger)
 $(this.el).css({left:'auto',right:$(window).width()-$field.offset().left-$field.outerWidth()})},onSelect:function(){self.onSelectDatePicker.call(self,this.getMoment())}}
 var lang=this.getLang('datepicker',false)
 if(lang){pikadayOptions.i18n=lang}
@@ -2817,10 +2924,12 @@ DatePicker.prototype.initRegion=function(){this.locale=$('meta[name="backend-loc
 this.timezone=$('meta[name="backend-timezone"]').attr('content')
 this.appTimezone=$('meta[name="app-timezone"]').attr('content')
 if(!this.appTimezone){this.appTimezone='UTC'}
-if(!this.timezone){this.timezone='UTC'}}
+if(!this.timezone){this.timezone='UTC'}
+if(this.ignoreTimezone){this.appTimezone='UTC'
+this.timezone='UTC'}}
 DatePicker.prototype.getLang=function(name,defaultValue){if($.oc===undefined||$.oc.lang===undefined){return defaultValue}
 return $.oc.lang.get(name,defaultValue)}
-DatePicker.DEFAULTS={minDate:null,maxDate:null,format:null,yearRange:10}
+DatePicker.DEFAULTS={minDate:null,maxDate:null,format:null,yearRange:10,firstDay:0}
 var old=$.fn.datePicker
 $.fn.datePicker=function(option){var args=Array.prototype.slice.call(arguments,1),items,result
 items=this.each(function(){var $this=$(this)
@@ -2841,7 +2950,8 @@ this.$toolbar=$toolbar
 this.options=options||{};var noDragSupport=options.noDragSupport!==undefined&&options.noDragSupport
 Base.call(this)
 var scrollClassContainer=options.scrollClassContainer!==undefined?options.scrollClassContainer:$el.parent()
-$el.dragScroll({scrollClassContainer:scrollClassContainer,useDrag:!noDragSupport})
+if(this.options.useNativeDrag){$el.addClass('is-native-drag')}
+$el.dragScroll({scrollClassContainer:scrollClassContainer,useDrag:!noDragSupport,useNative:this.options.useNativeDrag})
 $('.form-control.growable',$toolbar).on('focus.toolbar',function(){update()})
 $('.form-control.growable',$toolbar).on('blur.toolbar',function(){update()})
 this.$el.one('dispose-control',this.proxy(this.dispose))
@@ -2854,7 +2964,7 @@ this.$el.dragScroll('dispose')
 this.$el.removeData('oc.toolbar')
 this.$el=null
 BaseProto.dispose.call(this)}
-Toolbar.DEFAULTS={}
+Toolbar.DEFAULTS={useNativeDrag:false}
 var old=$.fn.toolbar
 $.fn.toolbar=function(option){var args=Array.prototype.slice.call(arguments,1)
 return this.each(function(){var $this=$(this)
@@ -2882,7 +2992,7 @@ FilterWidget.prototype.getPopoverTemplate=function(){return'                    
                                 type="text"                                                             \
                                 name="search"                                                           \
                                 autocomplete="off"                                                      \
-                                class="filter-search-input form-control icon search"                    \
+                                class="filter-search-input form-control icon search popup-allow-focus"  \
                                 data-request="{{ optionsHandler }}"                                     \
                                 data-load-indicator-opaque                                              \
                                 data-load-indicator                                                     \
@@ -3052,7 +3162,7 @@ self.filterByDate(true)})}
 FilterWidget.prototype.getPopoverDateTemplate=function(){return'                                                                                                        \
                 <form>                                                                                                  \
                     <input type="hidden" name="scopeName" value="{{ scopeName }}" />                                    \
-                    <div id="controlFilterPopover" class="control-filter-popover control-filter-date-popover">          \
+                    <div id="controlFilterPopover" class="control-filter-popover control-filter-box-popover">           \
                         <div class="filter-search loading-indicator-container size-input-text">                         \
                             <div class="field-datepicker">                                                              \
                                 <div class="input-with-icon right-align">                                               \
@@ -3061,7 +3171,7 @@ FilterWidget.prototype.getPopoverDateTemplate=function(){return'                
                                         type="text"                                                                     \
                                         name="date"                                                                     \
                                         value="{{ date }}"                                                              \
-                                        class="form-control align-right"                                                \
+                                        class="form-control align-right popup-allow-focus"                              \
                                         autocomplete="off"                                                              \
                                         placeholder="{{ date_placeholder }}" />                                         \
                                 </div>                                                                                  \
@@ -3078,7 +3188,7 @@ FilterWidget.prototype.getPopoverDateTemplate=function(){return'                
 FilterWidget.prototype.getPopoverRangeTemplate=function(){return'                                                                                                        \
                 <form>                                                                                                  \
                     <input type="hidden" name="scopeName" value="{{ scopeName }}" />                                    \
-                    <div id="controlFilterPopover" class="control-filter-popover control-filter-date-popover --range">  \
+                    <div id="controlFilterPopover" class="control-filter-popover control-filter-box-popover --range">   \
                         <div class="filter-search loading-indicator-container size-input-text">                         \
                             <div class="field-datepicker">                                                              \
                                 <div class="input-with-icon right-align">                                               \
@@ -3087,7 +3197,7 @@ FilterWidget.prototype.getPopoverRangeTemplate=function(){return'               
                                         type="text"                                                                     \
                                         name="date"                                                                     \
                                         value="{{ date }}"                                                              \
-                                        class="form-control align-right"                                                \
+                                        class="form-control align-right popup-allow-focus"                              \
                                         autocomplete="off"                                                              \
                                         placeholder="{{ after_placeholder }}" />                                        \
                                 </div>                                                                                  \
@@ -3128,7 +3238,7 @@ $scope.data('oc.popover',null)
 $scope.ocPopover({content:Mustache.render(this.getPopoverRangeTemplate(),data),modal:false,highlightModalTarget:true,closeOnPageClick:true,placement:'bottom',onCheckDocumentClickTarget:function(target){return self.onCheckDocumentClickTargetDatePicker(target)}})}
 FilterWidget.prototype.initDatePickers=function(isRange){var self=this,scopeData=this.$activeScope.data('scope-data'),$inputs=$('.field-datepicker input','#controlFilterPopover'),data=this.scopeValues[this.activeScopeName]
 if(!data){data={dates:isRange?(scopeData.dates?scopeData.dates:[]):(scopeData.date?[scopeData.date]:[])}}
-$inputs.each(function(index,datepicker){var defaultValue='',$datepicker=$(datepicker),defaults={minDate:new Date(scopeData.minDate),maxDate:new Date(scopeData.maxDate),yearRange:10,setDefaultDate:''!==defaultValue?defaultValue.toDate():'',format:self.getDateFormat(),i18n:self.getLang('datepicker')}
+$inputs.each(function(index,datepicker){var defaultValue='',$datepicker=$(datepicker),defaults={minDate:new Date(scopeData.minDate),maxDate:new Date(scopeData.maxDate),firstDay:scopeData.firstDay,yearRange:scopeData.yearRange,setDefaultDate:''!==defaultValue?defaultValue.toDate():'',format:self.getDateFormat(),i18n:self.getLang('datepicker')}
 if(0<=index&&index<data.dates.length){defaultValue=data.dates[index]?moment.tz(data.dates[index],self.appTimezone).tz(self.timezone):''}
 if(!isRange){defaults.onSelect=function(){self.filterByDate()}}
 datepicker.value=''!==defaultValue?defaultValue.format(self.getDateFormat()):'';$datepicker.pikaday(defaults)})}
@@ -3159,8 +3269,126 @@ FilterWidget.prototype.initRegion=function(){this.locale=$('meta[name="backend-l
 this.timezone=$('meta[name="backend-timezone"]').attr('content')
 this.appTimezone=$('meta[name="app-timezone"]').attr('content')
 if(!this.appTimezone){this.appTimezone='UTC'}
-if(!this.timezone){this.timezone='UTC'}}}(window.jQuery);(function($){$(document).render(function(){var formatSelectOption=function(state){if(!state.id)
-return state.text;var $option=$(state.element),iconClass=$option.data('icon'),imageSrc=$option.data('image')
+if(!this.timezone){this.timezone='UTC'}}}(window.jQuery);+function($){"use strict";var FilterWidget=$.fn.filterWidget.Constructor;var overloaded_init=FilterWidget.prototype.init;FilterWidget.prototype.init=function(){overloaded_init.apply(this)
+this.initFilterNumber()}
+FilterWidget.prototype.initFilterNumber=function(){var self=this
+this.$el.on('show.oc.popover','a.filter-scope-number',function(){self.initNumberInputs($(this).hasClass('range'))})
+this.$el.on('hide.oc.popover','a.filter-scope-number',function(){var $scope=$(this)
+self.pushOptions(self.activeScopeName)
+self.activeScopeName=null
+self.$activeScope=null
+setTimeout(function(){$scope.removeClass('filter-scope-open')},200)})
+this.$el.on('click','a.filter-scope-number',function(){var $scope=$(this),scopeName=$scope.data('scope-name')
+if($scope.hasClass('filter-scope-open'))return
+if(null!==self.activeScopeName)return
+self.$activeScope=$scope
+self.activeScopeName=scopeName
+self.isActiveScopeDirty=false
+if($scope.hasClass('range')){self.displayPopoverNumberRange($scope)}
+else{self.displayPopoverNumber($scope)}
+$scope.addClass('filter-scope-open')})
+$(document).on('click','#controlFilterPopoverNum [data-trigger="filter"]',function(e){e.preventDefault()
+e.stopPropagation()
+self.filterByNumber()})
+$(document).on('click','#controlFilterPopoverNum [data-trigger="clear"]',function(e){e.preventDefault()
+e.stopPropagation()
+self.filterByNumber(true)})}
+FilterWidget.prototype.getPopoverNumberTemplate=function(){return'                                                                                                        \
+                <form>                                                                                                  \
+                    <input type="hidden" name="scopeName" value="{{ scopeName }}" />                                    \
+                    <div id="controlFilterPopoverNum" class="control-filter-popover control-filter-box-popover --range">\
+                        <div class="filter-search loading-indicator-container size-input-text">                         \
+                            <div class="field-number">                                                                  \
+                                <input                                                                                  \
+                                    type="number"                                                                       \
+                                    name="number"                                                                       \
+                                    value="{{ number }}"                                                                \
+                                    class="form-control align-right"                                                    \
+                                    autocomplete="off"                                                                  \
+                                    placeholder="{{ number_placeholder }}" />                                           \
+                            </div>                                                                                      \
+                            <div class="filter-buttons">                                                                \
+                                <button class="btn btn-block btn-primary" data-trigger="filter">                        \
+                                    {{ filter_button_text }}                                                            \
+                                </button>                                                                               \
+                                <button class="btn btn-block btn-secondary" data-trigger="clear">                       \
+                                    {{ reset_button_text }}                                                             \
+                                </button>                                                                               \
+                            </div>                                                                                      \
+                        </div>                                                                                          \
+                    </div>                                                                                              \
+                </form>                                                                                                 \
+            '}
+FilterWidget.prototype.getPopoverNumberRangeTemplate=function(){return'                                                                                                            \
+                <form>                                                                                                      \
+                    <input type="hidden" name="scopeName" value="{{ scopeName }}" />                                        \
+                    <div id="controlFilterPopoverNum" class="control-filter-popover control-filter-box-popover --range">    \
+                        <div class="filter-search loading-indicator-container size-input-text">                             \
+                            <div class="field-number">                                                                      \
+                                <div class="right-align">                                                                   \
+                                    <input                                                                                  \
+                                        type="number"                                                                       \
+                                        name="number"                                                                       \
+                                        value="{{ number }}"                                                                \
+                                        class="form-control align-right"                                                    \
+                                        autocomplete="off"                                                                  \
+                                        placeholder="{{ min_placeholder }}" />                                              \
+                                </div>                                                                                      \
+                            </div>                                                                                          \
+                            <div class="field-number">                                                                      \
+                                <div class="right-align">                                                                   \
+                                    <input                                                                                  \
+                                        type="number"                                                                       \
+                                        {{ maxNumber }}                                                                     \
+                                        name="number"                                                                       \
+                                        value="{{ number }}"                                                                \
+                                        class="form-control align-right"                                                    \
+                                        autocomplete="off"                                                                  \
+                                        placeholder="{{ max_placeholder }}" />                                              \
+                                </div>                                                                                      \
+                            </div>                                                                                          \
+                            <div class="filter-buttons">                                                                    \
+                                <button class="btn btn-block btn-primary" data-trigger="filter">                            \
+                                    {{ filter_button_text }}                                                                \
+                                </button>                                                                                   \
+                                <button class="btn btn-block btn-secondary" data-trigger="clear">                           \
+                                    {{ reset_button_text }}                                                                 \
+                                </button>                                                                                   \
+                            </div>                                                                                          \
+                        </div>                                                                                              \
+                    </div>                                                                                                  \
+                </form>                                                                                                     \
+            '}
+FilterWidget.prototype.displayPopoverNumber=function($scope){var self=this,scopeName=$scope.data('scope-name'),data=this.scopeValues[scopeName]
+data=$.extend({},data,{filter_button_text:this.getLang('filter.numbers.filter_button_text'),reset_button_text:this.getLang('filter.numbers.reset_button_text'),number_placeholder:this.getLang('filter.numbers.number_placeholder','Number')})
+data.scopeName=scopeName
+$scope.data('oc.popover',null)
+$scope.ocPopover({content:Mustache.render(this.getPopoverNumberTemplate(),data),modal:false,highlightModalTarget:true,closeOnPageClick:true,placement:'bottom',})}
+FilterWidget.prototype.displayPopoverNumberRange=function($scope){var self=this,scopeName=$scope.data('scope-name'),data=this.scopeValues[scopeName]
+data=$.extend({},data,{filter_button_text:this.getLang('filter.numbers.filter_button_text'),reset_button_text:this.getLang('filter.numbers.reset_button_text'),min_placeholder:this.getLang('filter.numbers.min_placeholder','Min'),max_placeholder:this.getLang('filter.numbers.max_placeholder','Max')})
+data.scopeName=scopeName
+$scope.data('oc.popover',null)
+$scope.ocPopover({content:Mustache.render(this.getPopoverNumberRangeTemplate(),data),modal:false,highlightModalTarget:true,closeOnPageClick:true,placement:'bottom',})}
+FilterWidget.prototype.initNumberInputs=function(isRange){var self=this,scopeData=this.$activeScope.data('scope-data'),$inputs=$('.field-number input','#controlFilterPopoverNum'),data=this.scopeValues[this.activeScopeName]
+if(!data){data={numbers:isRange?(scopeData.numbers?scopeData.numbers:[]):(scopeData.number?[scopeData.number]:[])}}
+$inputs.each(function(index,numberinput){var defaultValue=''
+if(0<=index&&index<data.numbers.length){defaultValue=data.numbers[index]?data.numbers[index]:''}
+numberinput.value=''!==defaultValue?defaultValue:'';})}
+FilterWidget.prototype.updateScopeNumberSetting=function($scope,numbers){var $setting=$scope.find('.filter-setting'),numberRegex=/\d*/,reset=false
+if(numbers&&numbers.length){numbers[0]=numbers[0]&&numbers[0].match(numberRegex)?numbers[0]:null
+if(numbers.length>1){numbers[1]=numbers[1]&&numbers[1].match(numberRegex)?numbers[1]:null
+if(numbers[0]||numbers[1]){var min=numbers[0]?numbers[0]:'',max=numbers[1]?numbers[1]:'∞'
+$setting.text(min+' → '+max)}else{reset=true}}
+else if(numbers[0]){$setting.text(numbers[0])}else{reset=true}}
+else{reset=true}
+if(reset){$setting.text(this.getLang('filter.numbers.all','all'));$scope.removeClass('active')}else{$scope.addClass('active')}}
+FilterWidget.prototype.filterByNumber=function(isReset){var self=this,numbers=[]
+if(!isReset){var numberinputs=$('.field-number input','#controlFilterPopoverNum')
+numberinputs.each(function(index,numberinput){var number=$(numberinput).val()
+numbers.push(number)})}
+this.updateScopeNumberSetting(this.$activeScope,numbers);this.scopeValues[this.activeScopeName]={numbers:numbers}
+this.isActiveScopeDirty=true;this.$activeScope.data('oc.popover').hide()}}(window.jQuery);(function($){$(document).render(function(){var formatSelectOption=function(state){if(!state.id)
+return state.text;var $option=$(state.element),iconClass=state.icon?state.icon:$option.data('icon'),imageSrc=state.image?state.image:$option.data('image')
 if(iconClass)
 return'<i class="select-icon '+iconClass+'"></i> '+state.text
 if(imageSrc)
@@ -3175,6 +3403,10 @@ if($element.hasClass('select-no-search')){extraOptions.minimumResultsForSearch=I
 if($element.hasClass('select-no-dropdown')){extraOptions.dropdownCssClass+=' select-no-dropdown'
 extraOptions.containerCssClass+=' select-no-dropdown'}
 if($element.hasClass('select-hide-selected')){extraOptions.dropdownCssClass+=' select-hide-selected'}
+var source=$element.data('handler');if(source){extraOptions.ajax={transport:function(params,success,failure){var $request=$element.request(source,{data:params.data})
+$request.done(success)
+$request.fail(failure)
+return $request},dataType:'json'}}
 var separators=$element.data('token-separators')
 if(separators){extraOptions.tags=true
 extraOptions.tokenSeparators=separators.split('|')
@@ -3297,25 +3529,20 @@ this.options.onCheckDocumentClickTarget=null}
 Popover.prototype.show=function(options){var self=this
 var e=$.Event('showing.oc.popover',{relatedTarget:this.$el})
 this.$el.trigger(e,this)
-if(e.isDefaultPrevented())
-return
+if(e.isDefaultPrevented())return
 this.$container=$('<div />').addClass('control-popover')
-if(this.options.containerClass)
-this.$container.addClass(this.options.containerClass)
-if(this.options.useAnimation)
-this.$container.addClass('fade')
+if(this.options.containerClass){this.$container.addClass(this.options.containerClass)}
+if(this.options.useAnimation){this.$container.addClass('fade')}
 var $content=$('<div />').html(this.getContent())
 this.$container.append($content)
-if(this.options.width)
-this.$container.width(this.options.width)
+if(this.options.width){this.$container.width(this.options.width)}
 if(this.options.modal){this.$overlay=$('<div />').addClass('popover-overlay')
 $(document.body).append(this.$overlay)
 if(this.options.highlightModalTarget){this.$el.addClass('popover-highlight')
-this.$el.blur()}}else{this.$overlay=false}
-if(this.options.container)
-$(this.options.container).append(this.$container)
-else
-$(document.body).append(this.$container)
+this.$el.blur()}}
+else{this.$overlay=false}
+if(this.options.container){$(this.options.container).append(this.$container)}
+else{$(document.body).append(this.$container)}
 this.reposition()
 this.$container.addClass('in')
 if(this.$overlay)this.$overlay.addClass('in')
@@ -3335,7 +3562,9 @@ Popover.prototype.reposition=function(){var
 placement=this.calcPlacement(),position=this.calcPosition(placement)
 this.$container.removeClass('placement-center placement-bottom placement-top placement-left placement-right')
 this.$container.css({left:position.x,top:position.y}).addClass('placement-'+placement)}
-Popover.prototype.getContent=function(){return typeof this.options.content=='function'?this.options.content.call(this.$el[0],this):this.options.content}
+Popover.prototype.getContent=function(){if(this.options.contentFrom){return $(this.options.contentFrom).html()}
+if(typeof this.options.content=='function'){return this.options.content.call(this.$el[0],this)}
+return this.options.content}
 Popover.prototype.calcDimensions=function(){var
 documentWidth=$(document).width(),documentHeight=$(document).height(),targetOffset=this.$el.offset(),targetWidth=this.$el.outerWidth(),targetHeight=this.$el.outerHeight()
 return{containerWidth:this.$container.outerWidth()+this.arrowSize,containerHeight:this.$container.outerHeight()+this.arrowSize,targetOffset:targetOffset,targetHeight:targetHeight,targetWidth:targetWidth,spaceLeft:targetOffset.left,spaceRight:documentWidth-(targetWidth+targetOffset.left),spaceTop:targetOffset.top,spaceBottom:documentHeight-(targetHeight+targetOffset.top),spaceHorizontalBottom:documentHeight-targetOffset.top,spaceVerticalRight:documentWidth-targetOffset.left,documentWidth:documentWidth}}
@@ -3382,7 +3611,7 @@ if(this.options.onCheckDocumentClickTarget&&this.options.onCheckDocumentClickTar
 if($.contains(this.$container.get(0),e.target))
 return
 this.hide();}
-Popover.DEFAULTS={placement:'bottom',fallbackPlacement:'bottom',content:'<p>Popover content<p>',width:false,modal:false,highlightModalTarget:false,closeOnPageClick:true,closeOnEsc:true,container:false,containerClass:null,offset:15,useAnimation:false,onCheckDocumentClickTarget:null}
+Popover.DEFAULTS={placement:'bottom',fallbackPlacement:'bottom',content:'<p>Popover content<p>',contentFrom:null,width:false,modal:false,highlightModalTarget:false,closeOnPageClick:true,closeOnEsc:true,container:false,containerClass:null,offset:15,useAnimation:false,onCheckDocumentClickTarget:null}
 var old=$.fn.ocPopover
 $.fn.ocPopover=function(option){var args=arguments;return this.each(function(){var $this=$(this)
 var data=$this.data('oc.popover')
@@ -4085,47 +4314,45 @@ $.fn.sortable.noConflict=function(){$.fn.sortable=old
 return this}}(window.jQuery);+function($){"use strict";var Base=$.oc.foundation.base,BaseProto=Base.prototype
 var DragScroll=function(element,options){this.options=$.extend({},DragScroll.DEFAULTS,options)
 var
-$el=$(element),el=$el.get(0),dragStart=0,startOffset=0,self=this,dragging=false,eventElementName=this.options.vertical?'pageY':'pageX';this.el=$el
+$el=$(element),el=$el.get(0),dragStart=0,startOffset=0,self=this,dragging=false,eventElementName=this.options.vertical?'pageY':'pageX',isNative=this.options.useNative&&$('html').hasClass('mobile');this.el=$el
 this.scrollClassContainer=this.options.scrollClassContainer?$(this.options.scrollClassContainer):$el
 this.isScrollable=true
 Base.call(this)
 if(this.options.scrollMarkerContainer){$(this.options.scrollMarkerContainer).append($('<span class="before scroll-marker"></span><span class="after scroll-marker"></span>'))}
 var $scrollSelect=this.options.scrollSelector?$(this.options.scrollSelector,$el):$el
-$scrollSelect.mousewheel(function(event){if(!self.options.useScroll)
-return;var offset,offsetX=event.deltaFactor*event.deltaX,offsetY=event.deltaFactor*event.deltaY
+$scrollSelect.mousewheel(function(event){if(!self.options.useScroll){return;}
+var offset,offsetX=event.deltaFactor*event.deltaX,offsetY=event.deltaFactor*event.deltaY
 if(!offsetX&&self.options.useComboScroll){offset=offsetY*-1}
 else if(!offsetY&&self.options.useComboScroll){offset=offsetX}
 else{offset=self.options.vertical?(offsetY*-1):offsetX}
 return!scrollWheel(offset)})
-if(this.options.useDrag){$el.on('mousedown.dragScroll',this.options.dragSelector,function(event){if(event.target&&event.target.tagName==='INPUT')
-return
-if(!self.isScrollable)
-return
+if(this.options.useDrag){$el.on('mousedown.dragScroll',this.options.dragSelector,function(event){if(event.target&&event.target.tagName==='INPUT'){return}
+if(!self.isScrollable){return}
 startDrag(event)
 return false})}
-$el.on('touchstart.dragScroll',this.options.dragSelector,function(event){var touchEvent=event.originalEvent;if(touchEvent.touches.length==1){startDrag(touchEvent.touches[0])
-event.stopPropagation()}})
-$el.on('click.dragScroll',function(){if($(document.body).hasClass(self.options.dragClass))
-return false})
+if(Modernizr.touch){$el.on('touchstart.dragScroll',this.options.dragSelector,function(event){var touchEvent=event.originalEvent
+if(touchEvent.touches.length==1){startDrag(touchEvent.touches[0])
+event.stopPropagation()}})}
+$el.on('click.dragScroll',function(){if($(document.body).hasClass(self.options.dragClass)){return false}})
 $(document).on('ready',this.proxy(this.fixScrollClasses))
 $(window).on('resize',this.proxy(this.fixScrollClasses))
 function startDrag(event){dragStart=event[eventElementName]
 startOffset=self.options.vertical?$el.scrollTop():$el.scrollLeft()
 if(Modernizr.touch){$(window).on('touchmove.dragScroll',function(event){var touchEvent=event.originalEvent
 moveDrag(touchEvent.touches[0])
-event.preventDefault()})
+if(!isNative){event.preventDefault()}})
 $(window).on('touchend.dragScroll',function(event){stopDrag()})}
-else{$(window).on('mousemove.dragScroll',function(event){moveDrag(event)
+$(window).on('mousemove.dragScroll',function(event){moveDrag(event)
 return false})
 $(window).on('mouseup.dragScroll',function(mouseUpEvent){var isClick=event.pageX==mouseUpEvent.pageX&&event.pageY==mouseUpEvent.pageY
 stopDrag(isClick)
-return false})}}
+return false})}
 function moveDrag(event){var current=event[eventElementName],offset=dragStart-current
 if(Math.abs(offset)>3){if(!dragging){dragging=true
 $el.trigger('start.oc.dragScroll')
 self.options.start()
 $(document.body).addClass(self.options.dragClass)}
-self.options.vertical?$el.scrollTop(startOffset+offset):$el.scrollLeft(startOffset+offset)
+if(!isNative){self.options.vertical?$el.scrollTop(startOffset+offset):$el.scrollLeft(startOffset+offset)}
 $el.trigger('drag.oc.dragScroll')
 self.options.drag()}}
 function stopDrag(click){$(window).off('.dragScroll')
@@ -4146,7 +4373,7 @@ return scrolled}
 this.fixScrollClasses();}
 DragScroll.prototype=Object.create(BaseProto)
 DragScroll.prototype.constructor=DragScroll
-DragScroll.DEFAULTS={vertical:false,useDrag:true,useScroll:true,useComboScroll:true,scrollClassContainer:false,scrollMarkerContainer:false,scrollSelector:null,dragSelector:null,dragClass:'drag',start:function(){},drag:function(){},stop:function(){}}
+DragScroll.DEFAULTS={vertical:false,useDrag:true,useScroll:true,useNative:false,useComboScroll:true,scrollClassContainer:false,scrollMarkerContainer:false,scrollSelector:null,dragSelector:null,dragClass:'drag',start:function(){},drag:function(){},stop:function(){}}
 DragScroll.prototype.fixScrollClasses=function(){var isStart=this.isStart(),isEnd=this.isEnd()
 this.scrollClassContainer.toggleClass('scroll-before',!isStart)
 this.scrollClassContainer.toggleClass('scroll-after',!isEnd)
@@ -5251,14 +5478,14 @@ if(iconClass){return'<i class="select-icon '+iconClass+'"></i> '+state.text}
 if(imageSrc){return'<img class="select-image" src="'+imageSrc+'" alt="" /> '+state.text}
 return state.text}
 DropdownEditor.prototype.createOption=function(select,title,value){var option=document.createElement('option')
-if(title!==null){if(!$.isArray(title)){option.textContent=title}else{if(title[1].indexOf('.')!==-1){option.setAttribute('data-image',title[1])}
+if(title!==null){if(!$.isArray(title)){option.textContent=title}
+else{if(title[1].indexOf('.')!==-1){option.setAttribute('data-image',title[1])}
 else{option.setAttribute('data-icon',title[1])}
 option.textContent=title[0]}}
 if(value!==null){option.value=value}
 select.appendChild(option)}
 DropdownEditor.prototype.createOptions=function(select,options){for(var value in options){this.createOption(select,options[value],value)}}
 DropdownEditor.prototype.initCustomSelect=function(){var select=this.getSelect()
-if(Modernizr.touch){return}
 var options={dropdownCssClass:'ocInspectorDropdown'}
 if(this.propertyDefinition.placeholder!==undefined){options.placeholder=this.propertyDefinition.placeholder}
 options.templateResult=this.formatSelectOption

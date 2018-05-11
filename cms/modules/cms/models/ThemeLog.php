@@ -29,7 +29,7 @@ class ThemeLog extends Model
      * @var array Relations
      */
     public $belongsTo = [
-        'user' => ['Backend\Models\User']
+        'user' => \Backend\Models\User::class
     ];
 
     protected $themeCache;
@@ -39,11 +39,11 @@ class ThemeLog extends Model
      */
     public static function bindEventsToModel(HalcyonModel $template)
     {
-        $template->bindEvent('model.beforeDelete', function() use ($template) {
+        $template->bindEvent('model.beforeDelete', function () use ($template) {
             self::add($template, self::TYPE_DELETE);
         });
 
-        $template->bindEvent('model.beforeSave', function() use ($template) {
+        $template->bindEvent('model.beforeSave', function () use ($template) {
             self::add($template, $template->exists ? self::TYPE_UPDATE : self::TYPE_CREATE);
         });
     }

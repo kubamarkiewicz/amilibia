@@ -29,8 +29,10 @@ class SettingsManager
     const CATEGORY_SOCIAL = 'system::lang.system.categories.social';
     const CATEGORY_SYSTEM = 'system::lang.system.categories.system';
     const CATEGORY_EVENTS = 'system::lang.system.categories.events';
+    const CATEGORY_BACKEND = 'system::lang.system.categories.backend';
     const CATEGORY_CUSTOMERS = 'system::lang.system.categories.customers';
     const CATEGORY_MYSETTINGS = 'system::lang.system.categories.my_settings';
+    const CATEGORY_NOTIFICATIONS = 'system::lang.system.categories.notifications';
 
     /**
      * @var array Cache of registration callbacks.
@@ -207,8 +209,8 @@ class SettingsManager
 
     /**
      * Registers the back-end setting items.
-     * The argument is an array of the settings items. The array keys represent the 
-     * setting item codes, specific for the plugin/module. Each element in the 
+     * The argument is an array of the settings items. The array keys represent the
+     * setting item codes, specific for the plugin/module. Each element in the
      * array should be an associative array with the following keys:
      * - label - specifies the settings label localization string key, required.
      * - icon - an icon name from the Font Awesome icon collection, required.
@@ -251,6 +253,10 @@ class SettingsManager
     public function addSettingItem($owner, $code, array $definition)
     {
         $itemKey = $this->makeItemKey($owner, $code);
+
+        if (isset($this->items[$itemKey])) {
+            $definition = array_merge((array) $this->items[$itemKey], $definition);
+        }
 
         $item = array_merge(self::$itemDefaults, array_merge($definition, [
             'code' => $code,

@@ -13,6 +13,7 @@
                 value="<?= e(post('login')) ?>"
                 class="form-control icon user"
                 placeholder="<?= e(trans('backend::lang.account.login_placeholder')) ?>"
+                autocomplete="off"
                 maxlength="255" />
 
             <!-- Password -->
@@ -22,6 +23,7 @@
                 value=""
                 class="form-control icon lock"
                 placeholder="<?= e(trans('backend::lang.account.password_placeholder')) ?>"
+                autocomplete="off"
                 maxlength="255" />
 
             <!-- Submit Login -->
@@ -29,6 +31,21 @@
                 <?= e(trans('backend::lang.account.login')) ?>
             </button>
         </div>
+
+        <?php if (is_null(config('cms.backendForceRemember', true))) : ?>
+            <!-- Remember checkbox -->
+            <div class="form-group checkbox-field horizontal-form remember">
+                <div class="checkbox custom-checkbox">
+                    <input
+                        type="checkbox"
+                        id="remember"
+                        name="remember" />
+                    <label for="remember">
+                        <?= e(trans('backend::lang.account.remember_me')) ?>
+                    </label>
+                </div>
+            </div>
+        <?php endif; ?>
 
         <p class="oc-icon-lock pull-right forgot-password">
             <!-- Forgot your password? -->

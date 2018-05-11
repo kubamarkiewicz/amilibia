@@ -152,13 +152,13 @@ class Theme
         if (App::hasDatabase()) {
             try {
                 try {
-                    $dbResult = Cache::remember(self::ACTIVE_KEY, 1440, function() {
-                        return Parameter::applyKey(self::ACTIVE_KEY)->pluck('value');
+                    $dbResult = Cache::remember(self::ACTIVE_KEY, 1440, function () {
+                        return Parameter::applyKey(self::ACTIVE_KEY)->value('value');
                     });
                 }
                 catch (Exception $ex) {
                     // Cache failed
-                    $dbResult = Parameter::applyKey(self::ACTIVE_KEY)->pluck('value');
+                    $dbResult = Parameter::applyKey(self::ACTIVE_KEY)->value('value');
                 }
             }
             catch (Exception $ex) {
@@ -216,7 +216,7 @@ class Theme
 
     /**
      * Sets the active theme.
-     * The active theme code is stored in the database and overrides the configuration cms.activeTheme parameter. 
+     * The active theme code is stored in the database and overrides the configuration cms.activeTheme parameter.
      * @param string $code Specifies the  active theme code.
      */
     public static function setActiveTheme($code)

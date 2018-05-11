@@ -123,10 +123,6 @@ class RecordFinder extends FormWidgetBase
             'recordsPerPage',
         ]);
 
-        if ($this->formField->disabled) {
-            $this->previewMode = true;
-        }
-
         if (post('recordfinder_flag')) {
             $this->listWidget = $this->makeListWidget();
             $this->listWidget->bindToController();
@@ -179,6 +175,10 @@ class RecordFinder extends FormWidgetBase
     public function prepareVars()
     {
         $this->relationModel = $this->getLoadValue();
+
+        if ($this->formField->disabled) {
+            $this->previewMode = true;
+        }
 
         $this->vars['value'] = $this->getKeyValue();
         $this->vars['field'] = $this->formField;
@@ -279,17 +279,17 @@ class RecordFinder extends FormWidgetBase
         ]);
 
         if ($sqlConditions = $this->conditions) {
-            $widget->bindEvent('list.extendQueryBefore', function($query) use ($sqlConditions) {
+            $widget->bindEvent('list.extendQueryBefore', function ($query) use ($sqlConditions) {
                 $query->whereRaw($sqlConditions);
             });
         }
         elseif ($scopeMethod = $this->scope) {
-            $widget->bindEvent('list.extendQueryBefore', function($query) use ($scopeMethod) {
+            $widget->bindEvent('list.extendQueryBefore', function ($query) use ($scopeMethod) {
                 $query->$scopeMethod($this->model);
             });
         }
         else {
-            $widget->bindEvent('list.extendQueryBefore', function($query) {
+            $widget->bindEvent('list.extendQueryBefore', function ($query) {
                 $this->getRelationObject()->addDefinedConstraintsToQuery($query);
             });
         }

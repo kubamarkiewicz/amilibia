@@ -38,6 +38,31 @@ class Definitions
     }
 
     /**
+     * Determines if a path should be ignored, sourced from the ignoreFiles 
+     * and ignorePatterns definitions.
+     * @todo Efficiency of this method can be improved.
+     * @param string $path Specifies a path to check.
+     * @return boolean Returns TRUE if the path is visible.
+     */
+    public static function isPathIgnored($path)
+    {
+        $ignoreNames = self::get('ignoreFiles');
+        $ignorePatterns = self::get('ignorePatterns');
+
+        if (in_array($path, $ignoreNames)) {
+            return true;
+        }
+
+        foreach ($ignorePatterns as $pattern) {
+            if (preg_match('/'.$pattern.'/', $path)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Files that can be safely ignored.
      * This list can be customized with config:
      * - cms.fileDefinitions.ignoreFiles
@@ -53,6 +78,18 @@ class Definitions
     }
 
     /**
+     * File patterns that can be safely ignored.
+     * This list can be customized with config:
+     * - cms.fileDefinitions.ignorePatterns
+     */
+    protected function ignorePatterns()
+    {
+        return [
+            '^\..*'
+        ];
+    }
+
+    /**
      * Extensions that are particularly benign.
      * This list can be customized with config:
      * - cms.fileDefinitions.defaultExtensions
@@ -64,6 +101,7 @@ class Definitions
             'jpeg',
             'bmp',
             'png',
+            'webp',
             'gif',
             'svg',
             'js',
@@ -72,11 +110,17 @@ class Definitions
             'css',
             'less',
             'scss',
+            'ics',
+            'odt',
+            'doc',
+            'docx',
             'pdf',
             'swf',
             'txt',
             'xml',
+            'ods',
             'xls',
+            'xlsx',
             'eot',
             'woff',
             'woff2',
@@ -109,11 +153,13 @@ class Definitions
             'jpeg',
             'bmp',
             'png',
+            'webp',
             'gif',
             'ico',
             'css',
             'js',
             'woff',
+            'woff2',
             'svg',
             'ttf',
             'eot',
@@ -137,8 +183,8 @@ class Definitions
             'jpeg',
             'bmp',
             'png',
-            'gif',
-            'svg'
+            'webp',
+            'gif'
         ];
     }
 
@@ -175,5 +221,4 @@ class Definitions
             'ogg'
         ];
     }
-
 }
