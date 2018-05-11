@@ -170,7 +170,7 @@ body.loading > footer {
 		/* padding-left: 90px; */
 		/* padding-right: 60px; */
 	}
-	body.page-home > header.home {
+	header.home {
 		height: 154px;
 		align-items: center;
 	}
@@ -318,13 +318,13 @@ body > header nav a.selected {
 body > header nav .languages a.selected {
 } 
 
-body.page-home > header.home {
+header.home {
 	/* background: transparent; */
 }	
-body.page-home > header.home .logo {
+header.home .logo {
 	/* background-image: url(../images/logo-amilibia.png); */
 }
-body.page-home > header.home .burger-menu .slice { 
+header.home .burger-menu .slice { 
 	border-color: #ffffff;
 }
 
@@ -369,16 +369,16 @@ h2.section-title {
 		margin-left: 30px;
 	}
 
-	body.page-home > header.home .logo {
+	header.home .logo {
 		width: 220px;
 		height: 123px;
 	}
-	body.page-home > header.home nav {
+	header.home nav {
 		padding-top: 30px;
 	}
-	body.page-home > header.home nav * {
+	header.home nav * {
 	}
-	body.page-home > header.home nav a:hover { 
+	header.home nav a:hover { 
 		color: #ffffff; 
 	}
 
@@ -393,305 +393,6 @@ h2.section-title {
 /***********************************************/
 /* Sections styles    		                   */
 /***********************************************/
-
-
-/* Section top *********************************** */
-
-section#top {
-	height: calc(100vh);;
-	position: relative;
-	background-image: url(../images/home/blanes.jpg);
-	background-size: cover;
-	background-position: center center;
-	position: relative;
-	z-index: 1;
-}
-
-/* desktop */
-@media screen and (min-width: 992px) {
-	
-	section#top {
-		height: calc(100vh);
-	}
-
-}
-
-
-/* Section intro *********************************** */
-
-section#intro {
-	text-align: center;
-	background-image: url(../images/home/back2b.jpg);
-	background-size: cover;
-	background-position: center top;
-	padding-bottom: 32%;
-	background-repeat: no-repeat;
-	position: relative;
-	z-index: 3;
-	background-color: #ffffff;
-	min-height: 1400px;
-}
-section#intro .icon {
-	text-align: center;
-	margin: 55px 0;
-}
-section#intro .icon img { 
-	height: 42px;
-}
-
-
-/* Section products *********************************** */
-
-section#products { 
-	background-image: url(../images/home/back3.jpg); 
-	background-size: contain; 
-	background-position: center bottom;
-	padding-bottom: 43%; 
-	background-repeat: no-repeat; 
-	position: relative; 
-	z-index: 3; 
-	background-color: #f6f6f8;
-}
-section#products .products {
-}
-section#products .products article { 
-	text-align: center; 
-	margin-top: 25px; 
-	margin-bottom: 25px; 
-	height: 120px;
-}
-section#products .products article a { 
-	color: inherit;
-}
-section#products .products article .icon { 
-	height: 40px;
-	background-repeat: no-repeat; 
-	background-position: center bottom; 
-	background-size: contain; 
-	width: 60px; 
-	margin: 0 auto 25px auto;
-}
-section#products .products article h4 { 
-	text-transform: uppercase; 
-	margin-top: 0px; 
-	font-size: 16px; 
-	display: inline-block;
-}
-
-/* desktop */
-@media screen and (min-width: 992px) {
-
-	section#products .products article .icon { 
-		height: 40px; 
-		width: 70px;
-	}
-
-	section#products .products article h4 { 
-		font-size: 20px; 
-	}
-}
-
-
-
-/* Section works *********************************** */
-
-section#works { 
-	text-align: center; 
-	padding-bottom: 50px; 
-}
-section#works h2.section-title { 
-	margin-bottom: 50px; 
-}
-section#works .works { 
-	padding-top: 30px; 
-	padding-bottom: 30px; 
-	min-height: 439px;
-}
-section#works .works .item { 
-	position: relative; 
-	height: 385px; 
-	width: 580px; 
-}
-section#works .works .item img { 
-	width: auto; 
-	height: 386px; 
-	box-shadow: 0px 4px 27px rgba(0,0,0,0.5); 
-	cursor: pointer;
-}
-section#works .works .item .title { 
-	position: absolute; 
-	left: 50%; 
-	transform: translateX(-50%); 
-	text-transform: uppercase; 
-	padding: 6px 20px; 
-	border-radius: 6px; 
-	min-width: 150px; 
-	border: 6px; 
-	bottom: -38px;
-}
-
-.flipster--coverflow .flipster__item__content {
-	-webkit-box-reflect: unset;
-}
-.flipster__button { 
-	top: auto; 
-	bottom: 0; 
-	margin: 0; 
-	opacity: 0.75; 
-	width: 35px; 
-	height: 35px; 
-	border: 4px solid #939393; 
-	border-radius: 50%; 
-	text-align: center; 
-	padding-top: 3px; 
-	box-sizing: border-box; 
-	padding-left: 1px; 
-	outline: none;
-}
-.flipster__button--prev {
-	left: 50%;
-	transform: translateX(-50px);
-}
-.flipster__button--next {
-	left: 50%;
-	transform: translateX(5px);
-}
-.flipster__button svg {
-	width: 14px;
-	stroke: #939393;
-	stroke-width: 4px;
-}
-
-#worksModal .modal-body {
-	padding: 0 0 15px 0;
-}
-
-#worksModal .modal-body .image {
-	height: calc(100vh - 115px);
-	background-size: cover;
-	background-position: center center;
-}
-
-#worksModal .modal-body .image img { 
-	max-height: calc(100vh - 145px);
-}
-
-
-#worksModal .prev, 
-#worksModal .next {
-	position: absolute;
-	top: calc(50% - 45px);
-	z-index: 10;
-	transform: translateY(-50%);
-	border: none;
-	background: transparent;
-	color: #ffffff;
-	font-size: 60px;
-	font-weight: bold;
-	text-decoration: none !important;
-	outline: none;
-	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
-} 
-#worksModal .prev { 
-	left: 20px;
-} 
-#worksModal .next { 
-	right: 20px;
-} 
-#worksModal button.close {
-	z-index: 55;
-	position: absolute;
-	top: 10px;
-	right: 15px;
-	text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
-	color: #ffffff;
-	font-size: 35px;
-	font-weight: bold;
-	opacity: 1;
-	outline: none;
-} 
-#worksModal .modal-header .title { 
-	text-align: center; 
-	text-transform: uppercase; 
-} 
-#worksModal .gallery { 
-	text-align: center; 
-	padding-top: 15px; 
-	padding-bottom: 5px; 
-} 
-#worksModal .gallery img { 
-	height: 80px; 
-	padding: 0 10px; 
-	cursor: pointer;
-} 
-
-
-
-@media (min-width: 768px) {
-
-	#worksModal {
-		text-align: center;
-		padding-right: 0 !important;
-	}
-	#worksModal .modal-dialog {
-		width: 100%;
-		display: inline-block;
-		margin-bottom: 0;
-		margin-top: 0;
-	}
-
-}
-
-/* Section location *********************************** */
-
-section#location { 
-	position: relative; 
-}
-section#location .container { 
-	position: relative;
-}
-section#location .map { 
-	background-image: url(../images/home/map.gif); 
-	background-size: contain; 
-	background-position: center top;
-	padding-top: 79%; 
-	background-repeat: no-repeat; 
-	margin: 4vh 4vw;
-}
-section#location main { 
-	background-color: rgba(0,38,68,0.07); 
-	padding: 30px; 
-}
-
-
-/* desktop */
-@media screen and (min-width: 992px) {
-
-	section#location .container { 
-		min-height: 804px; 
-	}
-	section#location .map {
-	} 
-	section#location main { 
-		position: absolute; 
-		right: 0; 
-		padding-top: 45%; 
-		top: 0; 
-		min-height: 100%;;
-	}
-
-}
-
-
-
-/* Section contact *********************************** */
-
-section#contact { 
-	padding: 80px 0; 
-}
-section#contact form { 
-	margin-bottom: 8px; 
-}
 
 
 /* footer *********************************** */
@@ -738,78 +439,3 @@ hr {
 }
 
 
-
-/***********************************************/
-/* Pages styles    		                      */
-/***********************************************/
-
-
-/* home page *********************************/
-
-body.page-home main { 
-}
-
-
-
-/* products page *********************************/
-
-body.page-products .container { 
-	max-width: 1300px;
-}
-body.page-products h2.section-title { 
-	margin-top: 130px; 
-	margin-bottom: 130px;
-}
-body.page-products .products { 
-	padding-bottom: 40px;
-}
-body.page-products .products article { 
-	margin-bottom: 40px;
-}
-body.page-products .products article .icon { 
-	width: 60px; 
-	height: 40px;
-	background-repeat: no-repeat; 
-	background-position: center bottom; 
-	background-size: contain; 
-	margin: 30px auto 25px auto;
-}
-body.page-products .products article h3 { 
-	text-align: center; 
-	text-transform: uppercase; 
-	border-bottom: 1px solid #939393; 
-	padding-bottom: 60px; 
-	margin-bottom: 10px; 
-	font-weight: normal;
-}
-body.page-products .products article main { 
-	font-size: 17px; 
-	line-height: 160%; 
-	border-left: 1px solid #939393; 
-	padding-top: 15px;
-}
-body.page-products .products article .image {
-}
-
-/* desktop */
-@media screen and (min-width: 992px) {
-	
-
-	body.page-products .products article h3 { 
-		border-bottom: none; 
-		padding-left: 25px; 
-		padding-right: 25px;; 
-	}
-	body.page-products .products article main { 
-		padding-left: 35px; 
-		padding-right: 35px; 
-		padding-bottom: 15px; 
-	}
-	body.page-products .products article .icon { 
-		height: 40px; 
-		width: 70px; 
-		margin-top: 55px; 
-		margin-bottom: 35px;
-	}
-	
-}

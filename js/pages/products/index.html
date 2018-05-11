@@ -1,24 +1,26 @@
 
-<div class="container">
+<section id="productos">
+	<div class="container">
 
-			<h2 class="section-title">{{ pagesData.products['title'] }}</h2>
-			
-			<div class="products">
+		<h2 class="section-title">{{ pagesData.products['title'] }}</h2>
+		
+		<div class="products">
 
-				<article ng-repeat="product in productsData" id="product-{{ product.id }}" ng-init="$last && onProductsRendered()">
-					<hr>
-					<div class="row row-flex">
-						<div class="col-md-4">
-							<div class="icon" style="background-image:url({{ product.icon.path }})"></div>
-							<h3>{{ product.name }}</h3>
-						</div>
-						<main class="col-md-8" ng-bind-html="trustAsHtml(product.description)"></main>
+			<article ng-repeat="product in productsData" id="product-{{ product.id }}" ng-init="$last && onProductsRendered()">
+				<hr>
+				<div class="row row-flex">
+					<div class="col-md-4">
+						<div class="icon" style="background-image:url({{ product.icon.path }})"></div>
+						<h3>{{ product.name }}</h3>
 					</div>
-					<hr>
-					<img src="{{ product.image.path }}" alt="{{ product.name }}" class="image">
-				</article>
+					<main class="col-md-8" ng-bind-html="trustAsHtml(product.description)"></main>
+				</div>
+				<hr>
+				<img src="{{ product.image.path }}" alt="{{ product.name }}" class="image">
+			</article>
 
 
-			</div><!-- /.row -->
-			
-		</div><!-- /.container -->
+		</div><!-- /.row -->
+		
+	</div><!-- /.container -->
+</section>

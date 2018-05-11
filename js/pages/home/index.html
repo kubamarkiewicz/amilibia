@@ -1,155 +1,155 @@
 
-		<section id="top"></section>
+<section id="home-top"></section>
 
-		<section id="intro">
-			<div class="container">
-				<div class="row">
+<section id="home-intro">
+	<div class="container">
+		<div class="row">
 
-					<div class="col-md-3 col-sm-6">
-						<div class="icon"><img src="images/home/icon1.png" alt=""></div>
-						<h4>{{ pagesData.home['col-1-title'] }}</h4>
-						<div ng-bind-html="trustAsHtml(pagesData.home['col-1-text'])"></div>
-					</div>
-
-					<div class="col-md-3 col-sm-6">
-						<div class="icon"><img src="images/home/icon2.png" alt=""></div>
-						<h4>{{ pagesData.home['col-2-title'] }}</h4>
-						<div ng-bind-html="trustAsHtml(pagesData.home['col-2-text'])"></div>
-					</div>
-
-					<div class="col-md-3 col-sm-6">
-						<div class="icon"><img src="images/home/icon3.png" alt=""></div>
-						<h4>{{ pagesData.home['col-3-title'] }}</h4>
-						<div ng-bind-html="trustAsHtml(pagesData.home['col-3-text'])"></div>
-					</div>
-
-					<div class="col-md-3 col-sm-6">
-						<div class="icon"><img src="images/home/icon4.png" alt=""></div>
-						<h4>{{ pagesData.home['col-4-title'] }}</h4>
-						<div ng-bind-html="trustAsHtml(pagesData.home['col-4-text'])"></div>
-					</div>
-
-				</div>
-			</div>
-		</section>
-
-
-		<section id="products">
-
-			<div class="container">
-
-				<h2 class="section-title">{{ pagesData.products['title'] }}</h2>
-				<div class="products row">
-
-					<article class="col-md-3 col-xs-6" ng-repeat="product in productsData">
-						<a href="products#product-{{ product.id }}">
-							<div class="icon" style="background-image:url({{ product.icon.path }})"></div>
-							<h4>{{ product.name }}</h4>
-						</a>
-					</article>
-
-
-				</div><!-- /.row -->
-				
-			</div><!-- /.container -->
-		</section>
-
-
-		<section id="works">
-			<h2 class="section-title">{{ pagesData.home['works'] }}</h2>
-			
-
-			<div class="works">
-				<div class="wrap">
-
-				    <div
-				    	class="item" 
-				    	ng-repeat="image in worksData" 
-				    	ng-init="$last && onWorksRendered()">
-						    <img ng-src="{{ image.thumb }}" 
-						    	data-toggle="modal" 
-						    	data-target="#worksModal" 
-						    	data-title="{{ image.title }}" 
-						    	data-path="{{ image.path }}" 
-						    	alt="{{ image.title }}">
-				    		<div class="title">{{ image.title }}</div>
-				    </div>
-
-			    </div>
+			<div class="col-md-3 col-sm-6">
+				<div class="icon"><img src="images/home/icon1.png" alt=""></div>
+				<h4>{{ pagesData.home['col-1-title'] }}</h4>
+				<div ng-bind-html="trustAsHtml(pagesData.home['col-1-text'])"></div>
 			</div>
 
+			<div class="col-md-3 col-sm-6">
+				<div class="icon"><img src="images/home/icon2.png" alt=""></div>
+				<h4>{{ pagesData.home['col-2-title'] }}</h4>
+				<div ng-bind-html="trustAsHtml(pagesData.home['col-2-text'])"></div>
+			</div>
 
-		</section>
+			<div class="col-md-3 col-sm-6">
+				<div class="icon"><img src="images/home/icon3.png" alt=""></div>
+				<h4>{{ pagesData.home['col-3-title'] }}</h4>
+				<div ng-bind-html="trustAsHtml(pagesData.home['col-3-text'])"></div>
+			</div>
 
-		<!-- Modal -->
-		<div id="worksModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+			<div class="col-md-3 col-sm-6">
+				<div class="icon"><img src="images/home/icon4.png" alt=""></div>
+				<h4>{{ pagesData.home['col-4-title'] }}</h4>
+				<div ng-bind-html="trustAsHtml(pagesData.home['col-4-text'])"></div>
+			</div>
 
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-body">
-						<button class="btn btn-link prev">‹</button>
-						<button class="btn btn-link next">›</button>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<div class="image"></div>
-						<div class="gallery"></div>
-					</div>
-				</div>
+		</div>
+	</div>
+</section>
 
+
+<section id="home-products">
+
+	<div class="container">
+
+		<h2 class="section-title">{{ pagesData.products['title'] }}</h2>
+		<div class="products row">
+
+			<article class="col-md-3 col-xs-6" ng-repeat="product in productsData">
+				<a href="products#product-{{ product.id }}">
+					<div class="icon" style="background-image:url({{ product.icon.path }})"></div>
+					<h4>{{ product.name }}</h4>
+				</a>
+			</article>
+
+
+		</div><!-- /.row -->
+		
+	</div><!-- /.container -->
+</section>
+
+
+<section id="home-works">
+	<h2 class="section-title">{{ pagesData.home['works'] }}</h2>
+	
+
+	<div class="works">
+		<div class="wrap">
+
+		    <div
+		    	class="item" 
+		    	ng-repeat="image in worksData" 
+		    	ng-init="$last && onWorksRendered()">
+				    <img ng-src="{{ image.thumb }}" 
+				    	data-toggle="modal" 
+				    	data-target="#worksModal" 
+				    	data-title="{{ image.title }}" 
+				    	data-path="{{ image.path }}" 
+				    	alt="{{ image.title }}">
+		    		<div class="title">{{ image.title }}</div>
+		    </div>
+
+	    </div>
+	</div>
+
+
+</section>
+
+<!-- Modal -->
+<div id="worksModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<button class="btn btn-link prev">‹</button>
+				<button class="btn btn-link next">›</button>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="image"></div>
+				<div class="gallery"></div>
 			</div>
 		</div>
 
+	</div>
+</div>
 
-		<section id="location">
 
-			<div class="container">
-				
-				<div class="map"></div>
-				
-				<main ng-bind-html="trustAsHtml(pagesData.home['location'])"></main>
+<section id="home-location">
 
+	<div class="container">
+		
+		<div class="map"></div>
+		
+		<main ng-bind-html="trustAsHtml(pagesData.home['location'])"></main>
+
+	</div>
+
+
+</section>
+
+
+<section id="home-contact">
+
+	<div class="container">
+		<h3>{{ pagesData.home['contact_us'] }}</h3>
+		<form id="my-form" ng-submit="submit()">
+			<div class="row">
+				<div class="form-group col-sm-6">
+					<input class="form-control" type="text" ng-model="name" placeholder="{{ pagesData.home['name'] }}" required>
+				</div>
+				<div class="form-group col-sm-6">
+					<input class="form-control" type="text" ng-model="company" placeholder="{{ pagesData.home['company'] }}">
+				</div>
+				<div class="form-group col-sm-6">
+					<input class="form-control" type="email" ng-model="email" placeholder="{{ pagesData.home['email'] }}" required>
+				</div>
+				<div class="form-group col-sm-6">
+					<input class="form-control" type="text" ng-model="phone" placeholder="{{ pagesData.home['phone'] }}">
+				</div>
 			</div>
-
-
-		</section>
-
-
-		<section id="contact">
-
-			<div class="container">
-				<h3>{{ pagesData.home['contact_us'] }}</h3>
-				<form id="my-form" ng-submit="submit()">
-					<div class="row">
-						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" ng-model="name" placeholder="{{ pagesData.home['name'] }}" required>
-						</div>
-						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" ng-model="company" placeholder="{{ pagesData.home['company'] }}">
-						</div>
-						<div class="form-group col-sm-6">
-							<input class="form-control" type="email" ng-model="email" placeholder="{{ pagesData.home['email'] }}" required>
-						</div>
-						<div class="form-group col-sm-6">
-							<input class="form-control" type="text" ng-model="phone" placeholder="{{ pagesData.home['phone'] }}">
-						</div>
-					</div>
-					<div class="form-group">
-						<textarea  ng-model="message" class="form-control" placeholder="{{ pagesData.home['message'] }}"></textarea>
-		    		</div>	
-					<div class="row">
-						<div class="col-xs-6">
-						</div>
-						<div class="col-xs-6 text-right">
-							<button type="submit" class="btn" data-loading-text="<span class='glyphicon glyphicon-repeat gly-spin'></span> Sending ...">{{ pagesData.home['send'] }}</button>
-						</div>
-					</div>
-				</form>
-
-				<p class="alert alert-success" ng-show="contactSent"><span class="glyphicon glyphicon-ok"></span> {{ pagesData.home['contact-sent'] }}</p> 
-
-
-				<small ng-bind-html="trustAsHtml(pagesData.home['privacy_policy'])"></small>
-				
+			<div class="form-group">
+				<textarea  ng-model="message" class="form-control" placeholder="{{ pagesData.home['message'] }}"></textarea>
+    		</div>	
+			<div class="row">
+				<div class="col-xs-6">
+				</div>
+				<div class="col-xs-6 text-right">
+					<button type="submit" class="btn" data-loading-text="<span class='glyphicon glyphicon-repeat gly-spin'></span> Sending ...">{{ pagesData.home['send'] }}</button>
+				</div>
 			</div>
+		</form>
 
-		</section>
+		<p class="alert alert-success" ng-show="contactSent"><span class="glyphicon glyphicon-ok"></span> {{ pagesData.home['contact-sent'] }}</p> 
+
+
+		<small ng-bind-html="trustAsHtml(pagesData.home['privacy_policy'])"></small>
+		
+	</div>
+
+</section>
