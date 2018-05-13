@@ -1,0 +1,6 @@
+
+<?php if ($tree) foreach($tree as $item) if (count($item->children)) : ?>
+
+	<?= $this->makePartial('tree_item', ['item' => $item]) ?>
+	
+<?php endif ?>	

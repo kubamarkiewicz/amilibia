@@ -1,0 +1,6 @@
+plugin:
+    name: 'kubamarkiewicz.contact::lang.plugin.name'
+    description: 'kubamarkiewicz.contact::lang.plugin.description'
+    author: 'Kuba Markiewicz'
+    icon: oc-icon-envelope-o
+    homepage: ''

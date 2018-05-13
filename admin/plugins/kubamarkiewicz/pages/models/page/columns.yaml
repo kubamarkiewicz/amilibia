@@ -1,0 +1,22 @@
+columns:
+    # id:
+    #     label: ID
+    #     type: number
+    #     sortable: false
+    #     width: 80px
+    name:
+        label: 'kubamarkiewicz.pages::lang.page.name'
+        type: text
+        sortable: false
+    url:
+        label: 'kubamarkiewicz.pages::lang.page.url'
+        type: text
+        sortable: false
+    published:
+        label: 'kubamarkiewicz.pages::lang.page.published'
+        type: switch
+        sortable: false
+    buttons:
+        label: ''
+        type: partial
+        path: ~/plugins/kubamarkiewicz/pages/controllers/pages/_buttons_column.htm

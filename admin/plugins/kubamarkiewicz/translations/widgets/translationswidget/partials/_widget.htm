@@ -1,0 +1,16 @@
+
+<section id="kubamarkiewicz-translations-widget">
+
+	<?php if ($tree) : ?>
+		<aside>
+			<?= $this->makePartial('tree') ?>
+		</aside>	
+	<?php endif ?> 
+
+	<main id="kubamarkiewicz-translations-widget-children">
+		<?php if ($page) : ?> 
+			<?= $this->makePartial('children', ['id' => $page->id]) ?>
+		<?php endif ?> 
+	</main>	
+
+</section>

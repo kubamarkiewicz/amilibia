@@ -1,0 +1,11 @@
+name: Pages
+modelClass: KubaMarkiewicz\Pages\Models\Page
+form: $/kubamarkiewicz/pages/models/page/fields.yaml
+defaultRedirect: kubamarkiewicz/pages/pages
+create:
+    redirect: 'kubamarkiewicz/pages/pages/update/:id'
+    redirectClose: kubamarkiewicz/pages/pages
+update:
+    redirect: kubamarkiewicz/pages/pages
+    redirectClose: kubamarkiewicz/pages/pages
+preview: {  }

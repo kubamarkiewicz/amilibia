@@ -1,0 +1,15 @@
+columns:
+    code:
+        label: Code
+        type: text
+        searchable: true
+        sortable: false
+    type:
+        label: Type
+        type: text
+        searchable: true
+        sortable: false
+    buttons:
+        label: ''
+        type: partial
+        path: ~/plugins/kubamarkiewicz/translations/controllers/translations/_buttons_column.htm

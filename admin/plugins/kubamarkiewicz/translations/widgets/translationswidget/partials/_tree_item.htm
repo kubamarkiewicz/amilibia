@@ -1,0 +1,13 @@
+<p class="depth-<?=$item->nest_depth?>">
+	<a 
+		href="javascript:"
+		data-request="<?= $this->getEventHandler('onTreeItemSelect') ?>"
+		data-request-data="id: '<?=$item->id?>', lang: window.sessionStorage.locale"
+		><?=$item->code?></a>
+</p>
+
+<?php foreach($item->children as $child) if (count($child->children)) : ?>
+
+	<?= $this->makePartial('tree_item', ['item' => $child]) ?>
+
+<?php endif ?>

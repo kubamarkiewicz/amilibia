@@ -1,0 +1,126 @@
+
+#kubamarkiewicz-translations-widget {
+	display: flex;
+	margin: -20px;
+	min-height: 100%;
+}
+#kubamarkiewicz-translations-widget > aside {
+	background-color: #ecf0f1;
+	width: 350px;
+	flex-shrink: 0;
+}
+#kubamarkiewicz-translations-widget > aside p {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+#kubamarkiewicz-translations-widget > aside a {
+	display: block;
+	padding: 12px 20px;
+	color: #666666;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+#kubamarkiewicz-translations-widget > aside p.depth-1 a {
+	padding-left: 40px;
+}
+#kubamarkiewicz-translations-widget > aside p.depth-2 a {
+	padding-left: 60px;
+}
+#kubamarkiewicz-translations-widget > aside p.depth-3 a {
+	padding-left: 80px;
+}
+#kubamarkiewicz-translations-widget > aside p.depth-4 a {
+	padding-left: 100px;
+}
+#kubamarkiewicz-translations-widget > aside p.depth-5 a {
+	padding-left: 120px;
+}
+#kubamarkiewicz-translations-widget > aside a:hover, 
+#kubamarkiewicz-translations-widget > aside a:focus {
+	background-color: #dddddd;
+	text-decoration: none;
+}
+#kubamarkiewicz-translations-widget > aside a:active,
+#kubamarkiewicz-translations-widget > aside a.selected {
+	background-color: #9098a2;
+	color: #ffffff;
+	text-decoration: none;
+}
+#kubamarkiewicz-translations-widget > aside a.selected:after {
+	position: absolute;
+    height: 100%;
+    width: 4px;
+    left: 0;
+    top: 0;
+    background: <?=$secondary_color?>;
+    display: block;
+    content: '';
+}
+#kubamarkiewicz-translations-widget > aside h4 {
+	padding: 15px 20px;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 12px;
+	margin: 0;
+	color: #666666;
+}
+#kubamarkiewicz-translations-widget > main {
+	padding: 20px;
+	flex: 1;
+}
+#kubamarkiewicz-translations-widget > main > h2 {
+	margin:5px 0 30px 0;
+	padding: 0;
+	text-transform: uppercase;
+	color: #666666;
+}
+#kubamarkiewicz-translations-widget > main > h3 {
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	color: #666666;
+}
+#kubamarkiewicz-translations-widget > main label {
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #666666;
+	display: block;
+}
+#kubamarkiewicz-translations-widget > main article {
+	margin-bottom: 20px;
+}
+#kubamarkiewicz-translations-widget > main article section.preview {
+}
+#kubamarkiewicz-translations-widget > main article section.preview .edit {
+	background-color: hsl(0, 35%, 99%);
+	padding: 6px;
+	border-radius: 4px;
+	display: block;
+	color: inherit;
+	cursor: text;
+	min-height: 35px;
+}
+#kubamarkiewicz-translations-widget > main article section.preview .edit:hover {
+	text-decoration: none;
+	background-color: #ffffff;
+}
+#kubamarkiewicz-translations-widget > main article section.preview .edit:focus, 
+#kubamarkiewicz-translations-widget > main article section.preview .edit:active {
+	text-decoration: none;
+}
+
+#kubamarkiewicz-translations-widget > main article section.preview.image-mediafinder .edit {
+	cursor: pointer;
+	display: inline-block;
+}
+#kubamarkiewicz-translations-widget > main article section.preview.image-mediafinder .edit img {
+	max-height: 75px;
+}
+
+#kubamarkiewicz-translations-widget .language-switch {
+	float: right;
+}
+

@@ -1,0 +1,35 @@
+<!-- <h4><?= e(trans('kubamarkiewicz.translations::lang.sections')) ?></h4> -->
+
+<?php if ($sections) foreach($sections as $item) : ?>
+	
+	<p>
+		<a href="<?= Backend::url('kubamarkiewicz/translations/translations/section') ?>/<?=$item->id?>" class="<?=$item->id==$id ? 'selected' : ''?>"><?=$item->code?></a>
+	</p>
+
+	<? foreach ($item->children as $child) : ?>
+
+		<p class="depth-1">
+			<a href="<?= Backend::url('kubamarkiewicz/translations/translations/section') ?>/<?=$child->id?>" class="<?=$child->id==$id ? 'selected' : ''?>"><?=$child->code?></a>
+		</p>
+
+		<?php foreach($child->children as $child_2) :  ?>
+
+			<p class="depth-2">
+				<a href="<?= Backend::url('kubamarkiewicz/translations/translations/section') ?>/<?=$child_2->id?>" class="<?=$child_2->id==$id ? 'selected' : ''?>"><?=$child_2->code?></a>
+			</p>
+
+			<?php foreach($child_2->children as $child_3) : ?>
+
+				<p class="depth-3">
+					<a href="<?= Backend::url('kubamarkiewicz/translations/translations/section') ?>/<?=$child_3->id?>" class="<?=$child_3->id==$id ? 'selected' : ''?>"><?=$child_3->code?></a></p>
+
+			<?php endforeach ?>	
+
+		<?php endforeach ?>	
+
+	<?php endforeach ?>	
+	
+<?php endforeach ?>	
+
+<br>
+<br>

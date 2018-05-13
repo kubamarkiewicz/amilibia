@@ -1,0 +1,18 @@
+plugin:
+    name: 'kubamarkiewicz.pages::lang.plugin.name'
+    description: 'kubamarkiewicz.pages::lang.plugin.description'
+    author: 'Kuba Markiewicz'
+    icon: oc-icon-files-o
+    homepage: ''
+permissions:
+    manage_pages:
+        tab: 'kubamarkiewicz.pages::lang.permissions.manage'
+        label: 'kubamarkiewicz.pages::lang.permissions.manage'
+navigation:
+    main-menu-item:
+        label: 'kubamarkiewicz.pages::lang.plugin.name'
+        url: kubamarkiewicz/pages/pages
+        icon: icon-files-o
+        permissions:
+            - manage_pages
+        order: '1'

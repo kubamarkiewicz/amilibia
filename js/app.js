@@ -1,11 +1,97 @@
 
 var app = angular.module("myApp", [
     "ngRoute",
-    "ngSanitize"
+    "ngSanitize",
+    'pascalprecht.translate'
 ]);
 
 // load configuration from files
 app.constant('config', window.config);
+
+
+// translations
+
+app.config(['$translateProvider', function ($translateProvider) {
+
+    // choose language form local storage or default
+    if (!window.localStorage.locale) {
+        window.localStorage.locale = config.defaultLanguage;
+    }
+    $translateProvider.preferredLanguage(window.localStorage.locale);
+
+    $translateProvider.useUrlLoader(config.api.urls.getTranslations);
+    $translateProvider.useSanitizeValueStrategy(null);
+    // tell angular-translate to use your custom handler
+    $translateProvider.useMissingTranslationHandler('missingTranslationHandlerFactory');
+
+
+}]);
+
+// define missing Translation Handler
+app.factory('missingTranslationHandlerFactory', function () {
+
+    var missingTranslations = {
+        codes : [],
+        translations : [],
+        types : [],
+        parameters : []
+    };
+
+    return function (translationId) {
+
+        // prevent multiple calls
+        var index = missingTranslations.codes.indexOf(translationId);
+        if (index != -1) {
+            return missingTranslations.translations[index];
+        }
+
+        // call API: send all missing translations at once
+        if (!missingTranslations.codes.length) {
+            setTimeout(function(){ 
+                $.post({
+                    url     : config.api.urls.missingTranslations,
+                    data    : {
+                        codes : missingTranslations.codes,
+                        types : missingTranslations.types,
+                        translations : missingTranslations.translations,
+                        parameters : missingTranslations.parameters
+                    }
+                });
+            }, 1000);
+        }
+
+        // use last element from translationId as default translation
+        var translation = translationId.substr(translationId.lastIndexOf(".") + 1);
+        var type;
+        var parameters = {};
+
+        // find html element
+        var element = $("[translate='" + translationId + "'], [translate-cloak='" + translationId + "'], [translate-attr-src='" + translationId + "']");
+        if (element) {
+            if (element.html()) {
+                translation = element.html();
+            }
+            type = element.attr('translate-type');
+            switch (type) {
+                case 'image-mediafinder':
+                    parameters.width = element.attr('translate-width');
+                    parameters.height = element.attr('translate-height');
+                    parameters.mode = element.attr('translate-mode');
+                    translation = element.attr('src');
+                    break;
+            }
+        }
+
+        // add missing translation to the table         
+        missingTranslations.codes.push(translationId);
+        missingTranslations.translations.push(translation);
+        missingTranslations.types.push(type);
+        missingTranslations.parameters.push(parameters);
+        
+        return translation;
+    };
+
+});
 
 // ROUTING ===============================================
 app.config(function ($routeProvider, $locationProvider) { 
@@ -35,32 +121,45 @@ app.config(['$httpProvider', function($httpProvider) {
     }
 ]);
 
-app.run(function($rootScope, $sce, $http, $location, $routeParams, $anchorScroll) {
+app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, $window, $route, $routeParams) {
 
-    // fix for displaying html from model field
-    $rootScope.trustAsHtml = function(string) {
-        return $sce.trustAsHtml(string);
-    };
 
-    // on loading ...
-    $rootScope.loading = false; 
+    $rootScope.homeSlug = 'home';
 
-    $rootScope.$on('$routeChangeStart', function (event, next, prev) {
+    $("body").removeClass('loading');
 
-        // set body class "page-slug"
-        var slug = 'home';
-        if (next.originalPath && next.originalPath.substring(1)) {
-            slug = next.originalPath.substring(1);
+    $rootScope.$on('$routeChangeStart', function (event, next, prev) 
+    {
+        // set body class as "prev-page-slug"
+        $("body")
+        .removeClass(function (index, className) {
+            return (className.match (/(^|\s)prev-page-\S+/g) || []).join(' ');
+        })
+        .addClass("prev-page-"+$rootScope.pageSlug);
+
+        // find page slug
+        delete $rootScope.pageSlug;
+        if (typeof next.originalPath !== undefined && next.originalPath && next.originalPath.length > 1) {
+            $rootScope.pageSlug = next.originalPath.substring(1);
+            // substring until first slash
+            if ($rootScope.pageSlug.indexOf('/') != -1) {
+                $rootScope.pageSlug = $rootScope.pageSlug.substr(0, $rootScope.pageSlug.indexOf('/'));
+            }
         }
+        if ($rootScope.pageSlug == undefined) {
+            $rootScope.pageSlug = $rootScope.homeSlug;
+        }
+
+        // set body class as "page-slug"
         $("body")
         .removeClass(function (index, className) {
             return (className.match (/(^|\s)page-\S+/g) || []).join(' ');
         })
-        .addClass("page-"+slug);
+        .addClass("page-"+$rootScope.pageSlug);
 
-        $rootScope.loading = true;
+        $rootScope.setMetadata(); 
     });
-    
+
     // scroll to hash element
     $rootScope.$on('$routeChangeSuccess', function() {
         $rootScope.loading = false;
@@ -68,6 +167,15 @@ app.run(function($rootScope, $sce, $http, $location, $routeParams, $anchorScroll
         $location.hash($routeParams.scrollTo);
         $anchorScroll();  
     });
+
+
+    // fix for displaying html from model field
+    $rootScope.trustAsHtml = function(string) {
+        return $sce.trustAsHtml(string);
+    };
+
+    
+
 
 
     $(function(){
@@ -113,20 +221,39 @@ app.run(function($rootScope, $sce, $http, $location, $routeParams, $anchorScroll
 
 
 
-    // load pages content
+  
+
+    // load pages data
     $rootScope.pagesData = [];
-    
     $rootScope.loadPagesData = function()
     {
         $http({
             method  : 'GET',
-            url     : config.api.urls.getPages + '/' + $rootScope.locale + '/pages'
+            url     : config.api.urls.getPages,
+            params  : {
+                'lang': $rootScope.language
+            }
         })
         .then(function(response) {
             $rootScope.pagesData = response.data;
+            $rootScope.setMetadata();
         });
     }
     $rootScope.loadPagesData();
+
+
+
+    // set metadata
+    $rootScope.setMetadata = function()
+    {
+        var page = $rootScope.pagesData[$rootScope.pageSlug];
+
+        if (page) {
+            document.title = page.meta_title;
+            document.querySelector('meta[name=description]').setAttribute('content', page.meta_description);
+        }
+    }
+
 
 });
 

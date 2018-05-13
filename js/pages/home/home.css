@@ -2,7 +2,7 @@
 
 /* Section top *********************************** */
 
-section#home-top {
+section#top {
 	height: calc(100vh);;
 	position: relative;
 	background-image: url(../../../images/home/blanes.jpg);
@@ -15,7 +15,7 @@ section#home-top {
 /* desktop */
 @media screen and (min-width: 992px) {
 	
-	section#home-top {
+	section#top {
 		height: calc(100vh);
 	}
 
@@ -24,7 +24,7 @@ section#home-top {
 
 /* Section intro *********************************** */
 
-section#home-intro {
+section#intro {
 	text-align: center;
 	background-image: url(../../../images/home/back2b.jpg);
 	background-size: cover;
@@ -36,18 +36,18 @@ section#home-intro {
 	background-color: #ffffff;
 	min-height: 1400px;
 }
-section#home-intro .icon {
+section#intro .icon {
 	text-align: center;
 	margin: 55px 0;
 }
-section#home-intro .icon img { 
+section#intro .icon img { 
 	height: 42px;
 }
 
 
 /* Section products *********************************** */
 
-section#home-products { 
+section#products { 
 	background-image: url(../../../images/home/back3.jpg); 
 	background-size: contain; 
 	background-position: center bottom;
@@ -57,18 +57,18 @@ section#home-products {
 	z-index: 3; 
 	background-color: #f6f6f8;
 }
-section#home-products .products {
+section#products .products {
 }
-section#home-products .products article { 
+section#products .products article { 
 	text-align: center; 
 	margin-top: 25px; 
 	margin-bottom: 25px; 
 	height: 120px;
 }
-section#home-products .products article a { 
+section#products .products article a { 
 	color: inherit;
 }
-section#home-products .products article .icon { 
+section#products .products article .icon { 
 	height: 40px;
 	background-repeat: no-repeat; 
 	background-position: center bottom; 
@@ -76,7 +76,7 @@ section#home-products .products article .icon {
 	width: 60px; 
 	margin: 0 auto 25px auto;
 }
-section#home-products .products article h4 { 
+section#products .products article h4 { 
 	text-transform: uppercase; 
 	margin-top: 0px; 
 	font-size: 16px; 
@@ -86,12 +86,12 @@ section#home-products .products article h4 {
 /* desktop */
 @media screen and (min-width: 992px) {
 
-	section#home-products .products article .icon { 
+	section#products .products article .icon { 
 		height: 40px; 
 		width: 70px;
 	}
 
-	section#home-products .products article h4 { 
+	section#products .products article h4 { 
 		font-size: 20px; 
 	}
 }
@@ -100,30 +100,30 @@ section#home-products .products article h4 {
 
 /* Section works *********************************** */
 
-section#home-works { 
+section#works { 
 	text-align: center; 
 	padding-bottom: 50px; 
 }
-section#home-works h2.section-title { 
+section#works h2.section-title { 
 	margin-bottom: 50px; 
 }
-section#home-works .works { 
+section#works .works { 
 	padding-top: 30px; 
 	padding-bottom: 30px; 
 	min-height: 439px;
 }
-section#home-works .works .item { 
+section#works .works .item { 
 	position: relative; 
 	height: 385px; 
 	width: 580px; 
 }
-section#home-works .works .item img { 
+section#works .works .item img { 
 	width: auto; 
 	height: 386px; 
 	box-shadow: 0px 4px 27px rgba(0,0,0,0.5); 
 	cursor: pointer;
 }
-section#home-works .works .item .title { 
+section#works .works .item .title { 
 	position: absolute; 
 	left: 50%; 
 	transform: translateX(-50%); 
@@ -249,13 +249,17 @@ section#home-works .works .item .title {
 
 /* Section location *********************************** */
 
-section#home-location { 
+section#location { 
 	position: relative; 
 }
-section#home-location .container { 
+section#location .container { 
 	position: relative;
 }
-section#home-location .map { 
+section#location main { 
+	background-color: rgba(0,38,68,0.07); 
+	padding: 30px; 
+}
+section#location .map { 
 	background-image: url(../../../images/home/map.gif); 
 	background-size: contain; 
 	background-position: center top;
@@ -263,21 +267,98 @@ section#home-location .map {
 	background-repeat: no-repeat; 
 	margin: 4vh 4vw;
 }
-section#home-location main { 
-	background-color: rgba(0,38,68,0.07); 
-	padding: 30px; 
+section#location .map .marker {
+	position: absolute;
+	/* width: 10px; */
+	/* height: 10px; */
+	/* background: red; */
+}
+section#location .map .marker a.icon {
+	border: 2px solid #7e7e7f;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	background-color: rgba(0,0,0,0.2);
+	transform: translate(-50%, -50%);
+}
+section#location .map .marker a.icon:hover, 
+section#location .map .marker.open a.icon {
+	border-color: #57c1e9;
+}
+section#location .map .marker a.icon::before {
+	content: '';
+	width: 8px;
+	height: 8px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #7e7e7f;
+	border-radius: 50%;
+}
+section#location .map .marker a.icon:hover::before,
+section#location .map .marker.open a.icon::before {
+	background-color: #57c1e9;
+}
+section#location .map .marker .info-window {
+	position: absolute;
+	background-color: rgba(255,255,255,0.98);
+	z-index: 2;
+	left: 20px;
+	padding: 15px 15px;
+	box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s linear 0.35s, opacity 0.35s ease-out;
+	margin: -28px 0 0 6px;
+	width: 250px;
+}
+section#location .map .marker.open .info-window
+/*section#location .map .marker:hover .info-window */
+{
+    visibility: visible;
+    opacity: 1;
+    transition-delay:0s;
+}
+section#location .map .marker .info-window .arrow {
+	content: '';
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 11px solid transparent;
+	border-right: 11px solid rgba(0,0,0,0.1);
+	position: absolute;
+	z-index: 2;
+	left: -11px;
+	margin: 4px 0 0 0;
+}
+section#location .map .marker .info-window .arrow::before {
+	content: '';
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 10px solid rgba(255,255,255,1);
+	position: absolute;
+	/* z-index: 0; */
+	left: 1px;
+	margin: -10px 0 0 0;
+}
+section#location .map .marker .info-window h4.title {
+	margin-top: 2px;
 }
 
 
 /* desktop */
 @media screen and (min-width: 992px) {
 
-	section#home-location .container { 
+	section#location .container { 
 		min-height: 804px; 
 	}
-	section#home-location .map {
+	section#location .map {
 	} 
-	section#home-location main { 
+	section#location main { 
 		position: absolute; 
 		right: 0; 
 		padding-top: 45%; 
@@ -291,9 +372,9 @@ section#home-location main {
 
 /* Section contact *********************************** */
 
-section#home-contact { 
+section#contact { 
 	padding: 80px 0; 
 }
-section#home-contact form { 
+section#contact form { 
 	margin-bottom: 8px; 
 }

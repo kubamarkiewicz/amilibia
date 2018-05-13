@@ -6,7 +6,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
         // top image parallax effect
         $(window).scroll(function() {
-            $('section#home-top').css('transform', 'translateY('+ ($(window).scrollTop() / 2) + 'px)');
+            $('section#top').css('transform', 'translateY('+ ($(window).scrollTop() / 2) + 'px)');
         }); 
 
 	});
@@ -48,7 +48,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
         $timeout(function(){
 
             // works cover flow slider
-            myFlipster = $('section#home-works .works').flipster({
+            myFlipster = $('section#works .works').flipster({
                 itemContainer: '.wrap',
                 itemSelector: '.item',
                 buttons: true,
@@ -58,7 +58,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
                 onItemSwitch: $scope.onFlipsterItemSwitch
             });
 
-            $("section#home-works .works .item img").click(function(){
+            $("section#works .works .item img").click(function(){
                 $scope.updateModalImage($(this));
             });
 
@@ -88,9 +88,22 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
     $scope.onGalleryImageClick = function(){
         var path = $(this).data('path');
-        var target = $('section#home-works .works .item img[data-path="' + path + '"').parent().parent();
+        var target = $('section#works .works .item img[data-path="' + path + '"').parent().parent();
         myFlipster.flipster('jump', target);
     }
+
+
+
+    // mapa
+    $(function(){
+
+        $('section#location .map .marker .icon').click(function(){
+            var marker = $(this).parent();
+            marker.toggleClass('open');
+            $('section#location .map .marker').not(marker).removeClass('open');
+        });
+
+    });
 
 
 

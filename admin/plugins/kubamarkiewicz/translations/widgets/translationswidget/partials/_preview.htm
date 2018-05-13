@@ -1,0 +1,25 @@
+
+<section class="preview <?=$item->type?>">
+	<label><?=$item->code?></label>
+
+	<!-- todo: change a with div -->
+
+	<div 
+		onclick="onEditClick('<?=$item->id?>')"
+		class="edit"
+	    data-toggle="tooltip"
+	    data-placement="bottom"
+	    data-delay="0"
+	    title="Editar"
+		>
+		<?php if ($item->type == \KubaMarkiewicz\Translations\Models\Translation::TYPE_IMAGE_MEDIAFINDER) : ?>
+			<?php if ($item->translation): ?>
+				<img src="<?=url('/').\Config::get('cms.storage.media.path').$item->translation?>" alt="">
+			<?php else: ?>
+				<div class="placeholder"><span class="upload-button-icon oc-icon-upload large-icon"></span></div>
+			<?php endif ?>
+		<?php else: ?>
+			<?=$item->getTranslateAttribute('translation', $lang)?>
+		<?php endif ?>
+	</div>
+</section>

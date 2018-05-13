@@ -1,0 +1,12 @@
+plugin:
+    name: 'kubamarkiewicz.translations::lang.plugin.name'
+    description: 'kubamarkiewicz.translations::lang.plugin.description'
+    author: 'Kuba Markiewicz'
+    icon: oc-icon-file-text-o
+    homepage: 'http://markiewicz.click'
+navigation:
+    main-menu-item:
+        label: 'kubamarkiewicz.translations::lang.plugin.name'
+        url: /kubamarkiewicz/translations/translations/section
+        icon: icon-file-text-o
+        order: '2'

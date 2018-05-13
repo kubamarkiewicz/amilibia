@@ -1,0 +1,34 @@
+ 
+<?= Form::ajax($this->getEventHandler('onSave')) ?>
+	<input type="hidden" name="id" value="<?=$id?>">
+	<input type="hidden" name="lang">
+	<input type="hidden" name="form_mode" value="1">
+	<?= $form->render() ?>
+<?= Form::close() ?>
+
+<script>
+	
+	$(function(){
+
+		multilingualFix();
+
+		setTimeout(function(){
+			setFieldsLangFromSession();
+		}, 300);
+
+		// autofocus
+		$("#kubamarkiewicz-translations-widget form input:text:visible:first").focus();
+
+		// bind fields lang switch to widget language swtich	
+		$('#kubamarkiewicz-translations-widget ul.ml-dropdown-menu [data-switch-locale]').click(function(){
+			widgetSwitchLangSwitch($(this).data('switch-locale'));
+		});	
+
+		// autosave field
+/*		$('#kubamarkiewicz-translations-widget form input[type=text]').change(function(){
+			$(this).closest('form').submit();
+		});*/
+
+	});
+
+</script>

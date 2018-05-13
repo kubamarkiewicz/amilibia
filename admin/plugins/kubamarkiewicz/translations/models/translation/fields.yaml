@@ -1,0 +1,43 @@
+fields:
+    parent:
+        label: 'kubamarkiewicz.translations::lang.parent'
+        oc.commentPosition: ''
+        nameFrom: code
+        descriptionFrom: description
+        span: left
+        type: relation
+        emptyOption: '-'
+    code:
+        label: 'kubamarkiewicz.translations::lang.code'
+        oc.commentPosition: ''
+        span: left
+        type: text
+    type:
+        label: 'kubamarkiewicz.translations::lang.type'
+        oc.commentPosition: ''
+        span: left
+        type: dropdown
+    translation:
+        label: 'kubamarkiewicz.translations::lang.translation'
+        size: ''
+        span: left
+        type: textarea
+    image:
+        label: 'Image upload'
+        mode: image
+        imageWidth: '200'
+        imageHeight: '100'
+        useCaption: true
+        thumbOptions:
+            mode: landscape
+            extension: auto
+        span: right
+        type: fileupload
+    config:
+        label: Config
+        size: huge
+        language: php
+        tabSize: '4'
+        span: left
+        type: codeeditor
+        commentAbove: YAML

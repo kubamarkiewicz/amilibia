@@ -1,0 +1,46 @@
+<?php if (count($children)) : ?>
+
+
+	<div class="language-switch">
+
+		<div class="control-balloon-selector">
+    		<ul>
+    			<?php foreach ($languages as $locale => $name) : ?>
+	                <li data-switch-locale="<?=$locale?>" onclick="javascript:widgetChangeLanguage('<?=$locale?>')">
+						<?=$locale?>
+	                </li>
+				<?php endforeach ?>
+            </ul>
+		</div>
+		
+	</div>
+
+	<button
+        type="button"
+        onclick="saveAndCloseForms()"
+        data-hotkey="ctrl+s, cmd+s"
+        data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+        class="btn btn-primary">
+        <?= e(trans('backend::lang.form.save')) ?>
+    </button>
+	<br>
+	<br>
+
+	<?php foreach ($children as $child) : ?>
+
+		<article id="kubamarkiewicz-translations-widget-child-<?=$child->id?>" data-id="<?=$child->id?>">
+	 
+			<?= $this->makePartial('preview', ['item' => $child]) ?>
+
+		</article>
+
+	<?php endforeach ?>
+
+<?php endif ?>
+
+<script>
+	
+	var locale = window.sessionStorage.locale ? window.sessionStorage.locale : '<?=$lang?>';
+	widgetSwitchLangSwitch(locale);
+
+</script>

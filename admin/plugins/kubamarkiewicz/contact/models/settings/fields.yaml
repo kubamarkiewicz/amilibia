@@ -1,0 +1,7 @@
+fields:
+    contact_email:
+        label: 'kubamarkiewicz.contact::lang.settings.email'
+        span: left
+        placeholder: 'kubamarkiewicz.contact::lang.settings.email_placeholder'
+        default: null
+        type: text

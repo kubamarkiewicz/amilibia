@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title></title>
+    <meta name="description" content="">
     <base href="/2017/amilibia/www/">
     <!-- <base href="/test/amilibia/"> -->
-    <title>amilibia</title>
 
     <!-- Le styles -->
     <link href="js/libraries/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -29,11 +31,21 @@
                 <div class="slice"></div>
             </div>
             <nav>
-                <a href="index.html#top">{{ pagesData.menu['link-1-title'] }}</a>
-                <a href="products">{{ pagesData.menu['link-2-title'] }}</a>
-                <a href="index.html#works">{{ pagesData.menu['link-3-title'] }}</a>
-                <a href="index.html#location">{{ pagesData.menu['link-4-title'] }}</a>
-                <a href="index.html#contact">{{ pagesData.menu['link-5-title'] }}</a>
+                <a 
+                    href="index.html#top" 
+                    translate="menu.home">Home</a>
+                <a 
+                    href="products" 
+                    translate="menu.productos">Productos</a>
+                <a 
+                    href="index.html#works"
+                    translate="menu.obras">Obras</a>
+                <a 
+                    href="index.html#location"
+                    translate="menu.ubicacion">Ubicación</a>
+                <a 
+                    href="index.html#contact"
+                    translate="menu.contacto">Contacto</a>
                 <span class="languages">
                     <a href="javascript:" ng-click="setLocale('es')" ng-class="locale == 'es' ? 'selected' : ''">ES</a>
                     <a href="javascript:" ng-click="setLocale('en')" ng-class="locale == 'en' ? 'selected' : ''">EN</a>
@@ -68,23 +80,24 @@
 	<!-- Le javascript -->
 	<!-- Placed at the end of the document so the pages load faster -->
 
-    <!-- Libraries -->
     <script src="js/libraries/jquery/dist/jquery.min.js"></script>
     <!-- <script src="js/libraries/jquery-validation/dist/jquery.validate.min.js"></script> -->
     <script src="js/libraries/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="js/libraries/angular/angular.min.js"></script>
+    <script src="js/libraries/angular-route/angular-route.min.js"></script>
+    <script src="js/libraries/angular-translate/angular-translate.min.js"></script>
+    <script src="js/libraries/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
+    <script src="js/libraries/angular-sanitize/angular-sanitize.min.js"></script>
+
+    <!-- Angular Application -->
     <script src="js/config/api.js"></script>
     <script src="js/app.js"></script>
 
-    <!-- Modules -->
-    <script src="js/libraries/angular-route/angular-route.min.js"></script>
-    <script src="js/libraries/angular-sanitize/angular-sanitize.min.js"></script>
-
-    <!-- Components -->
+    <!-- Pages Controllers -->
     <script src="js/pages/home/home-controller.js"></script>
     <script src="js/pages/products/products-controller.js"></script>
 
-    <!-- more Libraries -->
+    <!-- More Libraries -->
     <script src="js/libraries/jquery-flipster/dist/jquery.flipster.min.js"></script>
 
 </body>

@@ -1,0 +1,21 @@
+plugin:
+    name: 'amilibia.amilibia::lang.plugin.name'
+    description: 'amilibia.amilibia::lang.plugin.description'
+    author: Amilibia
+    icon: oc-icon-circle-o
+    homepage: ''
+permissions:
+    products:
+        tab: products
+        label: products
+navigation:
+    main-menu-item2:
+        label: Productos
+        url: amilibia/amilibia/products
+        icon: icon-life-ring
+        order: '3'
+    main-menu-item3:
+        label: Obras
+        url: amilibia/amilibia/works
+        icon: icon-map-marker
+        order: '4'

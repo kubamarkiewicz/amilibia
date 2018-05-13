@@ -1,0 +1,12 @@
+<script>
+
+    $(function() {
+
+        $('#Form-field-Page-name, #Form-field-Page-slug').change(function() {
+            if (!$('#Form-field-Page-slug').val()) {
+                $('#Form-field-Page-slug').val(slugify($('#Form-field-Page-name').val()));
+            }
+        });
+
+    });
+</script>

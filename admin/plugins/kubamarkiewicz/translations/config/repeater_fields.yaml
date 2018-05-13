@@ -1,0 +1,51 @@
+# ===================================
+#  Used by Grouped Repeater
+# ===================================
+
+textarea:
+    name: Textarea
+    description: Plain text
+    icon: icon-file-text-o
+    fields:
+        text_area:
+            label: xxx
+            type: textarea
+            size: tiny
+
+richeditor:
+    name: Rich editor
+    description: HTML editor
+    icon: icon-quote-right
+    fields:
+        content:
+            label: xxx
+            type: richeditor
+            size: small
+            span: full
+            toolbarButtons: 'paragraphFormat|bold|italic|clearFormatting|align|outdent|indent|formatOL|formatUL|insertHR|insertLink|insertFile|insertImage|insertVideo|insertTable|fullscreen|html'
+
+image:
+    name: Image
+    description: Pick something from the media library
+    icon: icon-photo
+    fields:
+        img_upload:
+            label: xxx
+            span: full
+            type: mediafinder
+            mode: image
+            imageHeight: 260
+            imageWidth: 260
+
+section:
+    name: Section
+    description: Add section with children
+    icon: icon-photo
+    fields:
+        children:
+            label: xxx
+            span: full
+            type: repeater
+            prompt: Add content block
+            groups: $/kubamarkiewicz/translations/config/repeater_fields.yaml
+            sortable: false            
