@@ -44,10 +44,10 @@ function setFieldsLangFromSession()
 
 
 	
-function onEditClick(id) 
+function onEditClick(ajaxHandler, id) 
 {
 	saveAndCloseForms();
-	$.request('kubamarkiewicz_translations_widget::onEdit', {data: {id: id}});
+	$.request(ajaxHandler, {data: {id: id}});
 }
 
 

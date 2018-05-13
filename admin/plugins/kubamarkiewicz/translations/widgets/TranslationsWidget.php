@@ -171,6 +171,7 @@ class TranslationsWidget extends WidgetBase
         // $this->formWidget = $this->makeWidget('Backend\Widgets\Form');
         $form = $this->makeWidget('Backend\Widgets\Form', $config);
 ;
+        $form->alias = 'formWidget';
         $form->bindToController();
         $this->vars['form'] = $form;
 

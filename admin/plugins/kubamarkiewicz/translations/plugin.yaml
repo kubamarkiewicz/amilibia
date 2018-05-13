@@ -9,4 +9,5 @@ navigation:
         label: 'kubamarkiewicz.translations::lang.plugin.name'
         url: /kubamarkiewicz/translations/translations/section
         icon: icon-file-text-o
+        # iconSvg: 'plugins/kubamarkiewicz/translations/assets/images/translations-icon.svg'
         order: '2'

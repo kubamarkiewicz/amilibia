@@ -5,7 +5,7 @@
 	<!-- todo: change a with div -->
 
 	<div 
-		onclick="onEditClick('<?=$item->id?>')"
+		onclick="onEditClick('<?=$this->getEventHandler('onEdit')?>', '<?=$item->id?>')"
 		class="edit"
 	    data-toggle="tooltip"
 	    data-placement="bottom"

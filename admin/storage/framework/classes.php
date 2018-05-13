@@ -113,4 +113,8 @@
   'RainLab\\Translate\\FormWidgets\\MLRepeater' => 'plugins/rainlab/translate/formwidgets/MLRepeater.php',
   'backend\\Controllers\\preferences' => 'modules/backend/controllers/preferences.php',
   'backend\\Controllers\\auth' => 'modules/backend/controllers/auth.php',
+  'KubaMarkiewicz\\Contact\\Models\\Settings' => 'plugins/kubamarkiewicz/contact/models/Settings.php',
+  'RainLab\\Pages\\FormWidgets\\MenuItems' => 'plugins/rainlab/pages/formwidgets/MenuItems.php',
+  'RainLab\\Pages\\Classes\\MenuItem' => 'plugins/rainlab/pages/classes/MenuItem.php',
+  'Rainlab\\Pages\\FormWidgets\\MenuItemSearch' => 'plugins/rainlab/pages/formwidgets/MenuItemSearch.php',
 );
