@@ -42,7 +42,7 @@
 		<div class="products row">
 
 			<article class="col-md-3 col-xs-6" ng-repeat="product in productsData">
-				<a href="products#product-{{ product.id }}">
+				<a href="products#{{ product.slug }}">
 					<div class="icon" style="background-image:url({{ product.icon.path }})"></div>
 					<h4>{{ product.name }}</h4>
 				</a>

@@ -1,5 +1,9 @@
 columns:
     name:
-        label: Nombre de producto
+        label: Producto
         type: text
+        sortable: false
+    published:
+        label: Publicado
+        type: switch
         sortable: false

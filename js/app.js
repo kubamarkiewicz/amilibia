@@ -19,7 +19,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     }
     $translateProvider.preferredLanguage(window.localStorage.locale);
 
-    $translateProvider.useUrlLoader(config.api.urls.getTranslations);
+    $translateProvider.useUrlLoader(config.api.urls.translations);
     $translateProvider.useSanitizeValueStrategy(null);
     // tell angular-translate to use your custom handler
     $translateProvider.useMissingTranslationHandler('missingTranslationHandlerFactory');
@@ -49,7 +49,7 @@ app.factory('missingTranslationHandlerFactory', function () {
         if (!missingTranslations.codes.length) {
             setTimeout(function(){ 
                 $.post({
-                    url     : config.api.urls.missingTranslations,
+                    url     : config.api.urls.translations,
                     data    : {
                         codes : missingTranslations.codes,
                         types : missingTranslations.types,
@@ -211,17 +211,6 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
     });
 
 
-    // languages
-    $rootScope.locale = localStorage.locale ? localStorage.locale : 'es';
-    $rootScope.setLocale = function(locale)
-    {
-        localStorage.locale = locale;
-        location.reload();
-    }
-
-
-
-  
 
     // load pages data
     $rootScope.pagesData = [];
@@ -229,9 +218,9 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
     {
         $http({
             method  : 'GET',
-            url     : config.api.urls.getPages,
+            url     : config.api.urls.pages,
             params  : {
-                'lang': $rootScope.language
+                'lang': $rootScope.lang
             }
         })
         .then(function(response) {
@@ -253,6 +242,36 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
             document.querySelector('meta[name=description]').setAttribute('content', page.meta_description);
         }
     }
+
+
+
+    // set language
+    $rootScope.setLanguage = function(lang)
+    {
+        // save language in local storage
+        $rootScope.lang = localStorage.lang = lang;
+        // change translations language
+        $translate.use(lang);
+        // set HTML lang
+        $('html').attr('lang', lang);
+        // highlight option in menu
+        $('.languages a').removeClass('selected');
+        $('.languages a[data-language=' + lang + ']').addClass('selected');
+    }
+    $rootScope.setLanguage(localStorage.lang);
+
+
+
+    // language menu
+    $('.languages a').click(function(){
+        $rootScope.setLanguage($(this).data('language'));
+        // $animate.enabled(false);
+        $route.reload();
+/*        $timeout(function () {
+            $animate.enabled(true);
+        });*/
+        $rootScope.setMetadata();
+    });
 
 
 });

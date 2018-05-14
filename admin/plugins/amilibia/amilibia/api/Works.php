@@ -4,12 +4,16 @@ use Illuminate\Routing\Controller;
 use Input;
 use DB;
 use Amilibia\Amilibia\Models\Work;
+use RainLab\Translate\Classes\Translator;
+
 
 class Works extends Controller
 {
 
     public function index()
     {
+        Translator::instance()->setLocale(Input::get('lang'));
+        
         $query = Work::with('images')->orderBy('sort_order', 'asc');
 
         $result = $query->get(); 

@@ -18,7 +18,10 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     {
         $http({
             method  : 'GET',
-            url     : config.api.urls.getProducts + '/' + $rootScope.locale + '/products'
+            url     : config.api.urls.products,
+            params  : {
+                'lang': $rootScope.lang
+            }
         })
         .then(function(response) {
             $scope.productsData = response.data;
@@ -33,7 +36,10 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     {
         $http({
             method  : 'GET',
-            url     : config.api.urls.getWorks
+            url     : config.api.urls.works,
+            params  : {
+                'lang': $rootScope.lang
+            }
         })
         .then(function(response) {
             $scope.worksData = response.data;
@@ -105,7 +111,10 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     {
         $http({
             method  : 'GET',
-            url     : config.api.urls.locations
+            url     : config.api.urls.locations,
+            params  : {
+                'lang': $rootScope.lang
+            }
         })
         .then(function(response) {
             $scope.locationsData = response.data;

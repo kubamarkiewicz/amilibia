@@ -13,13 +13,14 @@ navigation:
         label: Productos
         url: amilibia/amilibia/products
         icon: icon-life-ring
-        order: '3'
+        order: '5'
     main-menu-item3:
         label: Obras
         url: amilibia/amilibia/works
         icon: icon-image
-        order: '4'
+        order: '3'
     main-menu-item:
         label: Ubicaciones
         url: amilibia/amilibia/locations
         icon: icon-map-marker
+        order: '4'

@@ -12,7 +12,7 @@ navigation:
     main-menu-item:
         label: 'kubamarkiewicz.pages::lang.plugin.name'
         url: kubamarkiewicz/pages/pages
-        icon: icon-sitemap
+        icon: icon-files-o
         permissions:
             - manage_pages
         order: '1'

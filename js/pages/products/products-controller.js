@@ -6,7 +6,10 @@ app.controller('ProductsController', function($scope, $rootScope, $http, $routeP
     {
         $http({
             method  : 'GET',
-            url     : config.api.urls.getProducts + '/' + $rootScope.locale + '/products'
+            url     : config.api.urls.products,
+            params  : {
+                'lang': $rootScope.lang
+            }
         })
         .then(function(response) {
             $scope.productsData = response.data;

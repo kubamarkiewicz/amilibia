@@ -6,7 +6,7 @@
 		
 		<div class="products">
 
-			<article ng-repeat="product in productsData" id="product-{{ product.id }}" ng-init="$last && onProductsRendered()">
+			<article ng-repeat="product in productsData" id="{{ product.slug }}" ng-init="$last && onProductsRendered()">
 				<hr>
 				<div class="row row-flex">
 					<div class="col-md-4">

@@ -12,3 +12,9 @@
 1.0.5:
     - 'Updated table amilibia_amilibia_locations'
     - builder_table_update_amilibia_amilibia_locations.php
+1.0.6:
+    - 'Updated table amilibia_amilibia_products'
+    - builder_table_update_amilibia_amilibia_products.php
+1.0.7:
+    - 'Updated table amilibia_amilibia_products'
+    - builder_table_update_amilibia_amilibia_products_2.php

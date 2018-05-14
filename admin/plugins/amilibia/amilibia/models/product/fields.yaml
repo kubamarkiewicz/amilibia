@@ -1,10 +1,33 @@
 fields:
     name:
-        label: Nombre de producto
-        span: left
+        label: 'Nombre de producto'
+        span: auto
+        required: 1
+        type: text
+    slug:
+        label: URL
+        span: auto
+        required: 1
+        preset:
+            field: name
+            type: slug
         type: text
     icon:
         label: Icono
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    published:
+        label: Publicado
+        span: auto
+        default: 1
+        type: switch
+    images:
+        label: Imágenes
         mode: image
         useCaption: true
         thumbOptions:
@@ -17,12 +40,3 @@ fields:
         size: huge
         span: left
         type: richeditor
-    image:
-        label: Imagen
-        mode: image
-        useCaption: true
-        thumbOptions:
-            mode: crop
-            extension: auto
-        span: right
-        type: fileupload

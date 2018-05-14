@@ -32,13 +32,16 @@ class Product extends Model
      * Relations
      */
     public $attachOne = [
-        'icon' => 'System\Models\File',
-        'image' => 'System\Models\File'
+        'icon' => 'System\Models\File'
+    ];
+
+    public $attachMany = [
+        'images' => 'System\Models\File'
     ];
 
 
     public $implement = ['RainLab.Translate.Behaviors.TranslatableModel'];
 
-    public $translatable = ['name', 'description'];
+    public $translatable = ['name', 'slug', 'description'];
     
 }

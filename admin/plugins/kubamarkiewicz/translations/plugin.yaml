@@ -2,12 +2,12 @@ plugin:
     name: 'kubamarkiewicz.translations::lang.plugin.name'
     description: 'kubamarkiewicz.translations::lang.plugin.description'
     author: 'Kuba Markiewicz'
-    icon: oc-icon-newspaper-o
+    icon: oc-icon-text-height
+    iconSvg: plugins/kubamarkiewicz/translations/assets/images/translations-icon.svg
     homepage: 'http://markiewicz.click'
 navigation:
     main-menu-item:
         label: 'kubamarkiewicz.translations::lang.plugin.name'
         url: /kubamarkiewicz/translations/translations/section
-        # icon: icon-newspaper-o
-        iconSvg: 'plugins/kubamarkiewicz/translations/assets/images/translations-icon.svg'
+        iconSvg: plugins/kubamarkiewicz/translations/assets/images/translations-icon.svg
         order: '2'

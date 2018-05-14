@@ -6,7 +6,7 @@
     'settings' => [
         'category' => 'Formulario de contacto',
         'label' => 'Configuración',
-        'email' => 'Enviar mensajes de formulario de contacto a',
+        'email' => 'Enviar mensajes del formulario a',
         'email_placeholder' => 'Dirección e-mail',
     ],
 ];

@@ -2,15 +2,16 @@
 section#productos .container { 
 	max-width: 1300px;
 }
-section#productos h2.section-title { 
-	margin-top: 130px; 
+section#productos h2.section-title {
+	margin-top: 130px;
 	margin-bottom: 130px;
 }
-section#productos .products { 
-	padding-bottom: 40px;
+section#productos .products {
+	padding-bottom: 80px;
+	margin-top: -40px;
 }
-section#productos .products article { 
-	margin-bottom: 40px;
+section#productos .products article {
+	padding-top: 40px;
 }
 section#productos .products article .icon { 
 	width: 60px; 
