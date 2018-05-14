@@ -89,7 +89,7 @@ class Translations extends Controller
                 $translation->code = $slug;
                 $translation->parent_id = $parent_id;
                 $translation->translation = $translations[$i];
-                $translation->type = $types[$i];
+                $translation->type = isset($types[$i]) ? $types[$i] : null;
                 $translation->parameters = isset($parameters[$i]) ? $parameters[$i] : null;
                 $translation->save();
             }

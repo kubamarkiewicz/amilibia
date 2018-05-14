@@ -1,4 +1,4 @@
-
+<h4><?= e(trans('kubamarkiewicz.translations::lang.sections')) ?></h4>
 <?php if ($tree) foreach($tree as $item) if (count($item->children)) : ?>
 
 	<?= $this->makePartial('tree_item', ['item' => $item]) ?>

@@ -35,6 +35,7 @@ section#intro {
 	z-index: 3;
 	background-color: #ffffff;
 	min-height: 1400px;
+	padding-top: 45px;
 }
 section#intro .icon {
 	text-align: center;
@@ -259,12 +260,12 @@ section#location main {
 	background-color: rgba(0,38,68,0.07); 
 	padding: 30px; 
 }
-section#location .map { 
-	background-image: url(../../../images/home/map.gif); 
-	background-size: contain; 
+section#location .map {
+	/* background-image: url(../../../images/home/map.gif); */
+	background-size: contain;
 	background-position: center top;
-	padding-top: 79%; 
-	background-repeat: no-repeat; 
+	padding-top: 79%;
+	background-repeat: no-repeat;
 	margin: 4vh 4vw;
 }
 section#location .map .marker {

@@ -5,29 +5,10 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="col-md-3 col-sm-6">
-				<div class="icon"><img src="images/home/icon1.png" alt=""></div>
-				<h4>{{ pagesData.home['col-1-title'] }}</h4>
-				<div ng-bind-html="trustAsHtml(pagesData.home['col-1-text'])"></div>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<div class="icon"><img src="images/home/icon2.png" alt=""></div>
-				<h4>{{ pagesData.home['col-2-title'] }}</h4>
-				<div ng-bind-html="trustAsHtml(pagesData.home['col-2-text'])"></div>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<div class="icon"><img src="images/home/icon3.png" alt=""></div>
-				<h4>{{ pagesData.home['col-3-title'] }}</h4>
-				<div ng-bind-html="trustAsHtml(pagesData.home['col-3-text'])"></div>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<div class="icon"><img src="images/home/icon4.png" alt=""></div>
-				<h4>{{ pagesData.home['col-4-title'] }}</h4>
-				<div ng-bind-html="trustAsHtml(pagesData.home['col-4-text'])"></div>
-			</div>
+			<div class="col-md-3 col-sm-6" translate="pages.home.column 1" translate-type="richeditor"></div>
+			<div class="col-md-3 col-sm-6" translate="pages.home.column 2" translate-type="richeditor"></div>
+			<div class="col-md-3 col-sm-6" translate="pages.home.column 3" translate-type="richeditor"></div>
+			<div class="col-md-3 col-sm-6" translate="pages.home.column 4" translate-type="richeditor"></div>
 
 		</div>
 	</div>
@@ -38,7 +19,7 @@
 
 	<div class="container">
 
-		<h2 class="section-title">{{ pagesData.products['title'] }}</h2>
+		<h2 class="section-title" translate="pages.home.Productos"></h2>
 		<div class="products row">
 
 			<article class="col-md-3 col-xs-6" ng-repeat="product in productsData">
@@ -56,7 +37,7 @@
 
 
 <section id="works">
-	<h2 class="section-title">{{ pagesData.home['works'] }}</h2>
+	<h2 class="section-title" translate="pages.home.Obras"></h2>
 	
 
 	<div class="works">
@@ -104,7 +85,7 @@
 
 	<div class="container">
 		
-		<div class="map">
+		<div class="map" style="background-image: url({{ 'pages.home.mapa.Imagen' | translate }})">
 
 			<div ng-repeat="location in locationsData"
 				ng-init="$last && onLocationsRendered()"
@@ -120,7 +101,7 @@
 
 		</div>
 		
-		<main translate="pages.home.ubicacion.description" translate-type="richeditor"></main>
+		<main translate="pages.home.mapa.Descripcion" translate-type="richeditor"></main>
 
 	</div>
 
@@ -131,38 +112,38 @@
 <section id="contact">
 
 	<div class="container">
-		<h3>{{ pagesData.home['contact_us'] }}</h3>
+		<h3 translate="pages.home.formulario de contacto.titulo"></h3>
 		<form id="my-form" ng-submit="submit()">
 			<div class="row">
 				<div class="form-group col-sm-6">
-					<input class="form-control" type="text" ng-model="name" placeholder="{{ pagesData.home['name'] }}" required>
+					<input class="form-control" type="text" ng-model="name" placeholder="{{ 'pages.home.formulario de contacto.Nombre' | translate }}" required>
 				</div>
 				<div class="form-group col-sm-6">
-					<input class="form-control" type="text" ng-model="company" placeholder="{{ pagesData.home['company'] }}">
+					<input class="form-control" type="text" ng-model="company" placeholder="{{ 'pages.home.formulario de contacto.Empresa' | translate }}">
 				</div>
 				<div class="form-group col-sm-6">
-					<input class="form-control" type="email" ng-model="email" placeholder="{{ pagesData.home['email'] }}" required>
+					<input class="form-control" type="email" ng-model="email" placeholder="{{ 'pages.home.formulario de contacto.E-mail' | translate }}" required>
 				</div>
 				<div class="form-group col-sm-6">
-					<input class="form-control" type="text" ng-model="phone" placeholder="{{ pagesData.home['phone'] }}">
+					<input class="form-control" type="text" ng-model="phone" placeholder="{{ 'pages.home.formulario de contacto.Telefono' | translate }}">
 				</div>
 			</div>
 			<div class="form-group">
-				<textarea  ng-model="message" class="form-control" placeholder="{{ pagesData.home['message'] }}"></textarea>
+				<textarea  ng-model="message" class="form-control" placeholder="{{ 'pages.home.formulario de contacto.Mensaje' | translate }}"></textarea>
     		</div>	
 			<div class="row">
 				<div class="col-xs-6">
 				</div>
 				<div class="col-xs-6 text-right">
-					<button type="submit" class="btn" data-loading-text="<span class='glyphicon glyphicon-repeat gly-spin'></span> Sending ...">{{ pagesData.home['send'] }}</button>
+					<button type="submit" class="btn" data-loading-text="<span class='glyphicon glyphicon-repeat gly-spin'></span> Sending ..." translate="pages.home.formulario de contacto.Enviar"></button>
 				</div>
 			</div>
 		</form>
 
-		<p class="alert alert-success" ng-show="contactSent"><span class="glyphicon glyphicon-ok"></span> {{ pagesData.home['contact-sent'] }}</p> 
+		<p class="alert alert-success" ng-show="contactSent"><span class="glyphicon glyphicon-ok"></span> {{ 'pages.home.formulario de contacto.Mensaje enviado' | translate }}</p> 
 
 
-		<small ng-bind-html="trustAsHtml(pagesData.home['privacy_policy'])"></small>
+		<small translate="pages.home.formulario de contacto.Politica de privacidad" translate-type="richeditor"></small>
 		
 	</div>
 
