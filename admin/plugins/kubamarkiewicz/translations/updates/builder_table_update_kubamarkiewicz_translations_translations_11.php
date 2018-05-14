@@ -9,7 +9,10 @@ class BuilderTableUpdateKubamarkiewiczTranslationsTranslations11 extends Migrati
     {
         Schema::table('kubamarkiewicz_translations_translations', function($table)
         {
-            $table->text('config')->nullable();
+            $table->text('translation')->nullable();
+            $table->text('translation_json')->nullable();
+            $table->dropColumn('content');
+            $table->dropColumn('kuba');
         });
     }
     
@@ -17,7 +20,10 @@ class BuilderTableUpdateKubamarkiewiczTranslationsTranslations11 extends Migrati
     {
         Schema::table('kubamarkiewicz_translations_translations', function($table)
         {
-            $table->dropColumn('config');
+            $table->dropColumn('translation');
+            $table->dropColumn('translation_json');
+            $table->text('content')->nullable();
+            $table->text('kuba')->nullable();
         });
     }
 }
