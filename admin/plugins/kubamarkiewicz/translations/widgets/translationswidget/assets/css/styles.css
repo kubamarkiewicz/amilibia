@@ -6,13 +6,8 @@
 }
 #kubamarkiewicz-translations-widget > aside {
 	background-color: #ecf0f1;
-	width: 350px;
+	width: 300px;
 	flex-shrink: 0;
-}
-#kubamarkiewicz-translations-widget > aside p {
-	margin: 0;
-	padding: 0;
-	position: relative;
 }
 #kubamarkiewicz-translations-widget > aside a {
 	display: block;
@@ -21,19 +16,19 @@
 	text-transform: uppercase;
 	font-size: 12px;
 }
-#kubamarkiewicz-translations-widget > aside p.depth-1 a {
+#kubamarkiewicz-translations-widget > aside a.depth-1 {
 	padding-left: 40px;
 }
-#kubamarkiewicz-translations-widget > aside p.depth-2 a {
+#kubamarkiewicz-translations-widget > aside a.depth-2 {
 	padding-left: 60px;
 }
-#kubamarkiewicz-translations-widget > aside p.depth-3 a {
+#kubamarkiewicz-translations-widget > aside a.depth-3 {
 	padding-left: 80px;
 }
-#kubamarkiewicz-translations-widget > aside p.depth-4 a {
+#kubamarkiewicz-translations-widget > aside a.depth-4 {
 	padding-left: 100px;
 }
-#kubamarkiewicz-translations-widget > aside p.depth-5 a {
+#kubamarkiewicz-translations-widget > aside a.depth-5 {
 	padding-left: 120px;
 }
 #kubamarkiewicz-translations-widget > aside a:hover, 

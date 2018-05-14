@@ -51,5 +51,12 @@ function onEditClick(ajaxHandler, id)
 }
 
 
+function onTreeItemClick(id)
+{
+	var item = $('#kubamarkiewicz-translations-widget > aside a[data-id='+id+']');
+	item.addClass('selected');
+	$('#kubamarkiewicz-translations-widget > aside a').not(item).removeClass('selected');
+}
+
 
 

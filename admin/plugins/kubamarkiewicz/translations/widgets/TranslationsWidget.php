@@ -36,7 +36,7 @@ class TranslationsWidget extends WidgetBase
                                 ->where('parent_id', $parentId)
                                 ->first();
             if ($page) {
-                $tree = $page->children;
+                $tree = [$page];
                 $id = $page->id;
                 $this->vars['children'] = $page->children;
                 $this->vars['languages'] = Locale::listEnabled();
@@ -69,7 +69,6 @@ class TranslationsWidget extends WidgetBase
             '#kubamarkiewicz-translations-widget-children' => $this->makePartial('children')
         ];
     }
-
 
 
     public function onPreview()

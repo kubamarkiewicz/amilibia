@@ -6,3 +6,9 @@
 1.0.3:
     - 'Created table amilibia_amilibia_works'
     - builder_table_create_amilibia_amilibia_works.php
+1.0.4:
+    - 'Created table amilibia_amilibia_locations'
+    - builder_table_create_amilibia_amilibia_locations.php
+1.0.5:
+    - 'Updated table amilibia_amilibia_locations'
+    - builder_table_update_amilibia_amilibia_locations.php

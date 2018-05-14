@@ -41,6 +41,9 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     }
     $scope.loadWorksData();
 
+
+
+
     var myFlipster;
 
     $scope.onWorksRendered = function() 
@@ -95,15 +98,33 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
 
     // mapa
-    $(function(){
 
+    $scope.locationsData = [];
+    
+    $scope.loadLocationsData = function()
+    {
+        $http({
+            method  : 'GET',
+            url     : config.api.urls.locations
+        })
+        .then(function(response) {
+            $scope.locationsData = response.data;
+        });
+    }
+    $scope.loadLocationsData();
+
+
+    $scope.onLocationsRendered = function()
+    {
         $('section#location .map .marker .icon').click(function(){
             var marker = $(this).parent();
             marker.toggleClass('open');
             $('section#location .map .marker').not(marker).removeClass('open');
         });
+    }
 
-    });
+
+
 
 
 

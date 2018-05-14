@@ -117,4 +117,11 @@
   'RainLab\\Pages\\FormWidgets\\MenuItems' => 'plugins/rainlab/pages/formwidgets/MenuItems.php',
   'RainLab\\Pages\\Classes\\MenuItem' => 'plugins/rainlab/pages/classes/MenuItem.php',
   'Rainlab\\Pages\\FormWidgets\\MenuItemSearch' => 'plugins/rainlab/pages/formwidgets/MenuItemSearch.php',
+  'RainLab\\Builder\\Classes\\FilesystemGenerator' => 'plugins/rainlab/builder/classes/FilesystemGenerator.php',
+  'RainLab\\Builder\\Classes\\ControllerGenerator' => 'plugins/rainlab/builder/classes/ControllerGenerator.php',
+  'amilibia\\amilibia\\Controllers\\locations' => 'plugins/amilibia/amilibia/controllers/locations.php',
+  'Amilibia\\Amilibia\\Models\\Loocation' => 'plugins/amilibia/amilibia/models/Loocation.php',
+  'Amilibia\\Amilibia\\Api\\Locations' => 'plugins/amilibia/amilibia/api/Locations.php',
+  'Amilibia\\Amilibia\\Models\\Location' => 'plugins/amilibia/amilibia/models/Location.php',
+  'cms\\Controllers\\themes' => 'modules/cms/controllers/themes.php',
 );

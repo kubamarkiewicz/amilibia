@@ -105,22 +105,19 @@
 	<div class="container">
 		
 		<div class="map">
-			<div class="marker" style="left: 10%; top: 20%">
-				<a class="icon" href="javascript:" title="Madrid"></a>
+
+			<div ng-repeat="location in locationsData"
+				ng-init="$last && onLocationsRendered()"
+				class="marker" 
+				style="left: {{ location.left}}%; top: {{ location.top }}%">
+				<a class="icon" href="javascript:" title="{{ location.name }}"></a>
 				<div class="info-window">
 					<div class="arrow"></div>
-					<h4 class="title">MADRID</h4>
-					<b>Example popover</b> - content
+					<h4 class="title">{{ location.name }}</h4>
+					<div ng-bind-html="trustAsHtml(location.details)"></div>
 				</div>
 			</div>
-			<div class="marker" style="left: 20%; top: 40%">
-				<a class="icon" href="javascript:" title="MALAGA"></a>
-				<div class="info-window">
-					<div class="arrow"></div>
-					<h4 class="title">MALAGA</h4>
-					<b>Example popover</b> - content
-				</div>
-			</div>
+
 		</div>
 		
 		<main translate="pages.home.ubicacion.description" translate-type="richeditor"></main>

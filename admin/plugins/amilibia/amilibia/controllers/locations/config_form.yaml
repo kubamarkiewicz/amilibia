@@ -1,0 +1,10 @@
+name: Locations
+form: $/amilibia/amilibia/models/location/fields.yaml
+modelClass: Amilibia\Amilibia\Models\Location
+defaultRedirect: amilibia/amilibia/locations
+create:
+    redirect: 'amilibia/amilibia/locations/update/:id'
+    redirectClose: amilibia/amilibia/locations
+update:
+    redirect: amilibia/amilibia/locations
+    redirectClose: amilibia/amilibia/locations

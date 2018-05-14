@@ -1,0 +1,7 @@
+columns:
+    name:
+        label: Titulo
+        type: text
+    published:
+        label: Publicado
+        type: switch

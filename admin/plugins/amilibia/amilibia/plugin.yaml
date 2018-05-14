@@ -17,5 +17,9 @@ navigation:
     main-menu-item3:
         label: Obras
         url: amilibia/amilibia/works
-        icon: icon-map-marker
+        icon: icon-image
         order: '4'
+    main-menu-item:
+        label: Ubicaciones
+        url: amilibia/amilibia/locations
+        icon: icon-map-marker

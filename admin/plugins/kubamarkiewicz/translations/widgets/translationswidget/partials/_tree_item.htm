@@ -1,10 +1,11 @@
-<p class="depth-<?=$item->nest_depth?>">
-	<a 
-		href="javascript:"
-		data-request="<?= $this->getEventHandler('onTreeItemSelect') ?>"
-		data-request-data="id: '<?=$item->id?>', lang: window.sessionStorage.locale"
-		><?=$item->code?></a>
-</p>
+<a 
+	class="depth-<?=$item->nest_depth?>"
+	href="javascript:"
+	data-request="<?= $this->getEventHandler('onTreeItemSelect') ?>"
+	data-request-data="id: '<?=$item->id?>', lang: window.sessionStorage.locale"
+	data-id='<?=$item->id?>'
+	onclick="onTreeItemClick('<?=$item->id?>')"
+	><?=$item->code?></a>
 
 <?php foreach($item->children as $child) if (count($child->children)) : ?>
 

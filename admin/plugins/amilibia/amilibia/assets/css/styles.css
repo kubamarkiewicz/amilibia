@@ -1,0 +1,14 @@
+.range-input {
+	display:flex;
+	align-items:center;
+}
+.range-input input {
+	border:none;
+	background:transparent;
+	box-shadow:none;
+	-webkit-appearance: slider-horizontal;
+}
+.range-input span.value {
+	width:35px;
+	/*text-align:right;*/
+}

@@ -1,0 +1,37 @@
+fields:
+    name:
+        label: Titulo
+        span: left
+        type: text
+    published:
+        label: Publicado
+        span: right
+        default: 1
+        type: switch
+    details:
+        label: Detalles
+        size: large
+        span: left
+        type: richeditor
+    section1:
+        label: 'Posición en el mapa'
+        span: auto
+        type: section
+    left:
+        label: 'Posición horizontal'
+        span: right
+        commentAbove: 'Distancia de la parte izquierda del mapa en % de su la ancho'
+        type: partial
+        path: ~/plugins/amilibia/amilibia/controllers/locations/_range_field.htm
+        attributes:
+            min: 0
+            max: 100
+    top:
+        label: 'Posición vertical'
+        span: right
+        commentAbove: 'Distancia de la parte superior del mapa en % de su la altura'
+        type: partial
+        path: ~/plugins/amilibia/amilibia/controllers/locations/_range_field.htm
+        attributes:
+            min: 0
+            max: 100
