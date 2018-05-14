@@ -16,7 +16,8 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "angular-route": "^1.6.4",
-    "angular-sanitize": "^1.6.4"
+    "angular-sanitize": "^1.6.4",
+    "slick-carousel": "^1.8.1"
   },
   "resolutions": {
     "bootstrap": "^3.3.7"

@@ -22,6 +22,16 @@ app.controller('ProductsController', function($scope, $rootScope, $http, $routeP
         $timeout(function(){
             $location.hash($routeParams.scrollTo);
             $anchorScroll();  
+
+            $('section#productos .products article .gallery').slick({
+                arrows: false,
+                infinite: true,
+                speed: 700,
+                autoplay: true,
+                slidesToShow: 1,
+                adaptiveHeight: true
+            });
+            
         });
     }
 

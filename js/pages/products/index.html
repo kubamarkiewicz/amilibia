@@ -16,7 +16,9 @@
 					<main class="col-md-8" ng-bind-html="trustAsHtml(product.description)"></main>
 				</div>
 				<hr>
-				<img src="{{ product.image.path }}" alt="{{ product.name }}" class="image">
+				<div class="gallery">
+					<img ng-repeat="image in product.images" src="{{ image.path }}" alt="{{ image.title }}">
+				</div>
 			</article>
 
 
