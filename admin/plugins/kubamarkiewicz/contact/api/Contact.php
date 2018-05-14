@@ -18,7 +18,7 @@ class Contact extends Controller
         $vars['phone'] = Input::get('phone');
         $vars['message_'] = nl2br(Input::get('message'));
 
-        print_r($vars); exit;
+        // print_r($vars); exit;
 
         $result = Mail::send('kubamarkiewicz.contact::mail.contact', $vars, function($message) {
 
