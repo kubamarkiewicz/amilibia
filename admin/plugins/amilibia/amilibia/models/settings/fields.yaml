@@ -1,6 +1,0 @@
-fields:
-    contact_email:
-        label: 'E-mail de contacto'
-        span: left
-        default: 0
-        type: text

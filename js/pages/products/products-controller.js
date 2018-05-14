@@ -1,5 +1,7 @@
 app.controller('ProductsController', function($scope, $rootScope, $http, $routeParams, config, $timeout, $location, $anchorScroll) { 
 
+    $('body > header').removeClass('home');
+
     $scope.productsData = null;
     
     $scope.loadProductsData = function()

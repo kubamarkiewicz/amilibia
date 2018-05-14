@@ -135,29 +135,25 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
 
 
-
-
     // SUBMIT FORM
-    $scope.contactSent = false;
     $scope.submit = function () 
     {
-        var data = {};
-        data.name        = $scope.name != undefined ? $scope.name : '';
-        data.company     = $scope.company != undefined ? $scope.company : '';
-        data.email       = $scope.email != undefined ? $scope.email : '';
-        data.phone       = $scope.phone != undefined ? $scope.phone : '';
-        data.message     = $scope.message != undefined ? $scope.message : '';
-        
         $http({
             method  : 'POST',
-            url     : config.api.urls.sendContact,
-            data    : $.param(data),
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            url     : config.api.urls.contact,
+            params  : {
+                "name"      : $scope.name,
+                "company"   : $scope.company,
+                "email"     : $scope.email,
+                "phone"     : $scope.phone,
+                "message"   : $scope.message
+            }
         })
         .then(function(response) {
-            $scope.contactSent = true;
-            // reset form
-            $("#my-form .form-control").val("");
+            if (response.data && response.data === true) {
+                $scope.contactSent = true;
+                $scope.name = $scope.email = $scope.subject = $scope.message = '';
+            }
             $("#my-form button[type=submit]").button('reset').attr('disabled', false);
         });
          
@@ -165,6 +161,8 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
         $("#my-form button[type=submit]").button('loading').attr('disabled', true);
 
     }
+
+
 
 
     // switch menu class

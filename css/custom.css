@@ -143,6 +143,17 @@ body > main {
 	background-color: #f6f6f8;
 	position: relative;
 	/* z-index: 2; */
+	animation-name: animation-page-transition;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+	animation-timing-function: cubic-bezier(.46,1,1,1);
+}
+@keyframes animation-page-transition {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+body.prev-page-undefined > main {
+	animation-duration: 0s;
 }
 
 body > footer {
@@ -161,7 +172,21 @@ body.loading > footer {
 	max-width: 1035px;
 }
 
-
+/* loading */
+body.loading p,
+body.loading a,
+body.loading span,
+body.loading h1,
+body.loading h2,
+body.loading h3,
+body.loading h4,
+body.loading h5,
+body.loading > footer {
+	visibility: hidden;
+}
+.translate-cloak {
+    opacity: 0;
+}
 
 /* desktop */
 @media screen and (min-width: 992px) {
@@ -234,6 +259,9 @@ body.loading > footer {
 /* Components	               		           */
 /***********************************************/
 
+.translate-cloak {
+    display: none;
+}
 
 body > header .logo {
 	text-indent: -200%;

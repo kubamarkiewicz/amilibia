@@ -22,11 +22,11 @@
 
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body ng-app="myApp" class="page-home loading" ng-class="loading ? 'loading' : ''">
+<body ng-app="myApp" class="page-home loading">
 
     <header>
         <div class="container">
-            <a href="index.html#top" class="logo" title="amilibia marinas">amilibia marinas</a>
+            <a href=".#top" class="logo" title="amilibia marinas">amilibia marinas</a>
             <div class="burger-menu">
                 <div class="slice"></div>
                 <div class="slice"></div>
@@ -34,19 +34,19 @@
             </div>
             <nav>
                 <a 
-                    href="index.html#top" 
+                    href=".#top" 
                     translate="menu.home">Home</a>
                 <a 
                     href="products" 
                     translate="menu.productos">Productos</a>
                 <a 
-                    href="index.html#works"
+                    href=".#works"
                     translate="menu.obras">Obras</a>
                 <a 
-                    href="index.html#location"
+                    href=".#location"
                     translate="menu.ubicacion">Ubicación</a>
                 <a 
-                    href="index.html#contact"
+                    href=".#contact"
                     translate="menu.contacto">Contacto</a>
                 <span class="languages">
                     <a href="javascript:" data-language="es">ES</a>
@@ -59,10 +59,10 @@
 
 
 
-    <main ng-view autoscroll="true"></main>
+    <main ng-view autoscroll="true" translate-cloak></main>
 
 
-    <footer ng-class="loading ? 'loading' : ''">
+    <footer translate-cloak>
 
         <div class="container">
             <div class="row">
