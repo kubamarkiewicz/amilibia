@@ -249,7 +249,7 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
     $rootScope.setLanguage = function(lang)
     {
         // save language in local storage
-        $rootScope.lang = localStorage.lang = lang;
+        $rootScope.lang = window.localStorage.locale = lang;
         // change translations language
         $translate.use(lang);
         // set HTML lang
@@ -258,7 +258,7 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
         $('.languages a').removeClass('selected');
         $('.languages a[data-language=' + lang + ']').addClass('selected');
     }
-    $rootScope.setLanguage(localStorage.lang);
+    $rootScope.setLanguage(window.localStorage.locale);
 
 
 
