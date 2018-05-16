@@ -3,7 +3,6 @@
 use Illuminate\Routing\Controller;
 use Input;
 use KubaMarkiewicz\Contact\Models\Settings;
-use Mail;
 
 class Contact extends Controller
 {
@@ -12,21 +11,12 @@ class Contact extends Controller
     {
         // dump(Input::all()); exit;
 
-        $vars = [];
-        $vars['name'] = Input::get('name');
-        $vars['company'] = Input::get('company');
-        $vars['email_'] = Input::get('email');
-        $vars['phone'] = Input::get('phone');
-        $vars['message_'] = nl2br(Input::get('message'));
+        $message = "De: ".Input::get('name')." ".Input::get('email')."\n";
+        $message .= "Empresa: ".Input::get('company')."\n";
+        $message .= "Tel: ".Input::get('phone')."\n";
+        $message .= "Mensaje: \n".Input::get('message');
 
-        // print_r($vars); exit;
-
-        $result = Mail::send('kubamarkiewicz.contact::mail.contact', $vars, function($message) {
-
-            $to = Settings::get('contact_email');
-            $message->to($to);
-
-        });
+        $result = mail(Settings::get('contact_email'), 'Mensaje de web', $message, 'From: '.Settings::get('contact_email'));
 
         return response()->json($result, 200, array(), JSON_PRETTY_PRINT);
     }
