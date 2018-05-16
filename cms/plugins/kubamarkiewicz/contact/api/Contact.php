@@ -3,6 +3,7 @@
 use Illuminate\Routing\Controller;
 use Input;
 use KubaMarkiewicz\Contact\Models\Settings;
+use Mail;
 
 class Contact extends Controller
 {
