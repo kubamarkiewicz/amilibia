@@ -36,6 +36,7 @@ section#productos .products article main {
 	padding-top: 15px;
 }
 section#productos .products article .gallery {
+	min-height: 397px;
 }
 
 /* desktop */
