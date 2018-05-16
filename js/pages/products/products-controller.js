@@ -31,7 +31,8 @@ app.controller('ProductsController', function($scope, $rootScope, $http, $routeP
                 speed: 700,
                 autoplay: true,
                 slidesToShow: 1,
-                adaptiveHeight: true
+                adaptiveHeight: true,
+                pauseOnHover: false
             });
             
         });
