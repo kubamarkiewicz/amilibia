@@ -124,4 +124,5 @@
   'Amilibia\\Amilibia\\Api\\Locations' => 'plugins/amilibia/amilibia/api/Locations.php',
   'Amilibia\\Amilibia\\Models\\Location' => 'plugins/amilibia/amilibia/models/Location.php',
   'cms\\Controllers\\themes' => 'modules/cms/controllers/themes.php',
+  'RainLab\\Translate\\Models\\Message' => 'plugins/rainlab/translate/models/Message.php',
 );
