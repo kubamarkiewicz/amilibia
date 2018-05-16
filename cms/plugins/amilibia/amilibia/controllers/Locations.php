@@ -13,7 +13,7 @@ class Locations extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('Amilibia.Amilibia', 'main-menu-item');
+        BackendMenu::setContext('Amilibia.Amilibia', 'main-menu-item', 'side-menu-item3');
         $this->addCss('/plugins/amilibia/amilibia/assets/css/styles.css');
     }
 }

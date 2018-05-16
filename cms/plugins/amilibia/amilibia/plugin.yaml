@@ -9,18 +9,21 @@ permissions:
         tab: products
         label: products
 navigation:
-    main-menu-item2:
-        label: Productos
-        url: amilibia/amilibia/products
-        icon: icon-life-ring
-        order: '5'
-    main-menu-item3:
-        label: Obras
-        url: amilibia/amilibia/works
-        icon: icon-image
-        order: '3'
     main-menu-item:
-        label: Ubicaciones
-        url: amilibia/amilibia/locations
-        icon: icon-map-marker
-        order: '4'
+        label: Amilibia
+        url: amilibia/amilibia/products
+        icon: icon-circle-o
+        order: '1'
+        sideMenu:
+            side-menu-item:
+                label: Productos
+                url: amilibia/amilibia/products
+                icon: icon-anchor
+            side-menu-item2:
+                label: Obras
+                url: amilibia/amilibia/works
+                icon: icon-image
+            side-menu-item3:
+                label: Ubicaciones
+                url: amilibia/amilibia/locations
+                icon: icon-globe

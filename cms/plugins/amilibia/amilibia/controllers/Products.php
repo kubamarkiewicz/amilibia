@@ -18,6 +18,6 @@ class Products extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('Amilibia.Amilibia', 'main-menu-item2');
+        BackendMenu::setContext('Amilibia.Amilibia', 'main-menu-item', 'side-menu-item');
     }
 }
