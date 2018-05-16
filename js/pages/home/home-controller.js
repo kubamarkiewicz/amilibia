@@ -141,7 +141,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
         $http({
             method  : 'POST',
             url     : config.api.urls.contact,
-            params  : {
+            data  : {
                 "name"      : $scope.name,
                 "company"   : $scope.company,
                 "email"     : $scope.email,
@@ -152,7 +152,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
         .then(function(response) {
             if (response.data && response.data === true) {
                 $scope.contactSent = true;
-                $scope.name = $scope.email = $scope.subject = $scope.message = '';
+                $scope.name = $scope.company = $scope.email = $scope.phone = $scope.message = '';
             }
             $("#my-form button[type=submit]").button('reset').attr('disabled', false);
         });
