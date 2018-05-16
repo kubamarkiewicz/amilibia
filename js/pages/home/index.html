@@ -22,7 +22,7 @@
 		<h2 class="section-title" translate="pages.home.Productos"></h2>
 		<div class="products row">
 
-			<article class="col-md-3 col-xs-6" ng-repeat="product in productsData track by $index">
+			<article class="col-md-3 col-xs-6" ng-repeat="product in productsData">
 				<a href="products#{{ product.slug }}">
 					<div class="icon" style="background-image:url({{ product.icon.path }})"></div>
 					<h4>{{ product.name }}</h4>
@@ -45,7 +45,7 @@
 
 		    <div
 		    	class="item" 
-		    	ng-repeat="image in worksData track by $index" 
+		    	ng-repeat="image in worksData" 
 		    	ng-init="$last && onWorksRendered()">
 				    <img ng-src="{{ image.thumb }}" 
 				    	data-toggle="modal" 
@@ -87,7 +87,7 @@
 		
 		<div class="map" style="background-image: url({{ 'pages.home.mapa.Imagen' | translate }})">
 
-			<div ng-repeat="location in locationsData track by $index"
+			<div ng-repeat="location in locationsData"
 				ng-init="$last && onLocationsRendered()"
 				class="marker" 
 				style="left: {{ location.left}}%; top: {{ location.top }}%">
