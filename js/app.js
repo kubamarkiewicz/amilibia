@@ -100,7 +100,8 @@ app.config(function ($routeProvider, $locationProvider) {
 
         .when('/', { 
             controller: 'HomeController', 
-            templateUrl: 'js/pages/home/index.html' 
+            templateUrl: 'js/pages/home/index.html',
+            reloadOnSearch: false 
         })     
         .when('/products', { 
             controller: 'ProductsController', 
@@ -164,8 +165,8 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
     $rootScope.$on('$routeChangeSuccess', function() {
         $rootScope.loading = false;
 
-        $location.hash($routeParams.scrollTo);
-        $anchorScroll();  
+        // $location.hash($routeParams.scrollTo);
+        // $anchorScroll();  
     });
 
 
@@ -187,26 +188,6 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
         $('body > header nav').click(function(){
             $(this).removeClass('open');
         });
-
-        // smooth scroll to sections
-/*        $('a[href*="#"]').on('click',function (e) {
-
-            e.preventDefault();
-
-            var target = this.hash;
-            var $target = $(target);
-
-            if (!$target.length) {
-                window.location = this.href;
-                return;
-            }
-
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing', function () {
-                window.location.hash = target;
-            });
-        });*/
 
     });
 
@@ -265,13 +246,37 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
     // language menu
     $('.languages a').click(function(){
         $rootScope.setLanguage($(this).data('language'));
-        // $animate.enabled(false);
         $route.reload();
-/*        $timeout(function () {
-            $animate.enabled(true);
-        });*/
         $rootScope.setMetadata();
     });
+
+
+
+    // switch menu class
+    var windowHeight = $(window).height() - 50;
+    $(window).scroll(function (event) {
+        $('body.page-home > header').toggleClass('home', $(window).scrollTop() < windowHeight);
+    });
+
+
+
+
+    $rootScope.loadProductsData = function()
+    {
+        $http({
+            method  : 'GET',
+            url     : config.api.urls.products,
+            params  : {
+                'lang': $rootScope.lang
+            }
+        })
+        .then(function(response) {
+            $rootScope.productsData = response.data;
+        });
+    }
+    
+
+
 
 
 });

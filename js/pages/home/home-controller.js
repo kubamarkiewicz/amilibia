@@ -1,6 +1,5 @@
-app.controller('HomeController', function($scope, $rootScope, $http, $routeParams, config, $timeout) {  
+app.controller('HomeController', function($scope, $rootScope, $http, $routeParams, config, $timeout, $anchorScroll) {  
 
-    $('body > header').addClass('home');
 
 	$(function(){
 
@@ -12,26 +11,13 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 	});
 
     
-    $scope.productsData = [];
-    
-    $scope.loadProductsData = function()
-    {
-        $http({
-            method  : 'GET',
-            url     : config.api.urls.products,
-            params  : {
-                'lang': $rootScope.lang
-            }
-        })
-        .then(function(response) {
-            $scope.productsData = response.data;
-        });
+
+    if (!$rootScope.productsData) {
+        $rootScope.loadProductsData();
     }
-    $scope.loadProductsData();
 
 
-    $scope.worksData = null;
-    
+
     $scope.loadWorksData = function()
     {
         $http({
@@ -42,12 +28,13 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
             }
         })
         .then(function(response) {
-            $scope.worksData = response.data;
+            $rootScope.worksData = response.data;
         });
     }
-    $scope.loadWorksData();
 
-
+    if (!$rootScope.worksData) {
+        $scope.loadWorksData();
+    }
 
 
     var myFlipster;
@@ -105,8 +92,6 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
     // mapa
 
-    $scope.locationsData = [];
-    
     $scope.loadLocationsData = function()
     {
         $http({
@@ -117,10 +102,13 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
             }
         })
         .then(function(response) {
-            $scope.locationsData = response.data;
+            $rootScope.locationsData = response.data;
         });
     }
-    $scope.loadLocationsData();
+    if (!$rootScope.locationsData) {
+        $scope.loadLocationsData();
+    }
+    
 
 
     $scope.onLocationsRendered = function()
@@ -163,13 +151,13 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     }
 
 
-
-
     // switch menu class
     var windowHeight = $(window).height() - 50;
-    $(window).scroll(function (event) {
-        $('body.page-home > header').toggleClass('home', $(window).scrollTop() < windowHeight);
-    });
+    $('body.page-home > header').toggleClass('home', $(window).scrollTop() < windowHeight);
 
+    setTimeout(function(){ 
+        $anchorScroll();
+        console.log('scroll');
+    },1000);
 
 });
