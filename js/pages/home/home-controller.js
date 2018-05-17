@@ -155,9 +155,13 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
     var windowHeight = $(window).height() - 50;
     $('body.page-home > header').toggleClass('home', $(window).scrollTop() < windowHeight);
 
+    
+    // scroll to hash
     setTimeout(function(){ 
-        $anchorScroll();
-        console.log('scroll');
+        if (!$(window).scrollTop()) {
+            $anchorScroll();
+        }
     },1000);
+
 
 });
