@@ -141,12 +141,13 @@ body.loading > header {
 
 body > main {
 	background-color: #f6f6f8;
-	position: relative;
-	/* z-index: 2; */
+	/* position: relative; */
+	/* z-index: initial; */
 	animation-name: animation-page-transition;
 	animation-duration: 0.3s;
 	animation-fill-mode: forwards;
 	animation-timing-function: cubic-bezier(.46,1,1,1);
+	/* display: inline; */
 }
 @keyframes animation-page-transition {
     0%   {opacity: 0;}
