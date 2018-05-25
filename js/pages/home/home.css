@@ -266,7 +266,7 @@ section#location .map {
 	background-position: center top;
 	padding-top: 79%;
 	background-repeat: no-repeat;
-	margin: 4vh 4vw;
+	margin: 0;
 }
 section#location .map .marker {
 	position: absolute;

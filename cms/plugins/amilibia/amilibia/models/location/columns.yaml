@@ -1,6 +1,6 @@
 columns:
     name:
-        label: Titulo
+        label: Ubicación
         type: text
     published:
         label: Publicado

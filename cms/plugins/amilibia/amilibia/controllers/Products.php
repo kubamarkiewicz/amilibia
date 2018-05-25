@@ -20,4 +20,18 @@ class Products extends Controller
         parent::__construct();
         BackendMenu::setContext('Amilibia.Amilibia', 'main-menu-item', 'side-menu-item');
     }
+
+
+    public function update($id = null)
+    {
+        
+        // list widget
+        $list = $this->makeList('list');
+        $list->bindEvent('list.injectRowClass', function ($record) use ($id) {
+            return $record->id == $id ? 'selected' : '';
+        });
+        $this->vars['list'] = $list;
+
+        return parent::update($id);
+    }
 }
