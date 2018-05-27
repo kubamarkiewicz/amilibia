@@ -3,13 +3,27 @@
 /* Section top *********************************** */
 
 section#top {
-	height: calc(100vh);;
+	height: calc(100vh);
 	position: relative;
 	background-image: url(../../../images/home/blanes.jpg);
 	background-size: cover;
 	background-position: center center;
 	position: relative;
 	z-index: 1;
+	display: flex;
+	/* flex-direction: column; */
+	/* justify-content: end; */
+	align-items: end;
+}
+section#top-text {
+	position: absolute;
+	transform: translateY(calc(-100% - 6vh));
+	z-index: 2;
+	width: 76%;
+	margin: 0 12%;
+	font-size: 26px;
+	line-height: 1.3;
+	color: #ffffff;
 }
 
 /* desktop */
