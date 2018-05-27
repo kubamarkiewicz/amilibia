@@ -1,0 +1,42 @@
+<p class="help-block">Haz click en el mapa para ubicar el punto</p>
+
+<div class="field-map">
+	<div class="marker"></div>
+	<img class="image" src="<?=$map?>" alt="">
+</div>
+
+<script>
+
+	$(function(){
+
+		var container = $('.field-map');
+		var image = container.find("img.image");
+		var marker = container.find(".marker");
+		var inputLeft = $('input[name="Location[left]"]');
+		var inputTop = $('input[name="Location[top]"]');
+
+			
+		// place marker
+		marker.css('left', inputLeft.val()+'%').css('top', inputTop.val()+'%');
+
+		container.click(function(event){
+			
+			var imageLeft = image.offset().left;
+			var imageTop = image.offset().top;
+			var imageWidth = image.width();
+			var imageHeight = image.height();
+
+			var left = parseFloat((event.pageX - imageLeft)/imageWidth*100).toFixed(2);
+			var top = parseFloat((event.pageY - imageTop)/imageHeight*100).toFixed(2);
+
+			// update inputs
+			inputLeft.val(left);
+			inputTop.val(top);
+			
+			// place marker
+			marker.css('left', inputLeft.val()+'%').css('top', inputTop.val()+'%');
+		});
+
+	});
+
+</script>

@@ -101,4 +101,45 @@ class Translation extends Model
         // return false;
 */
     }
+
+    public static function translate($key)
+    {
+        // todo: change language
+/*        if ($lang) {
+            Translator::instance()->setLocale($lang);
+        }*/
+
+        $slugs = explode('.', $key);
+        $parentId = 0;
+        // dump($parent); exit;
+        if ($slugs) foreach ($slugs as $slug) {
+            $item = self::where('parent_id', $parentId)->where('code', $slug)->first();
+            if ($item) {
+                $parentId = $item->id;
+            }
+            else {
+                break;
+            }
+        }
+        if (!$item) {
+            return;
+        }
+
+        switch ($item->type) {
+            case self::TYPE_IMAGE_MEDIAFINDER:
+                $file = \Config::get('cms.storage.media.path').$item->translation;
+                if (file_exists(base_path().$file) && $item->parameters && $item->parameters['width'] && $item->parameters['height']) {
+                    $image = new Image($file);
+                    $image->resize($item->parameters['width'], $item->parameters['height'], ['mode' => isset($item->parameters['mode']) ? $item->parameters['mode'] : 'auto']);
+                    return (string) $image;
+                }
+                else {
+                    return url($file);
+                }
+            default:
+                return $item->translation;
+        }
+
+        
+    }
 }

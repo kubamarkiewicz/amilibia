@@ -7,32 +7,32 @@ fields:
         label: Publicado
         span: right
         default: 1
-        type: switch 
+        type: switch
 tabs:
     fields:
         details:
-            label: 
+            label: null
             size: large
             span: left
             type: richeditor
             tab: Detalles
-        left:
-            label: 'Posición horizontal'
-            span: right
-            commentAbove: 'Distancia de la parte izquierda del mapa en % de su la ancho'
+        map:
+            span: full
+            path: ~/plugins/amilibia/amilibia/controllers/locations/_map_field.htm
             type: partial
-            path: ~/plugins/amilibia/amilibia/controllers/locations/_range_field.htm
-            attributes:
-                min: 0
-                max: 100
+            tab: 'Posición en el mapa'
+            # comment: Haz click en el mapa para ubicar el punto
+        left:
+            label: Left
+            span: auto
+            cssClass: hidden
+            hidden: 0
+            type: text
             tab: 'Posición en el mapa'
         top:
-            label: 'Posición vertical'
-            span: right
-            commentAbove: 'Distancia de la parte superior del mapa en % de su la altura'
-            type: partial
-            path: ~/plugins/amilibia/amilibia/controllers/locations/_range_field.htm
-            attributes:
-                min: 0
-                max: 100
+            label: Top
+            span: auto
+            cssClass: hidden
+            hidden: 0
+            type: text
             tab: 'Posición en el mapa'

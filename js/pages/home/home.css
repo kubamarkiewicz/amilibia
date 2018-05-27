@@ -260,13 +260,8 @@ section#location main {
 	background-color: rgba(0,38,68,0.07); 
 	padding: 30px; 
 }
-section#location .map {
-	/* background-image: url(../../../images/home/map.gif); */
-	background-size: contain;
-	background-position: center top;
-	padding-top: 79%;
-	background-repeat: no-repeat;
-	margin: 0;
+section#location .map {position: relative;}
+section#location .map img.image {
 }
 section#location .map .marker {
 	position: absolute;
