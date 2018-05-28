@@ -17,11 +17,11 @@ app.controller('ProductsController', function($scope, $rootScope, $http, $routeP
             $('section#productos .products article .gallery').slick({
                 arrows: false,
                 infinite: true,
-                speed: 700,
                 autoplay: true,
                 slidesToShow: 1,
-                adaptiveHeight: false,
-                pauseOnHover: false
+                pauseOnHover: false,
+                centerMode: true,
+                variableWidth: true
             });
             
         });

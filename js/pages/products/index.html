@@ -17,7 +17,12 @@
 				</div>
 				<hr>
 				<div class="gallery">
-					<img ng-repeat="image in product.images" src="{{ image.path }}" alt="{{ image.title }}">
+					<img 
+						class="image" 
+						ng-repeat="image in product.images" 
+						ng-src="{{ image.path_resized }}" 
+						ng-srcset="{{ image.path_resized_2x }} 2x" 
+						alt="{{ image.title }}">
 				</div>
 			</article>
 
