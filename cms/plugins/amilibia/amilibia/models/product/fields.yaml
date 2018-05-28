@@ -29,7 +29,7 @@ fields:
     images:
         label: Imágenes
         mode: image
-        useCaption: true
+        useCaption: 0
         thumbOptions:
             mode: crop
             extension: auto
