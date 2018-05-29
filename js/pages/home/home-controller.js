@@ -38,6 +38,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
 
     var myFlipster;
+    var lastTitle;
 
     $scope.onWorksRendered = function() 
     {
@@ -56,6 +57,7 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
             $("section#works .works .item img").click(function(){
                 $scope.updateModalImage($(this));
+                lastTitle = $(this).data('title');
             });
 
             $('#worksModal .prev').click(function(){
@@ -80,6 +82,24 @@ app.controller('HomeController', function($scope, $rootScope, $http, $routeParam
 
     $scope.onFlipsterItemSwitch = function(currentItem, previousItem) {
         $scope.updateModalImage($(currentItem).find('img'));
+
+        var title = $(currentItem).find('img').data('title');
+        var prevTitle = $(currentItem).prev().find('img').data('title');
+        var nextTitle = $(currentItem).next().find('img').data('title');
+
+        if (prevTitle === undefined || prevTitle != title) {
+            $('#worksModal .prev').hide();
+        }
+        else {
+            $('#worksModal .prev').show();
+        }
+
+        if (nextTitle === undefined || nextTitle != title) {
+            $('#worksModal .next').hide();
+        }
+        else {
+            $('#worksModal .next').show();
+        }
     }
 
     $scope.onGalleryImageClick = function(){
