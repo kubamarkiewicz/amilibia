@@ -31,6 +31,9 @@ class Products extends Controller
             return $record->id == $id ? 'selected' : '';
         });
         $this->vars['list'] = $list;
+        $this->vars['toolbar'] = $this->toolbarWidgets[$this->primaryDefinition];
+
+        // $this->makeLists();
 
         return parent::update($id);
     }
