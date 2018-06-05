@@ -12,31 +12,36 @@ fields:
             field: name
             type: slug
         type: text
-    icon:
-        label: Icono
-        mode: image
-        useCaption: true
-        thumbOptions:
-            mode: crop
-            extension: auto
-        span: auto
-        type: fileupload
     published:
         label: Publicado
         span: auto
         default: 1
         type: switch
-    images:
-        label: Imágenes
-        mode: image
-        useCaption: 0
-        thumbOptions:
-            mode: crop
-            extension: auto
-        span: right
-        type: fileupload
-    description:
-        label: Descripción
-        size: huge
-        span: left
-        type: richeditor
+tabs:
+    fields:
+        description:
+            label: Descripción
+            size: huge
+            span: full
+            type: richeditor
+            tab: Descripción
+        icon:
+            label: Icono
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: full
+            type: fileupload
+            tab: Descripción
+        images:
+            label: Imágenes
+            mode: image
+            useCaption: 0
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: full
+            type: fileupload
+            tab: Imágenes
