@@ -35,6 +35,7 @@ fields:
             extension: auto
         span: right
         type: fileupload
+        commentAbove: 'Imágenes se optimizaran automáticamente. Deben ser en formato JPG con altura mínima de 800px'
     description:
         label: Descripción
         size: huge
