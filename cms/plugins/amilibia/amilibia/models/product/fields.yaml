@@ -29,6 +29,7 @@ fields:
     images:
         label: Imágenes
         mode: image
+        fileTypes: 'jpg,jpeg'
         useCaption: 0
         thumbOptions:
             mode: crop
