@@ -13,12 +13,12 @@ section#productos .products {
 section#productos .products article {
 	padding-top: 40px;
 }
-section#productos .products article .icon { 
-	width: 60px; 
-	height: 40px;
-	background-repeat: no-repeat; 
-	background-position: center bottom; 
-	background-size: contain; 
+section#productos .products article .icon {
+	/* width: 60px; */
+	height: 60px;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: contain;
 	margin: 30px auto 25px auto;
 }
 section#productos .products article h3 { 
@@ -59,11 +59,11 @@ section#productos .products article .gallery .image {
 		padding-right: 35px; 
 		padding-bottom: 15px; 
 	}
-	section#productos .products article .icon { 
-		height: 40px; 
-		width: 70px; 
-		margin-top: 55px; 
-		margin-bottom: 35px;
+	section#productos .products article .icon {
+		height: 80px;
+		/* width: 70px; */
+		margin-top: 55px;
+		margin-bottom: 30px;
 	}
 	
 }

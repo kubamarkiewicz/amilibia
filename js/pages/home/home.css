@@ -83,12 +83,12 @@ section#products .products article {
 section#products .products article a { 
 	color: inherit;
 }
-section#products .products article .icon { 
+section#products .products article .icon {
 	height: 40px;
-	background-repeat: no-repeat; 
-	background-position: center bottom; 
-	background-size: contain; 
-	width: 60px; 
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: contain;
+	/* width: 60px; */
 	margin: 0 auto 25px auto;
 }
 section#products .products article h4 { 
@@ -101,9 +101,9 @@ section#products .products article h4 {
 /* desktop */
 @media screen and (min-width: 992px) {
 
-	section#products .products article .icon { 
-		height: 40px; 
-		width: 70px;
+	section#products .products article .icon {
+		height: 80px;
+		/* width: 70px; */
 	}
 
 	section#products .products article h4 { 

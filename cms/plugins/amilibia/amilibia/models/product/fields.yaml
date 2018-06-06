@@ -21,6 +21,7 @@ fields:
             extension: auto
         span: auto
         type: fileupload
+        commentAbove: 'Imágen se optimizara automáticamente. Altura mínima 160px'
     published:
         label: Publicado
         span: auto
