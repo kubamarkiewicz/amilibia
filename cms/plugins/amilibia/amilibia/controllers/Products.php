@@ -24,17 +24,27 @@ class Products extends Controller
 
     public function update($id = null)
     {
-        
-        // list widget
-        $list = $this->makeList('list');
-        $list->bindEvent('list.injectRowClass', function ($record) use ($id) {
+        /*
+         * Prepare the list widget
+         */
+        $listWidget = $this->makeList('list');
+        $listWidget->bindEvent('list.injectRowClass', function ($record) use ($id) {
             return $record->id == $id ? 'selected' : '';
         });
-        $this->vars['list'] = $list;
-        $this->vars['toolbar'] = $this->toolbarWidgets[$this->primaryDefinition];
+        $this->vars['list'] = $listWidget;
+        
+        /*
+         * Prepare the toolbar widget
+         */
+        $toolbarConfig = $this->makeConfig($this->listGetConfig('list')->toolbar);
+        $toolbarConfig->alias = $listWidget->alias . 'Toolbar';
+        $toolbarWidget = $this->makeWidget('Backend\Widgets\Toolbar', $toolbarConfig);
+        $toolbarWidget->bindToController();
+        // $toolbarWidget->cssClasses[] = 'list-header';
+        $this->vars['toolbar'] = $toolbarWidget;
 
-        // $this->makeLists();
-
-        return parent::update($id);
+        parent::update($id);
     }
+
+
 }
