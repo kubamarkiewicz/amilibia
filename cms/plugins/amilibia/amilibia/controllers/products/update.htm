@@ -1,7 +1,9 @@
 <?php Block::put('sidepanel') ?>
 
-    <?= $toolbar->render() ?>
-    <?= $list->render() ?>
+    <div class="layout control-scrollpanel">
+        <?= $toolbar->render() ?>
+        <?= $list->render() ?>        
+    </div>
     
 <?php Block::endPut() ?>
 

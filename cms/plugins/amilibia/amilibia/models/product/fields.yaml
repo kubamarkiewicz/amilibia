@@ -34,7 +34,7 @@ tabs:
                 extension: auto
             span: full
             type: fileupload
-            tab: Descripción
+            tab: Icono
         images:
             label: Imágenes
             mode: image

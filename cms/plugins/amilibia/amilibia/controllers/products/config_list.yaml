@@ -10,3 +10,5 @@ defaultSort:
     direction: asc
 toolbar:
     buttons: list_toolbar
+customViewPath: $/amilibia/amilibia/controllers/products/list
+cssClasses: kuba

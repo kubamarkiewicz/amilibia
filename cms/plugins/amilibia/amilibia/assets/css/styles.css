@@ -29,3 +29,23 @@
 	background-color: #57c1e9;
 	border-radius: 50%;
 }
+
+
+.control-scrollpanel table.table.data {
+	font-size: 14px;
+	border-bottom: 0;
+}
+.control-scrollpanel table.table.data tbody td, 
+.control-scrollpanel table.table.data tbody th {
+	border-top:0;
+}
+.control-scrollpanel table.table.data tbody tr:hover td, 
+.control-scrollpanel table.table.data tbody tr.active td {
+    background: #dddddd !important; 
+    color: inherit;
+}
+.control-scrollpanel table.table.data tbody tr td:first-child,
+.control-scrollpanel table.table.data tbody tr.active td:first-child {
+	border-left-width: 4px;
+	padding-left: 21px;
+}

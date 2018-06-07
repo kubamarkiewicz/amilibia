@@ -19,6 +19,7 @@ class Products extends Controller
     {
         parent::__construct();
         BackendMenu::setContext('Amilibia.Amilibia', 'main-menu-item', 'side-menu-item');
+        $this->addCss('/plugins/amilibia/amilibia/assets/css/styles.css');
     }
 
 
@@ -29,7 +30,7 @@ class Products extends Controller
          */
         $listWidget = $this->makeList('list');
         $listWidget->bindEvent('list.injectRowClass', function ($record) use ($id) {
-            return $record->id == $id ? 'selected' : '';
+            return $record->id == $id ? 'active' : '';
         });
         $this->vars['list'] = $listWidget;
         
@@ -40,8 +41,8 @@ class Products extends Controller
         $toolbarConfig->alias = $listWidget->alias . 'Toolbar';
         $toolbarWidget = $this->makeWidget('Backend\Widgets\Toolbar', $toolbarConfig);
         $toolbarWidget->bindToController();
-        // $toolbarWidget->cssClasses[] = 'list-header';
         $this->vars['toolbar'] = $toolbarWidget;
+
 
         parent::update($id);
     }
