@@ -43,9 +43,53 @@ class Products extends Controller
         $toolbarWidget->bindToController();
         $this->vars['toolbar'] = $toolbarWidget;
 
-
         parent::update($id);
     }
+
+
+    public function create($context = null)
+    {
+        /*
+         * Prepare the list widget
+         */
+        $listWidget = $this->makeList('list');
+        $this->vars['list'] = $listWidget;
+        
+        /*
+         * Prepare the toolbar widget
+         */
+        $toolbarConfig = $this->makeConfig($this->listGetConfig('list')->toolbar);
+        $toolbarConfig->alias = $listWidget->alias . 'Toolbar';
+        $toolbarWidget = $this->makeWidget('Backend\Widgets\Toolbar', $toolbarConfig);
+        $toolbarWidget->bindToController();
+        $this->vars['toolbar'] = $toolbarWidget;
+
+        parent::create($context);
+    }
+
+
+    public function index()
+    {
+        /*
+         * Prepare the list widget
+         */
+        $listWidget = $this->makeList('list');
+        $this->vars['list'] = $listWidget;
+        
+        /*
+         * Prepare the toolbar widget
+         */
+        $toolbarConfig = $this->makeConfig($this->listGetConfig('list')->toolbar);
+        $toolbarConfig->alias = $listWidget->alias . 'Toolbar';
+        $toolbarWidget = $this->makeWidget('Backend\Widgets\Toolbar', $toolbarConfig);
+        $toolbarWidget->bindToController();
+        $this->vars['toolbar'] = $toolbarWidget;
+
+        parent::index();
+    }
+
+
+
 
 
 }

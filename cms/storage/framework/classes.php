@@ -125,4 +125,9 @@
   'Amilibia\\Amilibia\\Models\\Location' => 'plugins/amilibia/amilibia/models/Location.php',
   'cms\\Controllers\\themes' => 'modules/cms/controllers/themes.php',
   'RainLab\\Translate\\Models\\Message' => 'plugins/rainlab/translate/models/Message.php',
+  'cms\\Controllers\\index' => 'modules/cms/controllers/index.php',
+  'RainLab\\Translate\\Components\\LocalePicker' => 'plugins/rainlab/translate/components/LocalePicker.php',
+  'RainLab\\Translate\\Components\\AlternateHrefLangElements' => 'plugins/rainlab/translate/components/AlternateHrefLangElements.php',
+  'RainLab\\Builder\\Components\\RecordList' => 'plugins/rainlab/builder/components/RecordList.php',
+  'RainLab\\Builder\\Components\\RecordDetails' => 'plugins/rainlab/builder/components/RecordDetails.php',
 );
