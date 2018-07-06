@@ -20,6 +20,7 @@ class Products extends Controller
         parent::__construct();
         BackendMenu::setContext('Amilibia.Amilibia', 'main-menu-item', 'side-menu-item');
         $this->addCss('/plugins/amilibia/amilibia/assets/css/styles.css');
+        $this->addJs('/plugins/kubamarkiewicz\cmsextension/assets/js/script.js');
     }
 
 

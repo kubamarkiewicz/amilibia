@@ -46,12 +46,3 @@
     <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
     <p><a href="<?= Backend::url('amilibia/amilibia/products') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')) ?></a></p>
 <?php endif ?>
-
-<script>
-    /* sidenav fix */
-    $(function(){
-        $('#layout-sidenav ul li a').click(function(){
-            window.location.href = $(this).attr('href');
-        });
-    });
-</script>

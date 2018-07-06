@@ -1,0 +1,6 @@
+plugin:
+    name: 'kubamarkiewicz.cmsextension::lang.plugin.name'
+    description: 'kubamarkiewicz.cmsextension::lang.plugin.description'
+    author: 'Kuba Markiewicz'
+    icon: oc-icon-code-fork
+    homepage: ''

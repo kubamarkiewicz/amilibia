@@ -14,7 +14,7 @@
 /* Fonts                                       */
 /***********************************************/
 
-@import url('https://fonts.googleapis.com/css?family=Raleway:400&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700&subset=latin-ext');
 
 
 /***********************************************/
@@ -22,7 +22,7 @@
 /***********************************************/
 
 body { 
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
 	-webkit-font-smoothing: antialiased; 
 	line-height: 145%; 
 	font-size: 14px; 
@@ -45,8 +45,7 @@ a:active {
 	text-decoration: none; 
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Raleway', "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-weight: 400;
+	font-family: 'Raleway', sans-serif;
 	color: #939393;
 	letter-spacing: 0.02em;
 }
@@ -60,12 +59,6 @@ h4 {
 small, .small {
 	font-size: 75%;
 	line-height: 140%;
-}
-img {
-	max-width: 100%;
-}
-hr {
-	border-color: #939393;
 }
 
 
@@ -148,13 +141,12 @@ body.loading > header {
 
 body > main {
 	background-color: #f6f6f8;
-	/* position: relative; */
-	/* z-index: initial; */
+	position: relative;
+	/* z-index: 2; */
 	animation-name: animation-page-transition;
 	animation-duration: 0.3s;
 	animation-fill-mode: forwards;
 	animation-timing-function: cubic-bezier(.46,1,1,1);
-	/* display: inline; */
 }
 @keyframes animation-page-transition {
     0%   {opacity: 0;}
@@ -434,17 +426,43 @@ h2.section-title {
 /* footer *********************************** */
 
 body > footer .container {
-	padding-top: 40px;
-	padding-bottom: 40px;
+	background-image: url(../images/logo-footer.gif); 
+	background-size: 96px; 
+	background-repeat: no-repeat; 
+	background-position: center 50px;;
+	padding-top: 150px;
+	padding-bottom: 40px; 
 }
+body > footer .container .header {
+	margin-bottom: 20px;
+}
+body > footer .container .row {
+	margin-bottom: 20px;
+}
+body > footer a,
+body > footer a:hover, 
+body > footer a:focus, 
+body > footer a:active {
+	color: inherit;
+}
+img {
+	max-width: 100%;
+}
+hr {
+	border-color: #939393;
+}
+
 
 
 /* desktop */
 @media screen and (min-width: 992px) {
 	
 	body > footer .container {
-		padding-top: 50px;
+		background-position: 10px center;
+		padding-left: 250px;
+		padding-top: 70px;
 		padding-bottom: 50px;
+		background-size: initial;
 	}
 }
 
