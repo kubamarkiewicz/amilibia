@@ -34,6 +34,7 @@ tabs:
                 extension: auto
             span: full
             type: fileupload
+            commentAbove: 'Imágen se optimizara automáticamente. Altura mínima 160px'
             tab: Icono
         images:
             label: Imágenes
