@@ -245,4 +245,5 @@
   'System\\Helpers\\Cache' => 'modules/system/helpers/Cache.php',
   'Backend\\Models\\AccessLog' => 'modules/backend/models/AccessLog.php',
   'kubamarkiewicz\\cmsextension\\Plugin' => 'plugins/kubamarkiewicz/cmsextension/Plugin.php',
+  'KubaMarkiewicz\\CmsExtension\\Behaviors\\ListController' => 'plugins/kubamarkiewicz/cmsextension/behaviors/ListController.php',
 );

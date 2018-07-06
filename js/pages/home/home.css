@@ -27,6 +27,7 @@ section#top-text {
 	color: #ffffff;
 	text-transform: uppercase;
 	letter-spacing: 0.03em;
+    text-shadow: 0px 0px 1px rgba(0,0,0,0.5);
 }
 section#top-text:first-letter {
 	font-size: 1.2em;

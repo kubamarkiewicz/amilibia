@@ -9,7 +9,7 @@ class Contact extends Controller
 
     public function send()
     {
-        // dump(Input::all()); exit;
+        // dump(Input::all()); echo Settings::get('contact_email'); exit;
 
         $message = "De: ".Input::get('name')." ".Input::get('email')."\n";
         $message .= "Empresa: ".Input::get('company')."\n";

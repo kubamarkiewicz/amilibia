@@ -214,14 +214,35 @@ app.run(function($rootScope, $sce, $http, $location, $anchorScroll, $translate, 
 
 
     // set metadata
-    $rootScope.setMetadata = function()
+    $rootScope.setMetadata = function(title='', description='', image='', url='')
     {
-        var page = $rootScope.pagesData[$rootScope.pageSlug];
+        url = url || window.location.href;
 
-        if (page) {
-            document.title = page.meta_title;
-            document.querySelector('meta[name=description]').setAttribute('content', page.meta_description);
+        // Shorten a string to less than maxLen characters without truncating words.
+        function shorten(str, maxLen=300, separator = ' ') 
+        {
+            if (str.length <= maxLen) return str;
+            return str.substr(0, str.lastIndexOf(separator, maxLen));
         }
+
+        // clean description
+        if (description) {
+            description = shorten(description.replace(/<\/?[^>]+(>|$)/g, " ").replace(/(\r\n\t|\n|\r\t)/gm,"").trim());
+        }
+
+        var page = $rootScope.pagesData[$rootScope.pageSlug];
+        if (page) {
+            title = title || page.meta_title;
+            description = description || page.meta_description;
+            image = image || (page.meta_image ? page.meta_image.path : '');
+        }
+        
+        document.title = title;
+        document.querySelector('meta[name=description]').setAttribute('content', description);
+        document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+        document.querySelector('meta[property="og:description"]').setAttribute('content', description);
+        document.querySelector('meta[property="og:url"]').setAttribute('content', url);
+        document.querySelector('meta[property="og:image"]').setAttribute('content', image);
     }
 
 

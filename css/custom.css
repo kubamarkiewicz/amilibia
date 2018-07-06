@@ -60,6 +60,12 @@ small, .small {
 	font-size: 75%;
 	line-height: 140%;
 }
+img {
+	max-width: 100%;
+}
+hr {
+	border-color: #939393;
+}
 
 
 /* mobile */
@@ -426,30 +432,8 @@ h2.section-title {
 /* footer *********************************** */
 
 body > footer .container {
-	background-image: url(../images/logo-footer.gif); 
-	background-size: 96px; 
-	background-repeat: no-repeat; 
-	background-position: center 50px;;
-	padding-top: 150px;
-	padding-bottom: 40px; 
-}
-body > footer .container .header {
-	margin-bottom: 20px;
-}
-body > footer .container .row {
-	margin-bottom: 20px;
-}
-body > footer a,
-body > footer a:hover, 
-body > footer a:focus, 
-body > footer a:active {
-	color: inherit;
-}
-img {
-	max-width: 100%;
-}
-hr {
-	border-color: #939393;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 
@@ -458,11 +442,6 @@ hr {
 @media screen and (min-width: 992px) {
 	
 	body > footer .container {
-		background-position: 10px center;
-		padding-left: 250px;
-		padding-top: 70px;
-		padding-bottom: 50px;
-		background-size: initial;
 	}
 }
 
